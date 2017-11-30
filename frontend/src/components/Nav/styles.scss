@@ -1,9 +1,10 @@
 .Nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     background-color: #e770ff;
     height: 40px;
     width: 100%;
+    z-index: 1000;
 }
 
 #nav-bar {
