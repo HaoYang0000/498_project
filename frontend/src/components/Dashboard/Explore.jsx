@@ -12,7 +12,7 @@ class Explore extends Component {
                 <Nav/>
 
 	            <div className="Home">
-	                <h1>EXPLORE</h1>
+	                <h1>Story Line</h1>
 
 	                <div class="ui raised card">
 						  <div class="content">

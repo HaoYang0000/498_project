@@ -11,7 +11,7 @@ class Main extends Component {
             <div>
                 <Nav/>
                 <div className="Home">
-                    <h1>MAIN</h1>
+                    <h1>PAIR PAIR PAIR</h1>
 
                     <div class="ui card">
                           <img class="ui image" src={'https://semantic-ui.com/images/avatar/large/jenny.jpg'} />
@@ -27,7 +27,8 @@ class Main extends Component {
                             <i aria-hidden="true" class="user icon"></i>22 Friends</a>
                           </div>
                     </div>
-
+                    <button class="ui positive button" role="button" id="main-but"> Like </button>
+                    <button class="ui negative button" role="button" id="main-but"> Na.. </button>
                 </div>
             </div>
         )

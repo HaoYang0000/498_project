@@ -65406,7 +65406,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: magenta;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n#setting_form {\n  width: 70%;\n  margin-top: 100px;\n  margin-left: 15%; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: magenta;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n", ""]);
 
 // exports
 
@@ -65515,7 +65515,7 @@ var Explore = function (_Component) {
 					_react2.default.createElement(
 						'h1',
 						null,
-						'EXPLORE'
+						'Story Line'
 					),
 					_react2.default.createElement(
 						'div',
@@ -65671,9 +65671,9 @@ var Setting = function (_Component) {
 																				'form',
 																				{ 'class': 'ui form', id: 'setting_form' },
 																				_react2.default.createElement(
-																								'h4',
+																								'h1',
 																								{ 'class': 'ui dividing header' },
-																								'Shipping Information'
+																								'Personal Setting'
 																				),
 																				_react2.default.createElement(
 																								'div',
@@ -65681,7 +65681,7 @@ var Setting = function (_Component) {
 																								_react2.default.createElement(
 																												'label',
 																												null,
-																												'Name'
+																												'Name *'
 																								),
 																								_react2.default.createElement(
 																												'div',
@@ -65696,6 +65696,16 @@ var Setting = function (_Component) {
 																																{ 'class': 'field' },
 																																_react2.default.createElement('input', { type: 'text', name: 'shipping[last-name]', placeholder: 'Last Name' })
 																												)
+																								),
+																								_react2.default.createElement(
+																												'label',
+																												null,
+																												'Age'
+																								),
+																								_react2.default.createElement(
+																												'div',
+																												{ 'class': 'field' },
+																												_react2.default.createElement('input', { type: 'text', name: 'age', placeholder: '20' })
 																								)
 																				),
 																				_react2.default.createElement(
@@ -65704,7 +65714,7 @@ var Setting = function (_Component) {
 																								_react2.default.createElement(
 																												'label',
 																												null,
-																												'Billing Address'
+																												'Location'
 																								),
 																								_react2.default.createElement(
 																												'div',
@@ -65713,11 +65723,6 @@ var Setting = function (_Component) {
 																																'div',
 																																{ 'class': 'twelve wide field' },
 																																_react2.default.createElement('input', { type: 'text', name: 'shipping[address]', placeholder: 'Street Address' })
-																												),
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'four wide field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[address-2]', placeholder: 'Apt #' })
 																												)
 																								)
 																				),
@@ -66003,1473 +66008,75 @@ var Setting = function (_Component) {
 																												_react2.default.createElement(
 																																'label',
 																																null,
-																																'Country'
+																																'County'
 																												),
 																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'ui fluid search selection dropdown' },
-																																_react2.default.createElement('input', { type: 'hidden', name: 'country' }),
-																																_react2.default.createElement('i', { 'class': 'dropdown icon' }),
+																																'select',
+																																{ 'class': 'ui fluid search dropdown', name: 'country' },
 																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'default text' },
-																																				'Select Country'
+																																				'option',
+																																				{ value: '' },
+																																				'USA'
 																																),
 																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'menu' },
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'af' },
-																																								_react2.default.createElement('i', { 'class': 'af flag' }),
-																																								'Afghanistan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ax' },
-																																								_react2.default.createElement('i', { 'class': 'ax flag' }),
-																																								'Aland Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'al' },
-																																								_react2.default.createElement('i', { 'class': 'al flag' }),
-																																								'Albania'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'dz' },
-																																								_react2.default.createElement('i', { 'class': 'dz flag' }),
-																																								'Algeria'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'as' },
-																																								_react2.default.createElement('i', { 'class': 'as flag' }),
-																																								'American Samoa'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ad' },
-																																								_react2.default.createElement('i', { 'class': 'ad flag' }),
-																																								'Andorra'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ao' },
-																																								_react2.default.createElement('i', { 'class': 'ao flag' }),
-																																								'Angola'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ai' },
-																																								_react2.default.createElement('i', { 'class': 'ai flag' }),
-																																								'Anguilla'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ag' },
-																																								_react2.default.createElement('i', { 'class': 'ag flag' }),
-																																								'Antigua'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ar' },
-																																								_react2.default.createElement('i', { 'class': 'ar flag' }),
-																																								'Argentina'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'am' },
-																																								_react2.default.createElement('i', { 'class': 'am flag' }),
-																																								'Armenia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'aw' },
-																																								_react2.default.createElement('i', { 'class': 'aw flag' }),
-																																								'Aruba'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'au' },
-																																								_react2.default.createElement('i', { 'class': 'au flag' }),
-																																								'Australia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'at' },
-																																								_react2.default.createElement('i', { 'class': 'at flag' }),
-																																								'Austria'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'az' },
-																																								_react2.default.createElement('i', { 'class': 'az flag' }),
-																																								'Azerbaijan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bs' },
-																																								_react2.default.createElement('i', { 'class': 'bs flag' }),
-																																								'Bahamas'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bh' },
-																																								_react2.default.createElement('i', { 'class': 'bh flag' }),
-																																								'Bahrain'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bd' },
-																																								_react2.default.createElement('i', { 'class': 'bd flag' }),
-																																								'Bangladesh'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bb' },
-																																								_react2.default.createElement('i', { 'class': 'bb flag' }),
-																																								'Barbados'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'by' },
-																																								_react2.default.createElement('i', { 'class': 'by flag' }),
-																																								'Belarus'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'be' },
-																																								_react2.default.createElement('i', { 'class': 'be flag' }),
-																																								'Belgium'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bz' },
-																																								_react2.default.createElement('i', { 'class': 'bz flag' }),
-																																								'Belize'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bj' },
-																																								_react2.default.createElement('i', { 'class': 'bj flag' }),
-																																								'Benin'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bm' },
-																																								_react2.default.createElement('i', { 'class': 'bm flag' }),
-																																								'Bermuda'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bt' },
-																																								_react2.default.createElement('i', { 'class': 'bt flag' }),
-																																								'Bhutan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bo' },
-																																								_react2.default.createElement('i', { 'class': 'bo flag' }),
-																																								'Bolivia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ba' },
-																																								_react2.default.createElement('i', { 'class': 'ba flag' }),
-																																								'Bosnia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bw' },
-																																								_react2.default.createElement('i', { 'class': 'bw flag' }),
-																																								'Botswana'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bv' },
-																																								_react2.default.createElement('i', { 'class': 'bv flag' }),
-																																								'Bouvet Island'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'br' },
-																																								_react2.default.createElement('i', { 'class': 'br flag' }),
-																																								'Brazil'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'vg' },
-																																								_react2.default.createElement('i', { 'class': 'vg flag' }),
-																																								'British Virgin Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bn' },
-																																								_react2.default.createElement('i', { 'class': 'bn flag' }),
-																																								'Brunei'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bg' },
-																																								_react2.default.createElement('i', { 'class': 'bg flag' }),
-																																								'Bulgaria'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bf' },
-																																								_react2.default.createElement('i', { 'class': 'bf flag' }),
-																																								'Burkina Faso'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mm' },
-																																								_react2.default.createElement('i', { 'class': 'mm flag' }),
-																																								'Burma'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'bi' },
-																																								_react2.default.createElement('i', { 'class': 'bi flag' }),
-																																								'Burundi'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tc' },
-																																								_react2.default.createElement('i', { 'class': 'tc flag' }),
-																																								'Caicos Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kh' },
-																																								_react2.default.createElement('i', { 'class': 'kh flag' }),
-																																								'Cambodia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cm' },
-																																								_react2.default.createElement('i', { 'class': 'cm flag' }),
-																																								'Cameroon'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ca' },
-																																								_react2.default.createElement('i', { 'class': 'ca flag' }),
-																																								'Canada'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cv' },
-																																								_react2.default.createElement('i', { 'class': 'cv flag' }),
-																																								'Cape Verde'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ky' },
-																																								_react2.default.createElement('i', { 'class': 'ky flag' }),
-																																								'Cayman Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cf' },
-																																								_react2.default.createElement('i', { 'class': 'cf flag' }),
-																																								'Central African Republic'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'td' },
-																																								_react2.default.createElement('i', { 'class': 'td flag' }),
-																																								'Chad'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cl' },
-																																								_react2.default.createElement('i', { 'class': 'cl flag' }),
-																																								'Chile'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cn' },
-																																								_react2.default.createElement('i', { 'class': 'cn flag' }),
-																																								'China'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cx' },
-																																								_react2.default.createElement('i', { 'class': 'cx flag' }),
-																																								'Christmas Island'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cc' },
-																																								_react2.default.createElement('i', { 'class': 'cc flag' }),
-																																								'Cocos Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'co' },
-																																								_react2.default.createElement('i', { 'class': 'co flag' }),
-																																								'Colombia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'km' },
-																																								_react2.default.createElement('i', { 'class': 'km flag' }),
-																																								'Comoros'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cg' },
-																																								_react2.default.createElement('i', { 'class': 'cg flag' }),
-																																								'Congo Brazzaville'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cd' },
-																																								_react2.default.createElement('i', { 'class': 'cd flag' }),
-																																								'Congo'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ck' },
-																																								_react2.default.createElement('i', { 'class': 'ck flag' }),
-																																								'Cook Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cr' },
-																																								_react2.default.createElement('i', { 'class': 'cr flag' }),
-																																								'Costa Rica'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ci' },
-																																								_react2.default.createElement('i', { 'class': 'ci flag' }),
-																																								'Cote Divoire'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'hr' },
-																																								_react2.default.createElement('i', { 'class': 'hr flag' }),
-																																								'Croatia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cu' },
-																																								_react2.default.createElement('i', { 'class': 'cu flag' }),
-																																								'Cuba'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cy' },
-																																								_react2.default.createElement('i', { 'class': 'cy flag' }),
-																																								'Cyprus'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cz' },
-																																								_react2.default.createElement('i', { 'class': 'cz flag' }),
-																																								'Czech Republic'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'dk' },
-																																								_react2.default.createElement('i', { 'class': 'dk flag' }),
-																																								'Denmark'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'dj' },
-																																								_react2.default.createElement('i', { 'class': 'dj flag' }),
-																																								'Djibouti'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'dm' },
-																																								_react2.default.createElement('i', { 'class': 'dm flag' }),
-																																								'Dominica'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'do' },
-																																								_react2.default.createElement('i', { 'class': 'do flag' }),
-																																								'Dominican Republic'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ec' },
-																																								_react2.default.createElement('i', { 'class': 'ec flag' }),
-																																								'Ecuador'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'eg' },
-																																								_react2.default.createElement('i', { 'class': 'eg flag' }),
-																																								'Egypt'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sv' },
-																																								_react2.default.createElement('i', { 'class': 'sv flag' }),
-																																								'El Salvador'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gb' },
-																																								_react2.default.createElement('i', { 'class': 'gb flag' }),
-																																								'England'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gq' },
-																																								_react2.default.createElement('i', { 'class': 'gq flag' }),
-																																								'Equatorial Guinea'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'er' },
-																																								_react2.default.createElement('i', { 'class': 'er flag' }),
-																																								'Eritrea'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ee' },
-																																								_react2.default.createElement('i', { 'class': 'ee flag' }),
-																																								'Estonia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'et' },
-																																								_react2.default.createElement('i', { 'class': 'et flag' }),
-																																								'Ethiopia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'eu' },
-																																								_react2.default.createElement('i', { 'class': 'eu flag' }),
-																																								'European Union'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'fk' },
-																																								_react2.default.createElement('i', { 'class': 'fk flag' }),
-																																								'Falkland Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'fo' },
-																																								_react2.default.createElement('i', { 'class': 'fo flag' }),
-																																								'Faroe Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'fj' },
-																																								_react2.default.createElement('i', { 'class': 'fj flag' }),
-																																								'Fiji'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'fi' },
-																																								_react2.default.createElement('i', { 'class': 'fi flag' }),
-																																								'Finland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'fr' },
-																																								_react2.default.createElement('i', { 'class': 'fr flag' }),
-																																								'France'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gf' },
-																																								_react2.default.createElement('i', { 'class': 'gf flag' }),
-																																								'French Guiana'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pf' },
-																																								_react2.default.createElement('i', { 'class': 'pf flag' }),
-																																								'French Polynesia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tf' },
-																																								_react2.default.createElement('i', { 'class': 'tf flag' }),
-																																								'French Territories'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ga' },
-																																								_react2.default.createElement('i', { 'class': 'ga flag' }),
-																																								'Gabon'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gm' },
-																																								_react2.default.createElement('i', { 'class': 'gm flag' }),
-																																								'Gambia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ge' },
-																																								_react2.default.createElement('i', { 'class': 'ge flag' }),
-																																								'Georgia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'de' },
-																																								_react2.default.createElement('i', { 'class': 'de flag' }),
-																																								'Germany'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gh' },
-																																								_react2.default.createElement('i', { 'class': 'gh flag' }),
-																																								'Ghana'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gi' },
-																																								_react2.default.createElement('i', { 'class': 'gi flag' }),
-																																								'Gibraltar'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gr' },
-																																								_react2.default.createElement('i', { 'class': 'gr flag' }),
-																																								'Greece'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gl' },
-																																								_react2.default.createElement('i', { 'class': 'gl flag' }),
-																																								'Greenland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gd' },
-																																								_react2.default.createElement('i', { 'class': 'gd flag' }),
-																																								'Grenada'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gp' },
-																																								_react2.default.createElement('i', { 'class': 'gp flag' }),
-																																								'Guadeloupe'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gu' },
-																																								_react2.default.createElement('i', { 'class': 'gu flag' }),
-																																								'Guam'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gt' },
-																																								_react2.default.createElement('i', { 'class': 'gt flag' }),
-																																								'Guatemala'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gw' },
-																																								_react2.default.createElement('i', { 'class': 'gw flag' }),
-																																								'Guinea-Bissau'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gn' },
-																																								_react2.default.createElement('i', { 'class': 'gn flag' }),
-																																								'Guinea'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gy' },
-																																								_react2.default.createElement('i', { 'class': 'gy flag' }),
-																																								'Guyana'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ht' },
-																																								_react2.default.createElement('i', { 'class': 'ht flag' }),
-																																								'Haiti'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'hm' },
-																																								_react2.default.createElement('i', { 'class': 'hm flag' }),
-																																								'Heard Island'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'hn' },
-																																								_react2.default.createElement('i', { 'class': 'hn flag' }),
-																																								'Honduras'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'hk' },
-																																								_react2.default.createElement('i', { 'class': 'hk flag' }),
-																																								'Hong Kong'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'hu' },
-																																								_react2.default.createElement('i', { 'class': 'hu flag' }),
-																																								'Hungary'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'is' },
-																																								_react2.default.createElement('i', { 'class': 'is flag' }),
-																																								'Iceland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'in' },
-																																								_react2.default.createElement('i', { 'class': 'in flag' }),
-																																								'India'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'io' },
-																																								_react2.default.createElement('i', { 'class': 'io flag' }),
-																																								'Indian Ocean Territory'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'id' },
-																																								_react2.default.createElement('i', { 'class': 'id flag' }),
-																																								'Indonesia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ir' },
-																																								_react2.default.createElement('i', { 'class': 'ir flag' }),
-																																								'Iran'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'iq' },
-																																								_react2.default.createElement('i', { 'class': 'iq flag' }),
-																																								'Iraq'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ie' },
-																																								_react2.default.createElement('i', { 'class': 'ie flag' }),
-																																								'Ireland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'il' },
-																																								_react2.default.createElement('i', { 'class': 'il flag' }),
-																																								'Israel'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'it' },
-																																								_react2.default.createElement('i', { 'class': 'it flag' }),
-																																								'Italy'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'jm' },
-																																								_react2.default.createElement('i', { 'class': 'jm flag' }),
-																																								'Jamaica'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'jp' },
-																																								_react2.default.createElement('i', { 'class': 'jp flag' }),
-																																								'Japan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'jo' },
-																																								_react2.default.createElement('i', { 'class': 'jo flag' }),
-																																								'Jordan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kz' },
-																																								_react2.default.createElement('i', { 'class': 'kz flag' }),
-																																								'Kazakhstan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ke' },
-																																								_react2.default.createElement('i', { 'class': 'ke flag' }),
-																																								'Kenya'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ki' },
-																																								_react2.default.createElement('i', { 'class': 'ki flag' }),
-																																								'Kiribati'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kw' },
-																																								_react2.default.createElement('i', { 'class': 'kw flag' }),
-																																								'Kuwait'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kg' },
-																																								_react2.default.createElement('i', { 'class': 'kg flag' }),
-																																								'Kyrgyzstan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'la' },
-																																								_react2.default.createElement('i', { 'class': 'la flag' }),
-																																								'Laos'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lv' },
-																																								_react2.default.createElement('i', { 'class': 'lv flag' }),
-																																								'Latvia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lb' },
-																																								_react2.default.createElement('i', { 'class': 'lb flag' }),
-																																								'Lebanon'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ls' },
-																																								_react2.default.createElement('i', { 'class': 'ls flag' }),
-																																								'Lesotho'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lr' },
-																																								_react2.default.createElement('i', { 'class': 'lr flag' }),
-																																								'Liberia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ly' },
-																																								_react2.default.createElement('i', { 'class': 'ly flag' }),
-																																								'Libya'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'li' },
-																																								_react2.default.createElement('i', { 'class': 'li flag' }),
-																																								'Liechtenstein'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lt' },
-																																								_react2.default.createElement('i', { 'class': 'lt flag' }),
-																																								'Lithuania'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lu' },
-																																								_react2.default.createElement('i', { 'class': 'lu flag' }),
-																																								'Luxembourg'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mo' },
-																																								_react2.default.createElement('i', { 'class': 'mo flag' }),
-																																								'Macau'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mk' },
-																																								_react2.default.createElement('i', { 'class': 'mk flag' }),
-																																								'Macedonia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mg' },
-																																								_react2.default.createElement('i', { 'class': 'mg flag' }),
-																																								'Madagascar'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mw' },
-																																								_react2.default.createElement('i', { 'class': 'mw flag' }),
-																																								'Malawi'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'my' },
-																																								_react2.default.createElement('i', { 'class': 'my flag' }),
-																																								'Malaysia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mv' },
-																																								_react2.default.createElement('i', { 'class': 'mv flag' }),
-																																								'Maldives'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ml' },
-																																								_react2.default.createElement('i', { 'class': 'ml flag' }),
-																																								'Mali'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mt' },
-																																								_react2.default.createElement('i', { 'class': 'mt flag' }),
-																																								'Malta'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mh' },
-																																								_react2.default.createElement('i', { 'class': 'mh flag' }),
-																																								'Marshall Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mq' },
-																																								_react2.default.createElement('i', { 'class': 'mq flag' }),
-																																								'Martinique'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mr' },
-																																								_react2.default.createElement('i', { 'class': 'mr flag' }),
-																																								'Mauritania'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mu' },
-																																								_react2.default.createElement('i', { 'class': 'mu flag' }),
-																																								'Mauritius'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'yt' },
-																																								_react2.default.createElement('i', { 'class': 'yt flag' }),
-																																								'Mayotte'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mx' },
-																																								_react2.default.createElement('i', { 'class': 'mx flag' }),
-																																								'Mexico'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'fm' },
-																																								_react2.default.createElement('i', { 'class': 'fm flag' }),
-																																								'Micronesia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'md' },
-																																								_react2.default.createElement('i', { 'class': 'md flag' }),
-																																								'Moldova'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mc' },
-																																								_react2.default.createElement('i', { 'class': 'mc flag' }),
-																																								'Monaco'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mn' },
-																																								_react2.default.createElement('i', { 'class': 'mn flag' }),
-																																								'Mongolia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'me' },
-																																								_react2.default.createElement('i', { 'class': 'me flag' }),
-																																								'Montenegro'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ms' },
-																																								_react2.default.createElement('i', { 'class': 'ms flag' }),
-																																								'Montserrat'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ma' },
-																																								_react2.default.createElement('i', { 'class': 'ma flag' }),
-																																								'Morocco'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mz' },
-																																								_react2.default.createElement('i', { 'class': 'mz flag' }),
-																																								'Mozambique'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'na' },
-																																								_react2.default.createElement('i', { 'class': 'na flag' }),
-																																								'Namibia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'nr' },
-																																								_react2.default.createElement('i', { 'class': 'nr flag' }),
-																																								'Nauru'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'np' },
-																																								_react2.default.createElement('i', { 'class': 'np flag' }),
-																																								'Nepal'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'an' },
-																																								_react2.default.createElement('i', { 'class': 'an flag' }),
-																																								'Netherlands Antilles'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'nl' },
-																																								_react2.default.createElement('i', { 'class': 'nl flag' }),
-																																								'Netherlands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'nc' },
-																																								_react2.default.createElement('i', { 'class': 'nc flag' }),
-																																								'New Caledonia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pg' },
-																																								_react2.default.createElement('i', { 'class': 'pg flag' }),
-																																								'New Guinea'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'nz' },
-																																								_react2.default.createElement('i', { 'class': 'nz flag' }),
-																																								'New Zealand'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ni' },
-																																								_react2.default.createElement('i', { 'class': 'ni flag' }),
-																																								'Nicaragua'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ne' },
-																																								_react2.default.createElement('i', { 'class': 'ne flag' }),
-																																								'Niger'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ng' },
-																																								_react2.default.createElement('i', { 'class': 'ng flag' }),
-																																								'Nigeria'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'nu' },
-																																								_react2.default.createElement('i', { 'class': 'nu flag' }),
-																																								'Niue'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'nf' },
-																																								_react2.default.createElement('i', { 'class': 'nf flag' }),
-																																								'Norfolk Island'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kp' },
-																																								_react2.default.createElement('i', { 'class': 'kp flag' }),
-																																								'North Korea'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'mp' },
-																																								_react2.default.createElement('i', { 'class': 'mp flag' }),
-																																								'Northern Mariana Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'no' },
-																																								_react2.default.createElement('i', { 'class': 'no flag' }),
-																																								'Norway'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'om' },
-																																								_react2.default.createElement('i', { 'class': 'om flag' }),
-																																								'Oman'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pk' },
-																																								_react2.default.createElement('i', { 'class': 'pk flag' }),
-																																								'Pakistan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pw' },
-																																								_react2.default.createElement('i', { 'class': 'pw flag' }),
-																																								'Palau'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ps' },
-																																								_react2.default.createElement('i', { 'class': 'ps flag' }),
-																																								'Palestine'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pa' },
-																																								_react2.default.createElement('i', { 'class': 'pa flag' }),
-																																								'Panama'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'py' },
-																																								_react2.default.createElement('i', { 'class': 'py flag' }),
-																																								'Paraguay'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pe' },
-																																								_react2.default.createElement('i', { 'class': 'pe flag' }),
-																																								'Peru'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ph' },
-																																								_react2.default.createElement('i', { 'class': 'ph flag' }),
-																																								'Philippines'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pn' },
-																																								_react2.default.createElement('i', { 'class': 'pn flag' }),
-																																								'Pitcairn Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pl' },
-																																								_react2.default.createElement('i', { 'class': 'pl flag' }),
-																																								'Poland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pt' },
-																																								_react2.default.createElement('i', { 'class': 'pt flag' }),
-																																								'Portugal'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pr' },
-																																								_react2.default.createElement('i', { 'class': 'pr flag' }),
-																																								'Puerto Rico'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'qa' },
-																																								_react2.default.createElement('i', { 'class': 'qa flag' }),
-																																								'Qatar'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 're' },
-																																								_react2.default.createElement('i', { 'class': 're flag' }),
-																																								'Reunion'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ro' },
-																																								_react2.default.createElement('i', { 'class': 'ro flag' }),
-																																								'Romania'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ru' },
-																																								_react2.default.createElement('i', { 'class': 'ru flag' }),
-																																								'Russia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'rw' },
-																																								_react2.default.createElement('i', { 'class': 'rw flag' }),
-																																								'Rwanda'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sh' },
-																																								_react2.default.createElement('i', { 'class': 'sh flag' }),
-																																								'Saint Helena'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kn' },
-																																								_react2.default.createElement('i', { 'class': 'kn flag' }),
-																																								'Saint Kitts and Nevis'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lc' },
-																																								_react2.default.createElement('i', { 'class': 'lc flag' }),
-																																								'Saint Lucia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'pm' },
-																																								_react2.default.createElement('i', { 'class': 'pm flag' }),
-																																								'Saint Pierre'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'vc' },
-																																								_react2.default.createElement('i', { 'class': 'vc flag' }),
-																																								'Saint Vincent'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ws' },
-																																								_react2.default.createElement('i', { 'class': 'ws flag' }),
-																																								'Samoa'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sm' },
-																																								_react2.default.createElement('i', { 'class': 'sm flag' }),
-																																								'San Marino'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'gs' },
-																																								_react2.default.createElement('i', { 'class': 'gs flag' }),
-																																								'Sandwich Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'st' },
-																																								_react2.default.createElement('i', { 'class': 'st flag' }),
-																																								'Sao Tome'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sa' },
-																																								_react2.default.createElement('i', { 'class': 'sa flag' }),
-																																								'Saudi Arabia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sn' },
-																																								_react2.default.createElement('i', { 'class': 'sn flag' }),
-																																								'Senegal'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'cs' },
-																																								_react2.default.createElement('i', { 'class': 'cs flag' }),
-																																								'Serbia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'rs' },
-																																								_react2.default.createElement('i', { 'class': 'rs flag' }),
-																																								'Serbia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sc' },
-																																								_react2.default.createElement('i', { 'class': 'sc flag' }),
-																																								'Seychelles'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sl' },
-																																								_react2.default.createElement('i', { 'class': 'sl flag' }),
-																																								'Sierra Leone'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sg' },
-																																								_react2.default.createElement('i', { 'class': 'sg flag' }),
-																																								'Singapore'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sk' },
-																																								_react2.default.createElement('i', { 'class': 'sk flag' }),
-																																								'Slovakia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'si' },
-																																								_react2.default.createElement('i', { 'class': 'si flag' }),
-																																								'Slovenia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sb' },
-																																								_react2.default.createElement('i', { 'class': 'sb flag' }),
-																																								'Solomon Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'so' },
-																																								_react2.default.createElement('i', { 'class': 'so flag' }),
-																																								'Somalia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'za' },
-																																								_react2.default.createElement('i', { 'class': 'za flag' }),
-																																								'South Africa'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'kr' },
-																																								_react2.default.createElement('i', { 'class': 'kr flag' }),
-																																								'South Korea'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'es' },
-																																								_react2.default.createElement('i', { 'class': 'es flag' }),
-																																								'Spain'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'lk' },
-																																								_react2.default.createElement('i', { 'class': 'lk flag' }),
-																																								'Sri Lanka'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sd' },
-																																								_react2.default.createElement('i', { 'class': 'sd flag' }),
-																																								'Sudan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sr' },
-																																								_react2.default.createElement('i', { 'class': 'sr flag' }),
-																																								'Suriname'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sj' },
-																																								_react2.default.createElement('i', { 'class': 'sj flag' }),
-																																								'Svalbard'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sz' },
-																																								_react2.default.createElement('i', { 'class': 'sz flag' }),
-																																								'Swaziland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'se' },
-																																								_react2.default.createElement('i', { 'class': 'se flag' }),
-																																								'Sweden'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ch' },
-																																								_react2.default.createElement('i', { 'class': 'ch flag' }),
-																																								'Switzerland'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'sy' },
-																																								_react2.default.createElement('i', { 'class': 'sy flag' }),
-																																								'Syria'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tw' },
-																																								_react2.default.createElement('i', { 'class': 'tw flag' }),
-																																								'Taiwan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tj' },
-																																								_react2.default.createElement('i', { 'class': 'tj flag' }),
-																																								'Tajikistan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tz' },
-																																								_react2.default.createElement('i', { 'class': 'tz flag' }),
-																																								'Tanzania'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'th' },
-																																								_react2.default.createElement('i', { 'class': 'th flag' }),
-																																								'Thailand'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tl' },
-																																								_react2.default.createElement('i', { 'class': 'tl flag' }),
-																																								'Timorleste'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tg' },
-																																								_react2.default.createElement('i', { 'class': 'tg flag' }),
-																																								'Togo'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tk' },
-																																								_react2.default.createElement('i', { 'class': 'tk flag' }),
-																																								'Tokelau'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'to' },
-																																								_react2.default.createElement('i', { 'class': 'to flag' }),
-																																								'Tonga'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tt' },
-																																								_react2.default.createElement('i', { 'class': 'tt flag' }),
-																																								'Trinidad'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tn' },
-																																								_react2.default.createElement('i', { 'class': 'tn flag' }),
-																																								'Tunisia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tr' },
-																																								_react2.default.createElement('i', { 'class': 'tr flag' }),
-																																								'Turkey'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tm' },
-																																								_react2.default.createElement('i', { 'class': 'tm flag' }),
-																																								'Turkmenistan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'tv' },
-																																								_react2.default.createElement('i', { 'class': 'tv flag' }),
-																																								'Tuvalu'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ug' },
-																																								_react2.default.createElement('i', { 'class': 'ug flag' }),
-																																								'Uganda'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ua' },
-																																								_react2.default.createElement('i', { 'class': 'ua flag' }),
-																																								'Ukraine'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ae' },
-																																								_react2.default.createElement('i', { 'class': 'ae flag' }),
-																																								'United Arab Emirates'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'us' },
-																																								_react2.default.createElement('i', { 'class': 'us flag' }),
-																																								'United States'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'uy' },
-																																								_react2.default.createElement('i', { 'class': 'uy flag' }),
-																																								'Uruguay'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'um' },
-																																								_react2.default.createElement('i', { 'class': 'um flag' }),
-																																								'Us Minor Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'vi' },
-																																								_react2.default.createElement('i', { 'class': 'vi flag' }),
-																																								'Us Virgin Islands'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'uz' },
-																																								_react2.default.createElement('i', { 'class': 'uz flag' }),
-																																								'Uzbekistan'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'vu' },
-																																								_react2.default.createElement('i', { 'class': 'vu flag' }),
-																																								'Vanuatu'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'va' },
-																																								_react2.default.createElement('i', { 'class': 'va flag' }),
-																																								'Vatican City'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 've' },
-																																								_react2.default.createElement('i', { 'class': 've flag' }),
-																																								'Venezuela'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'vn' },
-																																								_react2.default.createElement('i', { 'class': 'vn flag' }),
-																																								'Vietnam'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'wf' },
-																																								_react2.default.createElement('i', { 'class': 'wf flag' }),
-																																								'Wallis and Futuna'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'eh' },
-																																								_react2.default.createElement('i', { 'class': 'eh flag' }),
-																																								'Western Sahara'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'ye' },
-																																								_react2.default.createElement('i', { 'class': 'ye flag' }),
-																																								'Yemen'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'zm' },
-																																								_react2.default.createElement('i', { 'class': 'zm flag' }),
-																																								'Zambia'
-																																				),
-																																				_react2.default.createElement(
-																																								'div',
-																																								{ 'class': 'item', 'data-value': 'zw' },
-																																								_react2.default.createElement('i', { 'class': 'zw flag' }),
-																																								'Zimbabwe'
-																																				)
+																																				'option',
+																																				{ value: '1' },
+																																				'CHINA'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '2' },
+																																				'INDIA'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '3' },
+																																				'JAPAN'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '4' },
+																																				'CANADA'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '5' },
+																																				'RUSSIA'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '6' },
+																																				'GERMAN'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '7' },
+																																				'UK'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '8' },
+																																				'BRAZIL'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '9' },
+																																				'AUSTRILIA'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '10' },
+																																				'MEXICO'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '11' },
+																																				'KOREA'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '12' },
+																																				'OTHER'
 																																)
 																												)
 																								)
@@ -67477,46 +66084,144 @@ var Setting = function (_Component) {
 																				_react2.default.createElement(
 																								'h4',
 																								{ 'class': 'ui dividing header' },
-																								'Billing Information'
+																								'Pet Information'
 																				),
 																				_react2.default.createElement(
 																								'div',
-																								{ 'class': 'field' },
+																								{ 'class': 'two fields' },
 																								_react2.default.createElement(
-																												'label',
-																												null,
-																												'Card Type'
+																												'div',
+																												{ 'class': 'field' },
+																												_react2.default.createElement(
+																																'select',
+																																{ 'class': 'ui fluid search dropdown', name: 'type' },
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '' },
+																																				'SPECIES *'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '1' },
+																																				'dog'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '2' },
+																																				'cat'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '3' },
+																																				'fish'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '4' },
+																																				'human'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '5' },
+																																				'Pikachu'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '6' },
+																																				'Pig'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '7' },
+																																				'Squirrel'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '8' },
+																																				'Rabbit'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '9' },
+																																				'Turtle'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '10' },
+																																				'Lizard'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '11' },
+																																				'Bird'
+																																)
+																												)
 																								),
 																								_react2.default.createElement(
 																												'div',
-																												{ 'class': 'ui selection dropdown' },
-																												_react2.default.createElement('input', { type: 'hidden', name: 'card[type]' }),
+																												{ 'class': 'field' },
 																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'default text' },
-																																'Type'
-																												),
-																												_react2.default.createElement('i', { 'class': 'dropdown icon' }),
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'menu' },
+																																'select',
+																																{ 'class': 'ui fluid search dropdown', name: 'prefer' },
 																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'visa' },
-																																				_react2.default.createElement('i', { 'class': 'visa icon' }),
-																																				'Visa'
+																																				'option',
+																																				{ value: '' },
+																																				'PREFER SPECIES *'
 																																),
 																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'amex' },
-																																				_react2.default.createElement('i', { 'class': 'amex icon' }),
-																																				'American Express'
+																																				'option',
+																																				{ value: '1' },
+																																				'dog'
 																																),
 																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'discover' },
-																																				_react2.default.createElement('i', { 'class': 'discover icon' }),
-																																				'Discover'
+																																				'option',
+																																				{ value: '2' },
+																																				'cat'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '3' },
+																																				'fish'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '4' },
+																																				'human'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '5' },
+																																				'Pikachu'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '6' },
+																																				'Pig'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '7' },
+																																				'Squirrel'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '8' },
+																																				'Rabbit'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '9' },
+																																				'Turtle'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '10' },
+																																				'Lizard'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '11' },
+																																				'Bird'
 																																)
 																												)
 																								)
@@ -67530,9 +66235,27 @@ var Setting = function (_Component) {
 																												_react2.default.createElement(
 																																'label',
 																																null,
-																																'Card Number'
+																																'Gender'
 																												),
-																												_react2.default.createElement('input', { type: 'text', name: 'card[number]', maxlength: '16', placeholder: 'Card #' })
+																												_react2.default.createElement(
+																																'select',
+																																{ 'class': 'ui fluid search dropdown', name: 'gender' },
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '' },
+																																				'female'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '1' },
+																																				'male'
+																																),
+																																_react2.default.createElement(
+																																				'option',
+																																				{ value: '2' },
+																																				'middle'
+																																)
+																												)
 																								),
 																								_react2.default.createElement(
 																												'div',
@@ -67540,183 +66263,9 @@ var Setting = function (_Component) {
 																												_react2.default.createElement(
 																																'label',
 																																null,
-																																'CVC'
+																																'Age'
 																												),
-																												_react2.default.createElement('input', { type: 'text', name: 'card[cvc]', maxlength: '3', placeholder: 'CVC' })
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'six wide field' },
-																												_react2.default.createElement(
-																																'label',
-																																null,
-																																'Expiration'
-																												),
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'two fields' },
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'field' },
-																																				_react2.default.createElement(
-																																								'select',
-																																								{ 'class': 'ui fluid search dropdown', name: 'card[expire-month]' },
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '' },
-																																												'Month'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '1' },
-																																												'January'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '2' },
-																																												'February'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '3' },
-																																												'March'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '4' },
-																																												'April'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '5' },
-																																												'May'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '6' },
-																																												'June'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '7' },
-																																												'July'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '8' },
-																																												'August'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '9' },
-																																												'September'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '10' },
-																																												'October'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '11' },
-																																												'November'
-																																								),
-																																								_react2.default.createElement(
-																																												'option',
-																																												{ value: '12' },
-																																												'December'
-																																								)
-																																				)
-																																),
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'field' },
-																																				_react2.default.createElement('input', { type: 'text', name: 'card[expire-year]', maxlength: '4', placeholder: 'Year' })
-																																)
-																												)
-																								)
-																				),
-																				_react2.default.createElement(
-																								'h4',
-																								{ 'class': 'ui dividing header' },
-																								'Receipt'
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'field' },
-																								_react2.default.createElement(
-																												'label',
-																												null,
-																												'Send Receipt To:'
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'ui fluid multiple search selection dropdown' },
-																												_react2.default.createElement('input', { type: 'hidden', name: 'receipt' }),
-																												_react2.default.createElement('i', { 'class': 'dropdown icon' }),
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'default text' },
-																																'Saved Contacts'
-																												),
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'menu' },
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'jenny', 'data-text': 'Jenny' },
-																																				_react2.default.createElement('img', { 'class': 'ui mini avatar image', src: '/images/avatar/small/jenny.jpg' }),
-																																				'Jenny Hess'
-																																),
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'elliot', 'data-text': 'Elliot' },
-																																				_react2.default.createElement('img', { 'class': 'ui mini avatar image', src: '/images/avatar/small/elliot.jpg' }),
-																																				'Elliot Fu'
-																																),
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'stevie', 'data-text': 'Stevie' },
-																																				_react2.default.createElement('img', { 'class': 'ui mini avatar image', src: '/images/avatar/small/stevie.jpg' }),
-																																				'Stevie Feliciano'
-																																),
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'christian', 'data-text': 'Christian' },
-																																				_react2.default.createElement('img', { 'class': 'ui mini avatar image', src: '/images/avatar/small/christian.jpg' }),
-																																				'Christian'
-																																),
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'matt', 'data-text': 'Matt' },
-																																				_react2.default.createElement('img', { 'class': 'ui mini avatar image', src: '/images/avatar/small/matt.jpg' }),
-																																				'Matt'
-																																),
-																																_react2.default.createElement(
-																																				'div',
-																																				{ 'class': 'item', 'data-value': 'justen', 'data-text': 'Justen' },
-																																				_react2.default.createElement('img', { 'class': 'ui mini avatar image', src: '/images/avatar/small/justen.jpg' }),
-																																				'Justen Kitsune'
-																																)
-																												)
-																								)
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'ui segment' },
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'field' },
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'ui toggle checkbox' },
-																																_react2.default.createElement('input', { type: 'checkbox', name: 'gift', tabindex: '0', 'class': 'hidden' }),
-																																_react2.default.createElement(
-																																				'label',
-																																				null,
-																																				'Do not include a receipt in the package'
-																																)
-																												)
+																												_react2.default.createElement('input', { type: 'text', name: 'petage', maxlength: '3', placeholder: '1' })
 																								)
 																				),
 																				_react2.default.createElement(
@@ -67793,7 +66342,7 @@ var Main = function (_Component) {
                     _react2.default.createElement(
                         'h1',
                         null,
-                        'MAIN'
+                        'PAIR PAIR PAIR'
                     ),
                     _react2.default.createElement(
                         'div',
@@ -67832,6 +66381,16 @@ var Main = function (_Component) {
                                 '22 Friends'
                             )
                         )
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { 'class': 'ui positive button', role: 'button', id: 'main-but' },
+                        ' Like '
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { 'class': 'ui negative button', role: 'button', id: 'main-but' },
+                        ' Na.. '
                     )
                 )
             );
