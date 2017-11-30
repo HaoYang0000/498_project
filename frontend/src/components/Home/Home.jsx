@@ -11,10 +11,9 @@ class Home extends Component {
     render() {
         return(
             <div>
-                <Nav/>
                 <div className="Home">
                     <Card>
-                        <h1>Welcome to MP2!HomeHomeHome</h1>
+                        <h1 id="title">PET TINDER</h1>
                         <span>
                             <Link to="/login">
                                 <Button>
@@ -28,7 +27,6 @@ class Home extends Component {
                                 </Button>
                             </Link>
                         </span>
-
                         <br />
                     </Card>
                     <Upload/>

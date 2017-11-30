@@ -71,7 +71,7 @@ class Login extends Component {
             <form className="Login" action="/" onSubmit={this.onSubmit}>
             <Card className="Login__content">
                 <div>
-                    <h1>Login</h1>
+                    <h1 id="title">Login</h1>
                     <Input label="Email" onChange={this.onChangeEmail} />
                     <br/><br/>
                     <Input label="Password" onChange={this.onChangePassword} />
@@ -82,6 +82,7 @@ class Login extends Component {
                     <h4>No account yet? Click <Link to="/register">here</Link> to Register!</h4>
 
                     <Link to="/dashboard"><p>Go to Dashboard</p></Link>
+                    <br />
                 </div>
             </Card>
         </form>

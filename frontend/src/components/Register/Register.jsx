@@ -74,7 +74,7 @@ class Register extends Component {
             <form className="Register" action="/" onSubmit={this.onSubmit}>
                 <Card className="Register__content">
                     <div>
-                        <h1>Register</h1>
+                        <h1 id="title">Register</h1>
                         <Input label="Email" onChange={this.onChangeEmail} />
                         <br/><br/>
                         <Input label="Password" onChange={this.onChangePassword} />
@@ -85,6 +85,7 @@ class Register extends Component {
 
                         <Link to="/dashboard"><p>Go to Dashboard</p></Link>
                     </div>
+                    <br />
                 </Card>
             </form>
     )
