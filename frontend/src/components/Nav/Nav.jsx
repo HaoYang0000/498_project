@@ -9,9 +9,9 @@ class Nav extends Component {
         return(
             <div className="Nav">
                 <nav>
-                    <button>Home</button>
-                    <button>Explore</button>
-                    <button>Setting</button>
+                    <Button id="nav-bar" inverted color='yellow' size='mini'>Home</Button>
+                    <Button id="nav-bar" inverted color='yellow' size='mini'>Explore</Button>
+                    <Button id="nav-bar" inverted color='yellow' size='mini'>Setting</Button>
                 </nav>
             </div>
         )

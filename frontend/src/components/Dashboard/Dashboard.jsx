@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Nav from '../Nav/Nav.jsx'
 
 import styles from './styles.scss'
 
@@ -40,15 +41,18 @@ class Dashboard extends Component {
 
         if (this.state.isLoggedIn) {
             return(
-                <div className="Dashboard">
-                    <Card>
-                        <h1>Welcome to the App!</h1>
-                        <p>You are now logged in.</p>
+                <div>
+                    <Nav/>
+                    <div className="Dashboard">
+                        <Card>
+                            <h1>Welcome to the App!</h1>
+                            <p>You are now logged in.</p>
 
-                        <Link to="/" onClick={this.logOut}>
-                            Log out
-                        </Link>
-                    </Card>
+                            <Link to="/" onClick={this.logOut}>
+                                Log out
+                            </Link>
+                        </Card>
+                    </div>
                 </div>
             )
         } else {

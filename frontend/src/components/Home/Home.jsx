@@ -10,27 +10,29 @@ import styles from './styles.scss'
 class Home extends Component {
     render() {
         return(
-            <div className="Home">
+            <div>
                 <Nav/>
-                <Card>
-                    <h1>Welcome to MP2!HomeHomeHome</h1>
-                    <span>
-                        <Link to="/login">
-                            <Button>
-                                Login
-                            </Button>
-                        </Link>
+                <div className="Home">
+                    <Card>
+                        <h1>Welcome to MP2!HomeHomeHome</h1>
+                        <span>
+                            <Link to="/login">
+                                <Button>
+                                    Login
+                                </Button>
+                            </Link>
 
-                        <Link to="/register">
-                            <Button>
-                                Register
-                            </Button>
-                        </Link>
-                    </span>
+                            <Link to="/register">
+                                <Button>
+                                    Register
+                                </Button>
+                            </Link>
+                        </span>
 
-                    <br />
-                </Card>
-                <Upload/>
+                        <br />
+                    </Card>
+                    <Upload/>
+                </div>
             </div>
         )
     }
