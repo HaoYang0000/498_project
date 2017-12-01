@@ -30,6 +30,20 @@ class Main extends Component {
                     <button class="ui positive button" role="button" id="main-but"> Like </button>
                     <button class="ui negative button" role="button" id="main-but"> Na.. </button>
                 </div>
+                <div class="ui vertical labeled icon menu" id="nav-down">
+                      <Link to="/dashboard">
+                      <a class="item">
+                        <i class="home icon"></i>
+                        Home
+                      </a>
+                      </Link>
+                      <Link to="/" onClick={this.logOut}>
+                        <a class="item">
+                            <i class="send outline icon"></i>
+                            Log off
+                        </a>
+                      </Link>
+                    </div>
             </div>
         )
     }

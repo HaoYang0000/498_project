@@ -167,6 +167,20 @@ class Setting extends Component {
 				  </div>
 				  <div class="ui button" tabindex="0">Submit Order</div>
 				</form>
+				<div class="ui vertical labeled icon menu" id="nav-down">
+                      <Link to="/dashboard">
+                      <a class="item">
+                        <i class="home icon"></i>
+                        Home
+                      </a>
+                      </Link>
+                      <Link to="/" onClick={this.logOut}>
+                        <a class="item">
+                            <i class="send outline icon"></i>
+                            Log off
+                        </a>
+                      </Link>
+                    </div>
 	        </div>
         )
     }

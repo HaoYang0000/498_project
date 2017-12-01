@@ -63554,6 +63554,11 @@ var Nav = function (_Component) {
                             { id: 'nav-bar', inverted: true, color: 'yellow', size: 'mini' },
                             'Setting'
                         )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { id: 'nav-icon' },
+                        _react2.default.createElement('i', { 'class': 'github alternate icon big' })
                     )
                 )
             );
@@ -63605,7 +63610,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e770ff;\n  height: 40px;\n  width: 100%;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n", ""]);
+exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e770ff;\n  height: 40px;\n  width: 100%;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
 
 // exports
 
@@ -65320,6 +65325,7 @@ var Dashboard = function (_Component) {
                         _react2.default.createElement(
                             _semanticUiReact.Card,
                             null,
+                            _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'h1',
                                 null,
@@ -65334,6 +65340,31 @@ var Dashboard = function (_Component) {
                                 _reactRouterDom.Link,
                                 { to: '/', onClick: this.logOut },
                                 'Log out'
+                            ),
+                            _react2.default.createElement('br', null)
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/dashboard' },
+                            _react2.default.createElement(
+                                'a',
+                                { 'class': 'item' },
+                                _react2.default.createElement('i', { 'class': 'home icon' }),
+                                'Home'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/', onClick: this.logOut },
+                            _react2.default.createElement(
+                                'a',
+                                { 'class': 'item' },
+                                _react2.default.createElement('i', { 'class': 'send outline icon' }),
+                                'Log off'
                             )
                         )
                     )
@@ -65345,6 +65376,7 @@ var Dashboard = function (_Component) {
                     _react2.default.createElement(
                         _semanticUiReact.Card,
                         null,
+                        _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'h1',
                             null,
@@ -65354,7 +65386,8 @@ var Dashboard = function (_Component) {
                             _reactRouterDom.Link,
                             { to: '/' },
                             'Back'
-                        )
+                        ),
+                        _react2.default.createElement('br', null)
                     )
                 );
             }
@@ -65406,7 +65439,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: magenta;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: magenta;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n", ""]);
 
 // exports
 
@@ -65597,6 +65630,30 @@ var Explore = function (_Component) {
 								_react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
 								'Matt'
 							)
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ to: '/dashboard' },
+						_react2.default.createElement(
+							'a',
+							{ 'class': 'item' },
+							_react2.default.createElement('i', { 'class': 'home icon' }),
+							'Home'
+						)
+					),
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ to: '/', onClick: this.logOut },
+						_react2.default.createElement(
+							'a',
+							{ 'class': 'item' },
+							_react2.default.createElement('i', { 'class': 'send outline icon' }),
+							'Log off'
 						)
 					)
 				)
@@ -66273,6 +66330,30 @@ var Setting = function (_Component) {
 																								{ 'class': 'ui button', tabindex: '0' },
 																								'Submit Order'
 																				)
+																),
+																_react2.default.createElement(
+																				'div',
+																				{ 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
+																				_react2.default.createElement(
+																								_reactRouterDom.Link,
+																								{ to: '/dashboard' },
+																								_react2.default.createElement(
+																												'a',
+																												{ 'class': 'item' },
+																												_react2.default.createElement('i', { 'class': 'home icon' }),
+																												'Home'
+																								)
+																				),
+																				_react2.default.createElement(
+																								_reactRouterDom.Link,
+																								{ to: '/', onClick: this.logOut },
+																								_react2.default.createElement(
+																												'a',
+																												{ 'class': 'item' },
+																												_react2.default.createElement('i', { 'class': 'send outline icon' }),
+																												'Log off'
+																								)
+																				)
 																)
 												);
 								}
@@ -66391,6 +66472,30 @@ var Main = function (_Component) {
                         'button',
                         { 'class': 'ui negative button', role: 'button', id: 'main-but' },
                         ' Na.. '
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/dashboard' },
+                        _react2.default.createElement(
+                            'a',
+                            { 'class': 'item' },
+                            _react2.default.createElement('i', { 'class': 'home icon' }),
+                            'Home'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/', onClick: this.logOut },
+                        _react2.default.createElement(
+                            'a',
+                            { 'class': 'item' },
+                            _react2.default.createElement('i', { 'class': 'send outline icon' }),
+                            'Log off'
+                        )
                     )
                 )
             );

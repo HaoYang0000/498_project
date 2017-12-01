@@ -45,13 +45,29 @@ class Dashboard extends Component {
                     <Nav/>
                     <div className="Dashboard">
                         <Card>
+                            <br />
                             <h1>Welcome to the App!</h1>
                             <p>You are now logged in.</p>
 
                             <Link to="/" onClick={this.logOut}>
                                 Log out
                             </Link>
+                            <br />
                         </Card>
+                    </div>
+                    <div class="ui vertical labeled icon menu" id="nav-down">
+                      <Link to="/dashboard">
+                      <a class="item">
+                        <i class="home icon"></i>
+                        Home
+                      </a>
+                      </Link>
+                      <Link to="/" onClick={this.logOut}>
+                        <a class="item">
+                            <i class="send outline icon"></i>
+                            Log off
+                        </a>
+                      </Link>
                     </div>
                 </div>
             )
@@ -59,10 +75,12 @@ class Dashboard extends Component {
             return(
                 <div className="Dashboard">
                     <Card>
+                        <br />
                         <h1>You must log in before you can see this page.</h1>
                         <Link to="/">
                             Back
                         </Link>
+                        <br />
                     </Card>
                 </div>
             )
