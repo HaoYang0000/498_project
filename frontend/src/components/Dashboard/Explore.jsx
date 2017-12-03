@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card, Icon} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import styles from './styles.scss'
@@ -48,6 +48,13 @@ class Explore extends Component {
 						  </div>
 					</div>
 	            </div>
+
+                <Button id="post"  color="pink" size="massive" animated="fade">
+                    <Button.Content visible>New Story!</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name="paw"/>
+                    </Button.Content>
+              	</Button>
 
 	            <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
