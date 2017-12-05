@@ -65879,6 +65879,8 @@ var _Nav2 = _interopRequireDefault(_Nav);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -65888,13 +65890,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Setting = function (_Component) {
 				_inherits(Setting, _Component);
 
-				function Setting() {
+				function Setting(props) {
 								_classCallCheck(this, Setting);
 
-								return _possibleConstructorReturn(this, (Setting.__proto__ || Object.getPrototypeOf(Setting)).apply(this, arguments));
+								var _this = _possibleConstructorReturn(this, (Setting.__proto__ || Object.getPrototypeOf(Setting)).call(this, props));
+
+								_this.state = {
+												firstName: "",
+												lastName: "",
+												age: "",
+												address: "",
+												state: "",
+												country: "",
+												species: "",
+												preferspecies: "",
+												gender: "",
+												petAge: ""
+								};
+
+								_this.handleInputChange = _this.handleInputChange.bind(_this);
+								return _this;
 				}
 
 				_createClass(Setting, [{
+								key: 'handleInputChange',
+								value: function handleInputChange(event) {
+												var target = event.target;
+												var value = target.value;
+												var name = target.name;
+
+												this.setState(_defineProperty({}, name, value));
+								}
+				}, {
 								key: 'render',
 								value: function render() {
 												return _react2.default.createElement(
@@ -65928,12 +65955,12 @@ var Setting = function (_Component) {
 																												_react2.default.createElement(
 																																'div',
 																																{ 'class': 'field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[first-name]', placeholder: 'First Name' })
+																																_react2.default.createElement('input', { type: 'text', name: 'firstName', placeholder: 'First Name', value: this.state.firstName, onChange: this.handleInputChange })
 																												),
 																												_react2.default.createElement(
 																																'div',
 																																{ 'class': 'field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[last-name]', placeholder: 'Last Name' })
+																																_react2.default.createElement('input', { type: 'text', name: 'lastName', placeholder: 'Last Name', value: this.state.lastName, onChange: this.handleInputChange })
 																												)
 																								),
 																								_react2.default.createElement(
@@ -65944,7 +65971,7 @@ var Setting = function (_Component) {
 																								_react2.default.createElement(
 																												'div',
 																												{ 'class': 'field' },
-																												_react2.default.createElement('input', { type: 'text', name: 'age', placeholder: '20' })
+																												_react2.default.createElement('input', { type: 'text', name: 'age', placeholder: '20', value: this.state.age, onChange: this.handleInputChange })
 																								)
 																				),
 																				_react2.default.createElement(
@@ -65961,7 +65988,7 @@ var Setting = function (_Component) {
 																												_react2.default.createElement(
 																																'div',
 																																{ 'class': 'twelve wide field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[address]', placeholder: 'Street Address' })
+																																_react2.default.createElement('input', { type: 'text', name: 'address', placeholder: 'Street Address', value: this.state.address, onChange: this.handleInputChange })
 																												)
 																								)
 																				),
@@ -65978,7 +66005,7 @@ var Setting = function (_Component) {
 																												),
 																												_react2.default.createElement(
 																																'select',
-																																{ 'class': 'ui fluid dropdown' },
+																																{ 'class': 'ui fluid dropdown', name: 'state', value: this.state.state, onChange: this.handleInputChange },
 																																_react2.default.createElement(
 																																				'option',
 																																				{ value: '' },
@@ -66251,7 +66278,7 @@ var Setting = function (_Component) {
 																												),
 																												_react2.default.createElement(
 																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'country' },
+																																{ 'class': 'ui fluid search dropdown', name: 'country', value: this.state.country, onChange: this.handleInputChange },
 																																_react2.default.createElement(
 																																				'option',
 																																				{ value: '' },
@@ -66333,7 +66360,7 @@ var Setting = function (_Component) {
 																												{ 'class': 'field' },
 																												_react2.default.createElement(
 																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'type' },
+																																{ 'class': 'ui fluid search dropdown', name: 'species', value: this.state.species, onChange: this.handleInputChange },
 																																_react2.default.createElement(
 																																				'option',
 																																				{ value: '' },
@@ -66401,7 +66428,7 @@ var Setting = function (_Component) {
 																												{ 'class': 'field' },
 																												_react2.default.createElement(
 																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'prefer' },
+																																{ 'class': 'ui fluid search dropdown', name: 'preferspecies', value: this.state.preferspecies, onChange: this.handleInputChange },
 																																_react2.default.createElement(
 																																				'option',
 																																				{ value: '' },
@@ -66478,7 +66505,7 @@ var Setting = function (_Component) {
 																												),
 																												_react2.default.createElement(
 																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'gender' },
+																																{ 'class': 'ui fluid search dropdown', name: 'gender', value: this.state.gender, onChange: this.handleInputChange },
 																																_react2.default.createElement(
 																																				'option',
 																																				{ value: '' },
@@ -66504,7 +66531,7 @@ var Setting = function (_Component) {
 																																null,
 																																'Age'
 																												),
-																												_react2.default.createElement('input', { type: 'text', name: 'petage', maxlength: '3', placeholder: '1' })
+																												_react2.default.createElement('input', { type: 'text', name: 'petAge', maxlength: '3', placeholder: '1', value: this.state.petAge, onChange: this.handleInputChange })
 																								)
 																				),
 																				_react2.default.createElement(

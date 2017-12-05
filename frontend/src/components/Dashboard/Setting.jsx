@@ -6,6 +6,34 @@ import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
 class Setting extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: "",
+            lastName: "",
+            age:"",
+            address:"",
+            state:"",
+            country:"",
+            species:"",
+            preferspecies:"",
+            gender:"",
+            petAge:""
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     render() {
         return(
         	<div>
@@ -20,29 +48,29 @@ class Setting extends Component {
 				    <label>Name *</label>
 				    <div class="two fields">
 				      <div class="field">
-				        <input type="text" name="shipping[first-name]" placeholder="First Name" />
+				        <input type="text" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleInputChange}/>
 				      </div>
 				      <div class="field">
-				        <input type="text" name="shipping[last-name]" placeholder="Last Name" />
+				        <input type="text" name="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleInputChange}/>
 				      </div>
 				    </div>
 				    <label>Age</label>
 				    <div class="field">
-				        <input type="text" name="age" placeholder="20" />
+				        <input type="text" name="age" placeholder="20" value={this.state.age} onChange={this.handleInputChange}/>
 				    </div>
 				  </div>
 				  <div class="field">
 				    <label>Location</label>
 				    <div class="fields">
 				      <div class="twelve wide field">
-				        <input type="text" name="shipping[address]" placeholder="Street Address" />
+				        <input type="text" name="address" placeholder="Street Address" value={this.state.address} onChange={this.handleInputChange}/>
 				      </div>
 				    </div>
 				  </div>
 				  <div class="two fields">
 				    <div class="field">
 					    <label>State</label>
-					    <select class="ui fluid dropdown">
+					    <select class="ui fluid dropdown" name="state" value={this.state.state} onChange={this.handleInputChange}>
 					    <option value="">State</option>
 					    <option value="AL">Alabama</option>
 					    <option value="AK">Alaska</option>
@@ -99,7 +127,7 @@ class Setting extends Component {
 				    </div>
 				    <div class="field">
 				    	  <label>County</label>
-				          <select class="ui fluid search dropdown" name="country">
+				          <select class="ui fluid search dropdown" name="country" value={this.state.country} onChange={this.handleInputChange}>
 				            <option value="">USA</option>
 				            <option value="1">CHINA</option>
 				            <option value="2">INDIA</option>
@@ -119,7 +147,7 @@ class Setting extends Component {
 				  <h4 class="ui dividing header">Pet Information</h4>
 				  <div class="two fields">
 				    <div class="field">
-				          <select class="ui fluid search dropdown" name="type">
+				          <select class="ui fluid search dropdown" name="species" value={this.state.species} onChange={this.handleInputChange}>
 				            <option value="">SPECIES *</option>
 				            <option value="1">dog</option>
 				            <option value="2">cat</option>
@@ -135,7 +163,7 @@ class Setting extends Component {
 				          </select>
 				    </div>
 				    <div class="field">
-				          <select class="ui fluid search dropdown" name="prefer">
+				          <select class="ui fluid search dropdown" name="preferspecies" value={this.state.preferspecies} onChange={this.handleInputChange}>
 				            <option value="">PREFER SPECIES *</option>
 				            <option value="1">dog</option>
 				            <option value="2">cat</option>
@@ -154,7 +182,7 @@ class Setting extends Component {
 				  <div class="fields">
 				    <div class="seven wide field">
 				      <label>Gender</label>
-				      <select class="ui fluid search dropdown" name="gender">
+				      <select class="ui fluid search dropdown" name="gender" value={this.state.gender} onChange={this.handleInputChange}>
 				            <option value="">female</option>
 				            <option value="1">male</option>
 				            <option value="2">middle</option>
@@ -162,8 +190,8 @@ class Setting extends Component {
 				    </div>
 				    <div class="three wide field">
 				      <label>Age</label>
-				      <input type="text" name="petage" maxlength="3" placeholder="1" />
-				    </div>				    
+				      <input type="text" name="petAge" maxlength="3" placeholder="1" value={this.state.petAge} onChange={this.handleInputChange}/>
+				    </div>
 				  </div>
 				  <div class="ui button" tabindex="0">Submit Order</div>
 				</form>
@@ -187,4 +215,3 @@ class Setting extends Component {
 }
 
 export default Setting
-
