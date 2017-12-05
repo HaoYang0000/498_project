@@ -11,7 +11,8 @@ class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            isLoggedIn: false
+            isLoggedIn: false,
+            users: [],
         }
 
         this.logOut = this.logOut.bind(this);
@@ -19,7 +20,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/profile').then( (res) => {
+        axios.get('/api/profile').then((res) => {
             console.log(res);
             this.setState({
                 isLoggedIn: true
@@ -28,6 +29,16 @@ class Dashboard extends Component {
             this.setState({
                 isLoggedIn: false
             })
+        })
+
+        axios.get('/api/users').then((res) => {
+            console.log("api/users get");
+            console.dir(res.data);
+            this.setState({
+                users: res.data.data
+            })
+        }).catch( (err) => {
+            console.log("api/users error")
         })
     }
 
@@ -38,7 +49,7 @@ class Dashboard extends Component {
     }
 
     render() {
-
+        var user_data = this.state.users;
         if (this.state.isLoggedIn) {
             return(
                 <div>
@@ -48,7 +59,17 @@ class Dashboard extends Component {
                             <br />
                             <h1>Welcome to the App!</h1>
                             <p>You are now logged in.</p>
-
+                            <div className="getuser">
+                                {user_data.map((idx, number) =>
+                                    <div>
+                                        <p>ID: {number}</p>
+                                        <p>email: {idx.email}</p>
+                                        <p>password: {idx.password}</p>
+                                        <p>_id: {idx._id}</p>
+                                        <p>----------------------------</p>
+                                    </div>
+                                )}
+                            </div>
                             <Link to="/" onClick={this.logOut}>
                                 Log out
                             </Link>
@@ -59,7 +80,7 @@ class Dashboard extends Component {
                       <Link to="/dashboard">
                       <a class="item">
                         <i class="home icon"></i>
-                        Home
+                            Home
                       </a>
                       </Link>
                       <Link to="/" onClick={this.logOut}>

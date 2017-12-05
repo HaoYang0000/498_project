@@ -34,23 +34,45 @@ class Register extends Component {
         const formData = `name=${name}&email=${email}&password=${password}`;
 
         // create an AJAX POST request (This should probably done with Axios instead) 
-        const xhr = new XMLHttpRequest();
-        xhr.open('post', '/api/register');
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.responseType = 'json';
-        xhr.addEventListener('load', () => {
-            if (xhr.status === 200) {
-                console.log('The form is valid');
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('post', '/api/register');
+        // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // xhr.responseType = 'json';
+        // xhr.addEventListener('load', () => {
+        //     if (xhr.status === 200) {
+        //         console.log('The form is valid');
+        //         this.setState({
+        //             message: 'Registered!'
+        //         })
+        //     } else {
+        //         this.setState({
+        //             message: 'Unable to register'
+        //         })
+        //     }
+        // });
+        // xhr.send(formData);
+
+        //axios new code
+        axios.post('/api/register', {
+            name: name,
+            email: email,
+            password: password,
+          })
+          .then(res => {
+            console.log(res);
+            if(res.status == 200){
                 this.setState({
-                    message: 'Registered!'
-                })
+                        message: 'Registered!'
+                    });
             } else {
                 this.setState({
-                    message: 'Unable to register'
-                })
+                     message: 'Unable to register'
+                 });
             }
-        });
-        xhr.send(formData);
+          })
+          .catch(function (error) {
+            console.log("error" + error);
+          });
     }
 
     onChangeEmail(e) {

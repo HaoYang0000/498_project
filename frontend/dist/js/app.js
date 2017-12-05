@@ -63980,13 +63980,32 @@ var Register = function (_Component) {
             var formData = 'name=' + name + '&email=' + email + '&password=' + password;
 
             // create an AJAX POST request (This should probably done with Axios instead) 
-            var xhr = new XMLHttpRequest();
-            xhr.open('post', '/api/register');
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.responseType = 'json';
-            xhr.addEventListener('load', function () {
-                if (xhr.status === 200) {
-                    console.log('The form is valid');
+            // const xhr = new XMLHttpRequest();
+            // xhr.open('post', '/api/register');
+            // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            // xhr.responseType = 'json';
+            // xhr.addEventListener('load', () => {
+            //     if (xhr.status === 200) {
+            //         console.log('The form is valid');
+            //         this.setState({
+            //             message: 'Registered!'
+            //         })
+            //     } else {
+            //         this.setState({
+            //             message: 'Unable to register'
+            //         })
+            //     }
+            // });
+            // xhr.send(formData);
+
+            //axios new code
+            _axios2.default.post('/api/register', {
+                name: name,
+                email: email,
+                password: password
+            }).then(function (res) {
+                console.log(res);
+                if (res.status == 200) {
                     _this2.setState({
                         message: 'Registered!'
                     });
@@ -63995,8 +64014,9 @@ var Register = function (_Component) {
                         message: 'Unable to register'
                     });
                 }
+            }).catch(function (error) {
+                console.log("error" + error);
             });
-            xhr.send(formData);
         }
     }, {
         key: 'onChangeEmail',
@@ -65310,7 +65330,8 @@ var Dashboard = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this));
 
         _this.state = {
-            isLoggedIn: false
+            isLoggedIn: false,
+            users: []
         };
 
         _this.logOut = _this.logOut.bind(_this);
@@ -65333,6 +65354,16 @@ var Dashboard = function (_Component) {
                     isLoggedIn: false
                 });
             });
+
+            _axios2.default.get('/api/users').then(function (res) {
+                console.log("api/users get");
+                console.dir(res.data);
+                _this2.setState({
+                    users: res.data.data
+                });
+            }).catch(function (err) {
+                console.log("api/users error");
+            });
         }
     }, {
         key: 'logOut',
@@ -65344,7 +65375,7 @@ var Dashboard = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-
+            var user_data = this.state.users;
             if (this.state.isLoggedIn) {
                 return _react2.default.createElement(
                     'div',
@@ -65366,6 +65397,45 @@ var Dashboard = function (_Component) {
                                 'p',
                                 null,
                                 'You are now logged in.'
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'getuser' },
+                                user_data.map(function (idx, number) {
+                                    return _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            'ID: ',
+                                            number
+                                        ),
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            'email: ',
+                                            idx.email
+                                        ),
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            'password: ',
+                                            idx.password
+                                        ),
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            '_id: ',
+                                            idx._id
+                                        ),
+                                        _react2.default.createElement(
+                                            'p',
+                                            null,
+                                            '----------------------------'
+                                        )
+                                    );
+                                })
                             ),
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
@@ -65439,7 +65509,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: magenta;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n", ""]);
 
 // exports
 
