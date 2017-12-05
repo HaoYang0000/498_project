@@ -13,7 +13,11 @@ var userSchema = mongoose.Schema({
     prefered_species: String,
     gender: String,
     prefered_age_min: Number,
-    prefered_age_max: Number
+    prefered_age_max: Number,
+    matched_users: Array,       // store list of matches
+    liked_users: Array,         // store list of users you liked
+    user_stories_id: Array,     // store list of story's ids
+    met_users: Array            // other users I have selected
 });
 
 userSchema.methods.generateHash = function(password) {

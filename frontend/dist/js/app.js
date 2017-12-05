@@ -485,9 +485,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		module.exports = classNames;
 	} else if (true) {
 		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {
 		window.classNames = classNames;
@@ -63979,7 +63979,7 @@ var Register = function (_Component) {
             var password = encodeURIComponent(this.state.user.password);
             var formData = 'name=' + name + '&email=' + email + '&password=' + password;
 
-            // create an AJAX POST request (This should probably done with Axios instead) 
+            // create an AJAX POST request (This should probably done with Axios instead)
             // const xhr = new XMLHttpRequest();
             // xhr.open('post', '/api/register');
             // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -65095,7 +65095,7 @@ var Login = function (_Component) {
             var password = encodeURIComponent(this.state.user.password);
             var formData = 'email=' + email + '&password=' + password;
 
-            // create an AJAX request (This should probably done with Axios instead) 
+            // create an AJAX request (This should probably done with Axios instead)
             var xhr = new XMLHttpRequest();
             xhr.open('post', '/api/login');
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -65516,146 +65516,10 @@ exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\
 
 /***/ }),
 /* 809 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _semanticUiReact = __webpack_require__(31);
-
-var _reactRouterDom = __webpack_require__(30);
-
-var _styles = __webpack_require__(134);
-
-var _styles2 = _interopRequireDefault(_styles);
-
-var _Nav = __webpack_require__(82);
-
-var _Nav2 = _interopRequireDefault(_Nav);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Main = function (_Component) {
-    _inherits(Main, _Component);
-
-    function Main() {
-        _classCallCheck(this, Main);
-
-        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
-    }
-
-    _createClass(Main, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_Nav2.default, null),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'Home' },
-                    _react2.default.createElement(
-                        'h1',
-                        null,
-                        'PAIR PAIR PAIR'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { 'class': 'ui card' },
-                        _react2.default.createElement('img', { 'class': 'ui image', src: 'https://semantic-ui.com/images/avatar/large/jenny.jpg' }),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'content' },
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'header' },
-                                'Matthew'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'meta' },
-                                _react2.default.createElement(
-                                    'span',
-                                    { 'class': 'date' },
-                                    'Joined in 2015'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'description' },
-                                'Matthew is a musician living in Nashville.'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'extra content' },
-                            _react2.default.createElement(
-                                'a',
-                                null,
-                                _react2.default.createElement('i', { 'aria-hidden': 'true', 'class': 'user icon' }),
-                                '22 Friends'
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { 'class': 'ui positive button', role: 'button', id: 'main-but' },
-                        ' Like '
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { 'class': 'ui negative button', role: 'button', id: 'main-but' },
-                        ' Na.. '
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
-                    _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: '/dashboard' },
-                        _react2.default.createElement(
-                            'a',
-                            { 'class': 'item' },
-                            _react2.default.createElement('i', { 'class': 'home icon' }),
-                            'Home'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: '/', onClick: this.logOut },
-                        _react2.default.createElement(
-                            'a',
-                            { 'class': 'item' },
-                            _react2.default.createElement('i', { 'class': 'send outline icon' }),
-                            'Log off'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Main;
-}(_react.Component);
-
-exports.default = Main;
+throw new Error("Module build failed: SyntaxError: Unexpected token, expected ; (50:17)\n\n\u001b[0m \u001b[90m 48 | \u001b[39m        }\n \u001b[90m 49 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 | \u001b[39m        \u001b[36mvar\u001b[39m stack\u001b[33m.\u001b[39mpop()\n \u001b[90m    | \u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 | \u001b[39m        \u001b[90m// we need to check if the other user also liked us\u001b[39m\n \u001b[90m 52 | \u001b[39m\n \u001b[90m 53 | \u001b[39m    }\u001b[0m\n");
 
 /***/ }),
 /* 810 */

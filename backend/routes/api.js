@@ -68,10 +68,68 @@ module.exports = function(router, passport) {
         //TODO
     });
 
+    //----------------Populate queue-------------------jianlin--------
+    router.put('/populateQueue/:id', function(req, res){
+        //TODO
+        //get user id
+        var user_id = req.params.id;
+
+        //get user preference filter
+        var user;
+        User.find(req.params.id, function(err, user) {
+        if(err) {
+            res.status(500).send({
+                message: err,
+                data: []
+            });
+        } else {
+            if (user) {
+                res.status(200).send({
+                    message: 'OK',
+                    data: user
+                });
+            } else {
+                res.status(404).send({
+                    message: 'User does not exist',
+                    data: []
+                });
+            }
+
+        });
+
+    })
+
+
+
     //----------------Like User--------------------------------
     router.put('/like', function(req, res){
         //TODO
-    });
+        var userPost = {
+            name: req.body.user_id,
+        }
+
+
+        User.findByIdAndUpdate(req.params.id, userPost, {new: true}, function(err, user) {
+        if(err) {
+            res.status(500).send({
+                message: err,
+                data: []
+            });
+        } else {
+            if (user) {
+                res.status(200).send({
+                    message: 'OK',
+                    data: user
+                });
+            } else {
+                res.status(404).send({
+                    message: 'User does not exist',
+                    data: []
+                });
+            }
+
+        });
+    }
 
     //----------------Delete User------------------------------
     router.delete('/user', function(req, res){
