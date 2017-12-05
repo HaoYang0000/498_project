@@ -22,6 +22,7 @@ class Setting extends Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange(event) {
@@ -34,7 +35,32 @@ class Setting extends Component {
         });
     }
 
+    handleSubmit(event) {
+        var newSetting = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            age: this.state.age,
+            address: this.state.address,
+            state: this.state.state,
+            country: this.state.country,
+            species: this.state.species,
+            preferspecies: this.state.preferspecies,
+            gender: this.state.gender,
+            petAge: this.state.petAge
+        }
+        axios.put(/api/user/id, newSetting).then(() => {
+            console.log("/user/id success")
+        }).catch((err) => {
+            console.log("user/id" + err);
+        });
+    }
+
     render() {
+        axios.put('/profile/update',{}).then((response) => {
+                commit('SET_USER_PROFILE', { profile: response.data })
+            }, (err) => {
+                console.log(err)
+            })
         return(
         	<div>
                 <Nav/>
@@ -42,7 +68,7 @@ class Setting extends Component {
 	                  <h1></h1>
 	              </div>
 
-	              <form class="ui form" id="setting_form">
+	              <form class="ui form" id="setting_form" onsubmit={this.handleSubmit}>
 				  <h1 class="ui dividing header">Personal Setting</h1>
 				  <div class="field">
 				    <label>Name *</label>
