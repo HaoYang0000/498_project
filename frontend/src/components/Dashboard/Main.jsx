@@ -1,15 +1,48 @@
 import React, { Component } from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
 class Main extends Component {
+    constructor() {
+        super();
+        this.state = {
+            visible: false,
+        }
+        this.toggleVisibility = () => this.setState({ visible: !this.state.visible })
+    }
+
+    
     render() {
+        const { visible } = this.state;
+
         return(
             <div>
                 <Nav/>
+                <div id="filter-div">
+                    <Sidebar.Pushable>
+                        <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted id="main-sidebar">
+                            <Menu.Item name='map'>
+                              <Icon name='map' />
+                              Map
+                            </Menu.Item>
+                            <Menu.Item name='users'>
+                                <Icon name='users' />
+                                Age
+                            </Menu.Item>
+                            <Menu.Item name='heterosexual'>
+                                <Icon name='heterosexual' />
+                                Gender
+                            </Menu.Item>
+                        </Sidebar>
+                        <Sidebar.Pusher>
+                            <div id="sidebar-but" onClick={this.toggleVisibility}><p>FILTER</p></div>
+                        </Sidebar.Pusher>
+                    </Sidebar.Pushable>
+                </div>
+
                 <div className="Home">
                     <h1>PAIR PAIR PAIR</h1>
 
@@ -43,7 +76,7 @@ class Main extends Component {
                             Log off
                         </a>
                       </Link>
-                    </div>
+                </div>
             </div>
         )
     }

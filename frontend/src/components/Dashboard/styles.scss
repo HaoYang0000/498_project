@@ -22,7 +22,7 @@
 }
 
 h1 {
-	color: #e770ff;
+	color: #e03997;
 }
 
 #nav-down {
@@ -39,4 +39,33 @@ h1 {
     transform: translate(-50%, 0%);
     border-top-left-radius: 100%;
     border-top-right-radius: 100%;
+}
+
+#filter {
+    height: 213px;
+    margin-right:0px;
+}
+
+#filter-div{
+    p {
+        font-size: 1.5em;
+        color: white;
+        position: absolute;
+        top: 45%;
+        left: -5px;
+        -webkit-transform: rotate(90deg);
+    }
+
+    margin-top: 100px;
+    height: 213px;
+    #main-sidebar {
+        height: 213px;
+    }
+
+    #sidebar-but{
+        background-color:#e03997;
+        width: 50px;
+        height: 213px;
+        border-radius: 0px 10px 10px 0px;
+    }
 }
