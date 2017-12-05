@@ -21,13 +21,34 @@ module.exports = function(router, passport) {
     //CHANGE-BACK-END
     router.post('/create_new_story',
         function(req, res) {
+            //console.log(req.body.title);
             var newStory = new Story();
-                newStory.title = req.title;
-                newStory.text = req.text;
+                newStory.title = req.body.title;
+                newStory.text = req.body.text;
                 newStory.author = "test";
                 newStory._authorid = "test";
                 newStory.save();
-            res.status(200).json({ message: "Welcome!"
+            res.status(200).json({ title:newStory.title,text:newStory.text, message: "Welcome!"
+        });
+    });
+
+    router.get('/delete_story',function(req, res){
+        Story.remove();
+    });
+
+    router.get('/get_stories', function(req, res){
+        Story.find({}, function(err, stories) {
+            if(err) {
+                res.status(500).send({
+                message: err,
+                data: []
+            });
+            } else {
+                res.status(200).send({
+                    message: 'OK',
+                    data: stories
+                });
+            }
         });
     });
 
@@ -36,6 +57,13 @@ module.exports = function(router, passport) {
         function(req, res) {
             console.log(req.isAuthenticated());
             res.status(200).json({ user: req.user, message: "Welcome!"
+        });
+    });
+
+    router.get('/get_current_user',
+        function(req, res) {
+            console.log(req.isAuthenticated());
+            res.status(200).json({ user: req.user
         });
     });
 
