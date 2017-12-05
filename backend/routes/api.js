@@ -18,6 +18,19 @@ module.exports = function(router, passport) {
         });
     });
 
+    //CHANGE-BACK-END
+    router.post('/create_new_story',
+        function(req, res) {
+            var newStory = new Story();
+                newStory.title = req.title;
+                newStory.text = req.text;
+                newStory.author = "test";
+                newStory._authorid = "test";
+                newStory.save();
+            res.status(200).json({ message: "Welcome!"
+        });
+    });
+
     router.get('/profile',
         isLoggedIn,
         function(req, res) {
