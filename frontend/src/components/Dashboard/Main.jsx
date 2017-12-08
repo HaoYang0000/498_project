@@ -19,7 +19,7 @@ class Main extends Component {
                 age: '',
                 sex: ''
             },
-            queue: []
+            queue: []  //霖霖 added
         }
 
         //霖霖 added
