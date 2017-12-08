@@ -18,7 +18,8 @@ class Main extends Component {
                 map: '',
                 age: '',
                 sex: ''
-            }
+            },
+            queue: []
         }
 
         //霖霖 added
@@ -51,12 +52,10 @@ class Main extends Component {
 
     //霖霖 added
     like() {
-       // if stack is empty, we need to add 100 more users
+       // if queue is empty, we need to add 100 more users
        if(queue.length) {
            // add users to stack
-           axios.get('/api/populateQueue/'+this.state.user_id, {
-               user_id: this.state.user_id,
-           })
+           axios.get('/api/populateQueue')
            .then((res) => {
                this.setState({stack: res})
            })
@@ -75,10 +74,10 @@ class Main extends Component {
    //霖霖 added
    dislike() {
         // if stack is empty, we need to add 100 more users
-        if(stack) {
+        if(queue) {
             // add users to stack
         }
-        var stack.pop()
+        var queue.pop()；
         // we need to check if the other user also liked us
     }
 

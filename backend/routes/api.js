@@ -110,18 +110,19 @@ module.exports = function(router, passport) {
     });
 
 //----------------Populate queue-------------------jianlin--------
-    router.put('/populateQueue/:id', function(req, res){
+    router.get('/populateQueue', function(req, res){
         //get user id
-        var user_id = req.params.id;
+        var user_id = req.user.id;
 
         //get user preference filter
         var user_preference;
-        User.find(req.params.id, function(err, user) {
+        User.find(user_id, function(err, user) {
             user_preference = user;
         });
-
-        User.find("prefered_species=\'" + user_preference.pre + "\'").limit(100);
-
+        console.log("lalalalalalalalaallalalalalaalallaallalalala");
+        //console.log(user_preference);
+        //var result = User.find("prefered_species=\'" + "dog"+ "\'").limit(100);
+        //console.log(User.findOne());
     });
 
 
