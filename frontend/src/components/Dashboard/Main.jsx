@@ -1,15 +1,92 @@
 import React, { Component } from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Card, Input } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
 class Main extends Component {
+    constructor() {
+        super();
+        this.state = {
+            visible: false,
+            filter: {
+                map: '',
+                age: '',
+                sex: ''
+            }
+        }
+        this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChangemap = this.onChangemap.bind(this);
+        this.onChangeage = this.onChangeage.bind(this);
+        this.onChangesex = this.onChangesex.bind(this);
+    }
+
+    onChangemap(e) {
+        const filter = this.state.filter;
+        filter.map = e.target.value;
+        this.setState({
+            filter
+        })
+    }
+
+    onChangeage(e) {
+        const filter = this.state.filter;
+        filter.age = e.target.value;
+        this.setState({
+            filter
+        })
+    }
+
+    onChangesex(e) {
+        const filter = this.state.filter;
+        filter.sex = e.target.value;
+        this.setState({
+            filter
+        })
+    }  
+
+    onSubmit(e) {
+        e.preventDefault(); 
+        console.dir(this.state.filter) 
+    }
+
+
     render() {
+        const { visible } = this.state;
+
         return(
             <div>
                 <Nav/>
+                <div id="filter-div">
+                    <Sidebar.Pushable>
+                        <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted id="main-sidebar">
+                            <form className="filter-main" action="" onSubmit={this.onSubmit}>
+                              <Menu.Item name='map'>
+                                <Icon name='map' />
+                                Map
+                                  <input label="map" onChange={this.onChangemap} />
+                              </Menu.Item>
+                              <Menu.Item name='users'>
+                                  <Icon name='users' />
+                                  Age
+                                  <input label="age" onChange={this.onChangeage} />
+                              </Menu.Item>
+                              <Menu.Item name='heterosexual'>
+                                  <Icon name='heterosexual' />
+                                  Gender
+                                  <input label="sex" onChange={this.onChangesex} />
+                              </Menu.Item>
+                              <input id="filter-submit" type="submit" />
+                            </form>
+                        </Sidebar>
+                        <Sidebar.Pusher>
+                            <div id="sidebar-but" onClick={this.toggleVisibility}><p>FILTER</p></div>
+                        </Sidebar.Pusher>
+                    </Sidebar.Pushable>
+                </div>
+
                 <div className="Home">
                     <h1>PAIR PAIR PAIR</h1>
 
@@ -43,7 +120,7 @@ class Main extends Component {
                             Log off
                         </a>
                       </Link>
-                    </div>
+                </div>
             </div>
         )
     }

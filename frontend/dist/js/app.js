@@ -63641,7 +63641,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e770ff;\n  height: 40px;\n  width: 100%;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
+exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e03997;\n  height: 40px;\n  width: 100%;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
 
 // exports
 
@@ -65509,7 +65509,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 100px;\n  height: 213px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div #main-sidebar {\n    height: 213px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 213px;\n    border-radius: 0px 10px 10px 0px; }\n", ""]);
 
 // exports
 
@@ -65557,16 +65557,70 @@ var Main = function (_Component) {
     function Main() {
         _classCallCheck(this, Main);
 
-        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
+
+        _this.state = {
+            visible: false
+        };
+        _this.toggleVisibility = function () {
+            return _this.setState({ visible: !_this.state.visible });
+        };
+        return _this;
     }
 
     _createClass(Main, [{
         key: 'render',
         value: function render() {
+            var visible = this.state.visible;
+
+
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(_Nav2.default, null),
+                _react2.default.createElement(
+                    'div',
+                    { id: 'filter-div' },
+                    _react2.default.createElement(
+                        _semanticUiReact.Sidebar.Pushable,
+                        null,
+                        _react2.default.createElement(
+                            _semanticUiReact.Sidebar,
+                            { as: _semanticUiReact.Menu, animation: 'push', width: 'thin', visible: visible, icon: 'labeled', vertical: true, inverted: true, id: 'main-sidebar' },
+                            _react2.default.createElement(
+                                _semanticUiReact.Menu.Item,
+                                { name: 'map' },
+                                _react2.default.createElement(_semanticUiReact.Icon, { name: 'map' }),
+                                'Map'
+                            ),
+                            _react2.default.createElement(
+                                _semanticUiReact.Menu.Item,
+                                { name: 'users' },
+                                _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
+                                'Age'
+                            ),
+                            _react2.default.createElement(
+                                _semanticUiReact.Menu.Item,
+                                { name: 'heterosexual' },
+                                _react2.default.createElement(_semanticUiReact.Icon, { name: 'heterosexual' }),
+                                'Gender'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _semanticUiReact.Sidebar.Pusher,
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                { id: 'sidebar-but', onClick: this.toggleVisibility },
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'FILTER'
+                                )
+                            )
+                        )
+                    )
+                ),
                 _react2.default.createElement(
                     'div',
                     { className: 'Home' },
