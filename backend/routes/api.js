@@ -104,14 +104,13 @@ module.exports = function(router, passport) {
         });
     });
 
-    //----------------Update User------------------------------
+//----------------Update User------------------------------
     router.put('/story', function(req, res){
         //TODO
     });
 
-    //----------------Populate queue-------------------jianlin--------
+//----------------Populate queue-------------------jianlin--------
     router.put('/populateQueue/:id', function(req, res){
-        //TODO
         //get user id
         var user_id = req.params.id;
 

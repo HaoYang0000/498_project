@@ -10,7 +10,8 @@ class Dashboard extends Component {
 
     constructor() {
         super();
-        this.state = {currentUser: {
+        this.state = {
+            currentUser: {
                 id:'',
                 email: ''
             },
@@ -36,7 +37,7 @@ class Dashboard extends Component {
                 currentUser: {email:res.data.user.email}
             })
         });
-        
+
         axios.get('/api/profile').then((res) => {
             console.log(res);
             this.setState({

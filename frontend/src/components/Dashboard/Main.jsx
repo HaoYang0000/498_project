@@ -9,6 +9,10 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
+            currentUser: {
+                id:'',
+                email: ''
+            },
             visible: false,
             filter: {
                 map: '',
@@ -16,12 +20,68 @@ class Main extends Component {
                 sex: ''
             }
         }
+
+        //霖霖 added
+        this.like = this.like.bind(this);
+        this.dislike = this.dislike.bind(this);
+        //霖霖 added
+
         this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangemap = this.onChangemap.bind(this);
         this.onChangeage = this.onChangeage.bind(this);
         this.onChangesex = this.onChangesex.bind(this);
     }
+
+    componentDidMount() {
+        axios.get('/api/get_current_user').then((res) => {
+            this.setState({
+                currentUser: {
+                id:res.data.user._id,
+                email:res.data.user.email
+                }
+            })
+        }).catch( (err) => {
+            this.setState({
+                id:res.data.user.id,
+                currentUser: {email:res.data.user.email}
+            })
+        });
+    }
+
+    //霖霖 added
+    like() {
+       // if stack is empty, we need to add 100 more users
+       if(queue.length) {
+           // add users to stack
+           axios.get('/api/populateQueue/'+this.state.user_id, {
+               user_id: this.state.user_id,
+           })
+           .then((res) => {
+               this.setState({stack: res})
+           })
+       }
+       cur_other_id = queue.shift();
+       // we need to check if the other user also liked us
+       axios.put('/api/like', {
+           user_id: this.state.user_id,
+           other_user_id: this.state.other_user_id
+       })
+       .then((res) => {
+
+       })
+   }
+
+   //霖霖 added
+   dislike() {
+        // if stack is empty, we need to add 100 more users
+        if(stack) {
+            // add users to stack
+        }
+        var stack.pop()
+        // we need to check if the other user also liked us
+    }
+
 
     onChangemap(e) {
         const filter = this.state.filter;
@@ -45,11 +105,11 @@ class Main extends Component {
         this.setState({
             filter
         })
-    }  
+    }
 
     onSubmit(e) {
-        e.preventDefault(); 
-        console.dir(this.state.filter) 
+        e.preventDefault();
+        console.dir(this.state.filter)
     }
 
 
@@ -127,4 +187,3 @@ class Main extends Component {
 }
 
 export default Main
-
