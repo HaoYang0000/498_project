@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card, Image, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../Nav/Nav.jsx'
@@ -75,26 +75,32 @@ class Dashboard extends Component {
                 <div>
                     <Nav/>
                     <div className="Dashboard">
-                        <Card>
-                            <br />
                             <h1>Welcome to the App!</h1>
-                            <p>You are now logged in.</p>
-                            <div className="getuser">
+                            <div>
+                            <Card.Group>
                                 {user_data.map((idx, number) =>
-                                    <div>
-                                        <p>ID: {number}</p>
-                                        <p>email: {idx.email}</p>
-                                        <p>password: {idx.password}</p>
-                                        <p>_id: {idx._id}</p>
-                                        <p>----------------------------</p>
+                                    <div className="cardWrap">
+                                        <Card>
+                                            <Card.Content>
+                                                <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/> 
+                                                <Card.Header> 
+                                                    <p>email: {idx.email}</p>
+                                                </Card.Header>
+                                                <Card.Meta> 
+                                                    <p>_id: {idx._id}</p>
+                                                </Card.Meta>
+                                            </Card.Content>
+                                            
+                                        </Card>
                                     </div>
                                 )}
+                            </Card.Group>
                             </div>
                             <Link to="/" onClick={this.logOut}>
                                 Log out
                             </Link>
                             <br />
-                        </Card>
+                        
                     </div>
                     <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
