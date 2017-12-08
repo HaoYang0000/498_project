@@ -75,27 +75,12 @@ module.exports = function(router, passport) {
         var user_id = req.params.id;
 
         //get user preference filter
-        var user;
+        var user_preference;
         User.find(req.params.id, function(err, user) {
-        if(err) {
-            res.status(500).send({
-                message: err,
-                data: []
-            });
-        } else {
-            if (user) {
-                res.status(200).send({
-                    message: 'OK',
-                    data: user
-                });
-            } else {
-                res.status(404).send({
-                    message: 'User does not exist',
-                    data: []
-                });
-            }
-
+            user_preference = user;
         });
+
+        User.find("prefered_species=\'" + user_preference.pre + "\'").limit(100);
 
     })
 
