@@ -1,12 +1,26 @@
 .Dashboard{
-    color: magenta;
+    color: rgb(245, 17, 123);
     position: absolute;
-    top: 50%;
+    height: 100%; 
+    width: 100%; 
+    top: 5%;
     left: 50%;
     transform: translate(-50%, 0%);
 
+    h1 {
+        margin-top: 0;
+    }
     p {
         margin-left: 10px;
+    }
+
+    .cardWrap {
+        margin-bottom: 40px;
+        margin-left: 44px;
+
+    }
+    .ui.card .content img {
+        left: 5px; 
     }
 }
 

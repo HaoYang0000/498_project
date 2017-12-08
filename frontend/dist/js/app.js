@@ -485,9 +485,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		module.exports = classNames;
 	} else if (true) {
 		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {
 		window.classNames = classNames;
@@ -63641,7 +63641,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e770ff;\n  height: 40px;\n  width: 100%;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
+exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e770ff;\n  height: 40px;\n  width: 100%;\n  margin-bottom: 0px;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
 
 // exports
 
@@ -65385,65 +65385,59 @@ var Dashboard = function (_Component) {
                         'div',
                         { className: 'Dashboard' },
                         _react2.default.createElement(
-                            _semanticUiReact.Card,
+                            'h1',
                             null,
-                            _react2.default.createElement('br', null),
+                            'Welcome to the App!'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            null,
                             _react2.default.createElement(
-                                'h1',
+                                _semanticUiReact.Card.Group,
                                 null,
-                                'Welcome to the App!'
-                            ),
-                            _react2.default.createElement(
-                                'p',
-                                null,
-                                'You are now logged in.'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'getuser' },
                                 user_data.map(function (idx, number) {
                                     return _react2.default.createElement(
                                         'div',
-                                        null,
+                                        { className: 'cardWrap' },
                                         _react2.default.createElement(
-                                            'p',
+                                            _semanticUiReact.Card,
                                             null,
-                                            'ID: ',
-                                            number
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            null,
-                                            'email: ',
-                                            idx.email
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            null,
-                                            'password: ',
-                                            idx.password
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            null,
-                                            '_id: ',
-                                            idx._id
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            null,
-                                            '----------------------------'
+                                            _react2.default.createElement(
+                                                _semanticUiReact.Card.Content,
+                                                null,
+                                                _react2.default.createElement(_semanticUiReact.Image, { className: 'profile_img', src: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png' }),
+                                                _react2.default.createElement(
+                                                    _semanticUiReact.Card.Header,
+                                                    null,
+                                                    _react2.default.createElement(
+                                                        'p',
+                                                        null,
+                                                        'email: ',
+                                                        idx.email
+                                                    )
+                                                ),
+                                                _react2.default.createElement(
+                                                    _semanticUiReact.Card.Meta,
+                                                    null,
+                                                    _react2.default.createElement(
+                                                        'p',
+                                                        null,
+                                                        '_id: ',
+                                                        idx._id
+                                                    )
+                                                )
+                                            )
                                         )
                                     );
                                 })
-                            ),
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/', onClick: this.logOut },
-                                'Log out'
-                            ),
-                            _react2.default.createElement('br', null)
-                        )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/', onClick: this.logOut },
+                            'Log out'
+                        ),
+                        _react2.default.createElement('br', null)
                     ),
                     _react2.default.createElement(
                         'div',
@@ -65509,7 +65503,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: #f5117b;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 5%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard h1 {\n    margin-top: 0; }\n  .Dashboard p {\n    margin-left: 10px; }\n  .Dashboard .cardWrap {\n    margin-bottom: 40px;\n    margin-left: 44px; }\n  .Dashboard .ui.card .content img {\n    left: 5px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n", ""]);
 
 // exports
 
