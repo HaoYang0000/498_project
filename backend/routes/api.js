@@ -30,6 +30,47 @@ module.exports = function(router, passport) {
         req.logOut();
         res.status(200).json({ message: "logged out "});
     });
+    //CHANGE-BACK-END
+    router.post('/create_new_story',
+        function(req, res) {
+            //console.log(req.body.title);
+            var newStory = new Story();
+                newStory.title = req.body.title;
+                newStory.text = req.body.text;
+                newStory.author = "test";
+                newStory._authorid = "test";
+                newStory.save();
+            res.status(200).json({ title:newStory.title,text:newStory.text, message: "Welcome!"
+        });
+    });
+
+    router.get('/delete_story',function(req, res){
+        Story.remove();
+    });
+
+    router.get('/get_stories', function(req, res){
+        Story.find({}, function(err, stories) {
+            if(err) {
+                res.status(500).send({
+                message: err,
+                data: []
+            });
+            } else {
+                res.status(200).send({
+                    message: 'OK',
+                    data: stories
+                });
+            }
+        });
+    });
+    
+    router.get('/get_current_user',
+        function(req, res) {
+            console.log(req.isAuthenticated());
+            res.status(200).json({ user: req.user
+        });
+    });
+    
 
     //----------------Show the User Table--------------------------
     router.get('/users', function(req, res){
