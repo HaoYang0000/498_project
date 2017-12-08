@@ -108,7 +108,7 @@ module.exports = function(router, passport) {
     router.put('/story', function(req, res){
         //TODO
     });
-    
+
     //----------------Populate queue-------------------jianlin--------
     router.put('/populateQueue/:id', function(req, res){
         //TODO
@@ -123,7 +123,7 @@ module.exports = function(router, passport) {
 
         User.find("prefered_species=\'" + user_preference.pre + "\'").limit(100);
 
-    })
+    });
 
 
 
@@ -136,26 +136,27 @@ module.exports = function(router, passport) {
 
 
         User.findByIdAndUpdate(req.params.id, userPost, {new: true}, function(err, user) {
-        if(err) {
-            res.status(500).send({
-                message: err,
-                data: []
-            });
-        } else {
-            if (user) {
-                res.status(200).send({
-                    message: 'OK',
-                    data: user
-                });
-            } else {
-                res.status(404).send({
-                    message: 'User does not exist',
+            if(err) {
+                res.status(500).send({
+                    message: err,
                     data: []
                 });
-            }
+            } else {
+                if (user) {
+                    res.status(200).send({
+                        message: 'OK',
+                        data: user
+                    });
+                } else {
+                    res.status(404).send({
+                        message: 'User does not exist',
+                        data: []
+                    });
+                }
 
+            }
         });
-    }
+    });
 
     //----------------Delete User------------------------------
     router.delete('/user', function(req, res){
