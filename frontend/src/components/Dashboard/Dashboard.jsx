@@ -11,6 +11,10 @@ class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
+            currentUser: {
+                id:'',
+                email: ''
+            },
             isLoggedIn: false,
             users: [],
         }
@@ -20,6 +24,20 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+        axios.get('/api/get_current_user').then((res) => {
+            this.setState({
+                currentUser: {
+                id:res.data.user._id,
+                email:res.data.user.email
+            }
+            })
+        }).catch( (err) => {
+            this.setState({
+                id:res.data.user.id,
+                currentUser: {email:res.data.user.email}
+            })
+        });
+
         axios.get('/api/profile').then((res) => {
             console.log(res);
             this.setState({
@@ -49,6 +67,8 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log("Current User is :" + this.state.currentUser.email)
+        console.log("Current User id is :" + this.state.currentUser.id)
         var user_data = this.state.users;
         if (this.state.isLoggedIn) {
             return(

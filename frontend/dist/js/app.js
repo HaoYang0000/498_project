@@ -4268,6 +4268,10 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
+var _axios = __webpack_require__(409);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _styles = __webpack_require__(776);
 
 var _styles2 = _interopRequireDefault(_styles);
@@ -4283,13 +4287,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Nav = function (_Component) {
     _inherits(Nav, _Component);
 
-    function Nav() {
+    //CHANGE-FONT-END
+    function Nav(props) {
         _classCallCheck(this, Nav);
 
-        return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+        _this.state = {
+            currentUser: {
+                email: ''
+            }
+        };
+        return _this;
     }
 
     _createClass(Nav, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            _axios2.default.get('/api/get_current_user').then(function (res) {
+                _this2.setState({
+                    currentUser: {
+                        email: res.data.user.email
+                    }
+                });
+            }).catch(function (err) {
+                _this2.setState({
+                    currentUser: { email: res.data.user.email }
+                });
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -63641,7 +63670,7 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e770ff;\n  height: 40px;\n  width: 100%;\n  margin-bottom: 0px;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
+exports.push([module.i, ".Nav {\n  position: fixed;\n  top: 0;\n  background-color: #e03997;\n  height: 40px;\n  width: 100%;\n  margin-bottom: 0px;\n  z-index: 1000; }\n\n#nav-bar {\n  margin-top: 5px;\n  margin-left: 10px; }\n\n#nav-icon {\n  color: #ffdb51;\n  position: absolute;\n  right: 18px;\n  top: 6px;\n  width: 20px;\n  display: inline-block; }\n", ""]);
 
 // exports
 
@@ -65330,6 +65359,10 @@ var Dashboard = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this));
 
         _this.state = {
+            currentUser: {
+                id: '',
+                email: ''
+            },
             isLoggedIn: false,
             users: []
         };
@@ -65343,6 +65376,20 @@ var Dashboard = function (_Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
+
+            _axios2.default.get('/api/get_current_user').then(function (res) {
+                _this2.setState({
+                    currentUser: {
+                        id: res.data.user._id,
+                        email: res.data.user.email
+                    }
+                });
+            }).catch(function (err) {
+                _this2.setState({
+                    id: res.data.user.id,
+                    currentUser: { email: res.data.user.email }
+                });
+            });
 
             _axios2.default.get('/api/profile').then(function (res) {
                 console.log(res);
@@ -65375,6 +65422,8 @@ var Dashboard = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+            console.log("Current User is :" + this.state.currentUser.email);
+            console.log("Current User id is :" + this.state.currentUser.id);
             var user_data = this.state.users;
             if (this.state.isLoggedIn) {
                 return _react2.default.createElement(
@@ -65503,13 +65552,20 @@ exports = module.exports = __webpack_require__(63)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: #f5117b;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 5%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard h1 {\n    margin-top: 0; }\n  .Dashboard p {\n    margin-left: 10px; }\n  .Dashboard .cardWrap {\n    margin-bottom: 40px;\n    margin-left: 44px; }\n  .Dashboard .ui.card .content img {\n    left: 5px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e770ff; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: #f5117b;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 5%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard h1 {\n    margin-top: 0; }\n  .Dashboard p {\n    margin-left: 10px; }\n  .Dashboard .cardWrap {\n    margin-bottom: 40px;\n    margin-left: 44px; }\n  .Dashboard .ui.card .content img {\n    left: 5px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 809 */
+/***/ (function(module, exports) {
+
+"use strict";
+throw new Error("Module build failed: SyntaxError: Unexpected token, expected ; (81:17)\n\n\u001b[0m \u001b[90m 79 | \u001b[39m            \u001b[90m// add users to stack\u001b[39m\n \u001b[90m 80 | \u001b[39m        }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 81 | \u001b[39m        \u001b[36mvar\u001b[39m stack\u001b[33m.\u001b[39mpop()\n \u001b[90m    | \u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 82 | \u001b[39m        \u001b[90m// we need to check if the other user also liked us\u001b[39m\n \u001b[90m 83 | \u001b[39m    }\n \u001b[90m 84 | \u001b[39m\u001b[0m\n");
+
+/***/ }),
+/* 810 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65529,6 +65585,10 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
+var _axios = __webpack_require__(409);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _styles = __webpack_require__(134);
 
 var _styles2 = _interopRequireDefault(_styles);
@@ -65545,16 +65605,127 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Main = function (_Component) {
-    _inherits(Main, _Component);
+var Explore = function (_Component) {
+    _inherits(Explore, _Component);
 
-    function Main() {
-        _classCallCheck(this, Main);
+    //CHANGE-FONT-END
+    function Explore(props) {
+        _classCallCheck(this, Explore);
 
-        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Explore.__proto__ || Object.getPrototypeOf(Explore)).call(this, props));
+
+        _this.state = {
+            story: {
+                title: '',
+                text: ''
+            },
+            message: '',
+            stories: []
+        };
+
+        _this.onSubmit = _this.onSubmit.bind(_this);
+        _this.onChangeTitle = _this.onChangeTitle.bind(_this);
+        _this.onChangeText = _this.onChangeText.bind(_this);
+        return _this;
     }
 
-    _createClass(Main, [{
+    _createClass(Explore, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            _axios2.default.get('/api/get_stories').then(function (res) {
+                console.log(res);
+                _this2.setState({
+                    stories: res.data.data
+                });
+            }).catch(function (err) {
+                _this2.setState({
+                    stories: res.data.data
+                });
+            });
+        }
+
+        //CHANGE-FONT-END
+
+    }, {
+        key: 'onChangeTitle',
+        value: function onChangeTitle(e) {
+            var story = this.state.story;
+            story.title = e.target.value;
+            this.setState({
+                story: story
+            });
+            console.log(story);
+        }
+
+        //CHANGE-FONT-END
+
+    }, {
+        key: 'onChangeText',
+        value: function onChangeText(e) {
+            var story = this.state.story;
+            story.text = e.target.value;
+            this.setState({
+                story: story
+            });
+            console.log(story);
+        }
+    }, {
+        key: 'onSubmit',
+        value: function onSubmit(e) {
+            var _this3 = this;
+
+            e.preventDefault();
+            //CHANGE-FONT-END
+            var title = encodeURIComponent(this.state.story.title);
+            //CHANGE-FONT-END
+            var text = encodeURIComponent(this.state.story.text);
+
+            //CHANGE-FONT-END
+            var formData = 'title=' + title + '&text=' + text;
+
+            _axios2.default.post('/api/create_new_story', {
+                title: title,
+                text: text
+            }).then(function (res) {
+                _this3.state.story;
+                if (res.status == 200) {
+                    var newArray = _this3.state.stories;
+                    newArray.push({ "title": title, "text": text });
+                    _this3.setState({
+                        story: newArray,
+                        message: 'Successfully create!'
+                    });
+                } else {
+                    _this3.setState({
+                        message: 'Unable to create!'
+                    });
+                }
+            }).catch(function (error) {
+                console.log("error" + error);
+            });
+
+            // // create an AJAX request (This should probably done with Axios instead) 
+            // const xhr = new XMLHttpRequest();
+            // //CHANGE-BACK-END
+            // xhr.open('post', '/api/create_new_story');
+            // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            // xhr.responseType = 'json';
+            // xhr.addEventListener('load', () => {
+            //     if (xhr.status === 200) {
+            //         this.setState({
+            //             message: 'Successfully create!'
+            //         })
+            //     } else {
+            //         this.setState({
+            //             message: 'Unable to create!'
+            //         })
+            //     }
+            // });
+            // xhr.send(formData);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -65567,55 +65738,99 @@ var Main = function (_Component) {
                     _react2.default.createElement(
                         'h1',
                         null,
-                        'PAIR PAIR PAIR'
+                        'Story Line'
                     ),
                     _react2.default.createElement(
                         'div',
-                        { 'class': 'ui card' },
-                        _react2.default.createElement('img', { 'class': 'ui image', src: 'https://semantic-ui.com/images/avatar/large/jenny.jpg' }),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'content' },
-                            _react2.default.createElement(
+                        { className: 'ui raised card' },
+                        this.state.stories.map(function (idx, number) {
+                            return _react2.default.createElement(
                                 'div',
-                                { 'class': 'header' },
-                                'Matthew'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'meta' },
+                                null,
                                 _react2.default.createElement(
-                                    'span',
-                                    { 'class': 'date' },
-                                    'Joined in 2015'
+                                    'div',
+                                    { 'class': 'content' },
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'ID: ',
+                                        number
+                                    ),
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'email: ',
+                                        idx.title
+                                    ),
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'password: ',
+                                        idx.text
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { 'class': 'extra content' },
+                                    _react2.default.createElement(
+                                        'div',
+                                        { 'class': 'right floated author' },
+                                        _react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
+                                        'Matt'
+                                    )
                                 )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'description' },
-                                'Matthew is a musician living in Nashville.'
-                            )
+                            );
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    _semanticUiReact.Button,
+                    { id: 'post', color: 'pink', size: 'massive', animated: 'fade', onClick: this.createNewStory },
+                    _react2.default.createElement(
+                        _semanticUiReact.Button.Content,
+                        { visible: true },
+                        'New Story!'
+                    ),
+                    _react2.default.createElement(
+                        _semanticUiReact.Button.Content,
+                        { hidden: true },
+                        _react2.default.createElement(_semanticUiReact.Icon, { name: 'paw' })
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        this.state.message
+                    )
+                ),
+                _react2.default.createElement(
+                    'form',
+                    { className: 'new_story', action: '/', onSubmit: this.onSubmit },
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            'Title'
                         ),
                         _react2.default.createElement(
-                            'div',
-                            { 'class': 'extra content' },
-                            _react2.default.createElement(
-                                'a',
-                                null,
-                                _react2.default.createElement('i', { 'aria-hidden': 'true', 'class': 'user icon' }),
-                                '22 Friends'
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { 'class': 'ui positive button', role: 'button', id: 'main-but' },
-                        ' Like '
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { 'class': 'ui negative button', role: 'button', id: 'main-but' },
-                        ' Na.. '
+                            _semanticUiReact.Label,
+                            null,
+                            'Title'
+                        ),
+                        _react2.default.createElement(_semanticUiReact.Input, { id: 'title', onChange: this.onChangeTitle }),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                            _semanticUiReact.Label,
+                            null,
+                            'Text'
+                        ),
+                        _react2.default.createElement(_semanticUiReact.Input, { id: 'text', onChange: this.onChangeText }),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(_semanticUiReact.Input, { type: 'submit' }),
+                        _react2.default.createElement('br', null)
                     )
                 ),
                 _react2.default.createElement(
@@ -65646,198 +65861,7 @@ var Main = function (_Component) {
         }
     }]);
 
-    return Main;
-}(_react.Component);
-
-exports.default = Main;
-
-/***/ }),
-/* 810 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _semanticUiReact = __webpack_require__(31);
-
-var _reactRouterDom = __webpack_require__(30);
-
-var _styles = __webpack_require__(134);
-
-var _styles2 = _interopRequireDefault(_styles);
-
-var _Nav = __webpack_require__(82);
-
-var _Nav2 = _interopRequireDefault(_Nav);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Explore = function (_Component) {
-	_inherits(Explore, _Component);
-
-	function Explore() {
-		_classCallCheck(this, Explore);
-
-		return _possibleConstructorReturn(this, (Explore.__proto__ || Object.getPrototypeOf(Explore)).apply(this, arguments));
-	}
-
-	_createClass(Explore, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(_Nav2.default, null),
-				_react2.default.createElement(
-					'div',
-					{ className: 'Home' },
-					_react2.default.createElement(
-						'h1',
-						null,
-						'Story Line'
-					),
-					_react2.default.createElement(
-						'div',
-						{ 'class': 'ui raised card' },
-						_react2.default.createElement(
-							'div',
-							{ 'class': 'content' },
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'header' },
-								'Cute Dog'
-							),
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'meta' },
-								_react2.default.createElement(
-									'span',
-									{ 'class': 'category' },
-									'Animals'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'description' },
-								_react2.default.createElement(
-									'p',
-									null,
-									'HI IADJSFOIJASOFJOIASJFOIJ IOSDAJFOIJ IODSJFOIJAOSFIO JOIA SDFJOAJSO'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ 'class': 'extra content' },
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'right floated author' },
-								_react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
-								'Matt'
-							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ 'class': 'ui raised card' },
-						_react2.default.createElement(
-							'div',
-							{ 'class': 'content' },
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'header' },
-								'Cute Dog'
-							),
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'meta' },
-								_react2.default.createElement(
-									'span',
-									{ 'class': 'category' },
-									'Animals'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'description' },
-								_react2.default.createElement(
-									'p',
-									null,
-									'HI IADJSFOIJASOFJOIASJFOIJ IOSDAJFOIJ IODSJFOIJAOSFIO JOIA SDFJOAJSO'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ 'class': 'extra content' },
-							_react2.default.createElement(
-								'div',
-								{ 'class': 'right floated author' },
-								_react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
-								'Matt'
-							)
-						)
-					)
-				),
-				_react2.default.createElement(
-					_semanticUiReact.Button,
-					{ id: 'post', color: 'pink', size: 'massive', animated: 'fade' },
-					_react2.default.createElement(
-						_semanticUiReact.Button.Content,
-						{ visible: true },
-						'New Story!'
-					),
-					_react2.default.createElement(
-						_semanticUiReact.Button.Content,
-						{ hidden: true },
-						_react2.default.createElement(_semanticUiReact.Icon, { name: 'paw' })
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
-					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: '/dashboard' },
-						_react2.default.createElement(
-							'a',
-							{ 'class': 'item' },
-							_react2.default.createElement('i', { 'class': 'home icon' }),
-							'Home'
-						)
-					),
-					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: '/', onClick: this.logOut },
-						_react2.default.createElement(
-							'a',
-							{ 'class': 'item' },
-							_react2.default.createElement('i', { 'class': 'send outline icon' }),
-							'Log off'
-						)
-					)
-				)
-			);
-		}
-	}]);
-
-	return Explore;
+    return Explore;
 }(_react.Component);
 
 exports.default = Explore;
