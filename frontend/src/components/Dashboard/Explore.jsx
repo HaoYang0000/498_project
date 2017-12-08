@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label,Input, Button, Card, Icon} from 'semantic-ui-react'
+import { Label,Input, Button, Card, Icon, Popup} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './styles.scss'
@@ -7,11 +7,11 @@ import Nav from '../Nav/Nav.jsx'
 
 class Explore extends Component {
 
-	//CHANGE-FONT-END
-	constructor(props) {
-	    super(props);
+    //CHANGE-FONT-END
+    constructor(props) {
+        super(props);
 
-	    this.state = {
+        this.state = {
             story: {
                 title: '',
                 text: ''
@@ -23,9 +23,9 @@ class Explore extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeText = this.onChangeText.bind(this);
-  	}
+    }
 
-  	componentDidMount() {
+    componentDidMount() {
         axios.get('/api/get_stories').then((res) => {
             console.log(res);
             this.setState({
@@ -38,8 +38,8 @@ class Explore extends Component {
         })
     }
 
-  	//CHANGE-FONT-END
-  	onChangeTitle(e) {
+    //CHANGE-FONT-END
+    onChangeTitle(e) {
         const story = this.state.story;
         story.title = e.target.value;
         this.setState({
@@ -59,7 +59,7 @@ class Explore extends Component {
     }
 
 
-  	onSubmit(e) {
+    onSubmit(e) {
         e.preventDefault();
         //CHANGE-FONT-END
         const title = encodeURIComponent(this.state.story.title);
@@ -75,12 +75,12 @@ class Explore extends Component {
             text: text,
           })
           .then(res => {
-          	this.state.story
+            this.state.story
             if(res.status == 200){
-            	var newArray = this.state.stories;  
-            	newArray.push({"title":title,"text":text});   
-    			this.setState({
-                		story: newArray,
+                var newArray = this.state.stories;  
+                newArray.push({"title":title,"text":text});   
+                this.setState({
+                        story: newArray,
                         message: 'Successfully create!'
                     });
             } else {
@@ -115,61 +115,30 @@ class Explore extends Component {
 
     render() {
         return(
-        	<div>
+            <div>
                 <Nav/>
-
-                <div className="Home">
-	                <h1>Story Line</h1>
-
-	                <div className="ui raised card">
-	                	
+                <div id="storyhome">
+                    <h1>Story Line</h1>                     
                             {this.state.stories.map((idx, number) =>
-                            	<div>
-                            	<div class="content">
-									    <p>ID: {number}</p>
-									    <p>email: {idx.title}</p>
-                                        <p>password: {idx.text}</p>
-								</div>
-                            	<div class="extra content">
-										    <div class="right floated author">
-										      <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg" />Matt
-										    </div>
-								</div>
-								</div>
+                                <div className="ui raised card" id="storycard">
+                                    <div id="content">
+                                            <br />
+                                            <h1>{idx.title}</h1>
+                                            <br />
+                                            <p>ID: {number}</p>
+                                            <p>{idx.text}</p>
+                                            <br />
+                                    </div>
+                                    <div id="extra content">
+                                        <div class="right floated author explore_img">
+                                                  <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg" />Matt
+                                        </div>
+                                    </div>
+                                </div>
                             )}
-        
-					</div>
+                </div>
 
-	            </div>
-
-	            
-
-
-
-                <Button id="post"  color="pink" size="massive" animated="fade" onClick={this.createNewStory}>
-                    <Button.Content visible>New Story!</Button.Content>
-                    <Button.Content hidden>
-                        <Icon name="paw"/>
-                    </Button.Content>
-                    <p>{this.state.message}</p>
-              	</Button>
-
-              	<form className="new_story" action="/" onSubmit={this.onSubmit}>
-		           	<div>
-		               	<h1 >Title</h1>
-		               	<Label>Title</Label>
-		               	<Input id="title" onChange={this.onChangeTitle}/>
-		                    <br/><br/>
-		                <Label>Text</Label>
-		               	<Input id="text" onChange={this.onChangeText}/>
-		                	<br/><br/>
-						<Input type="submit" />
-						<br />
-		           	</div>
-		        </form>
-
-
-	            <div class="ui vertical labeled icon menu" id="nav-down">
+                <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
                       <a class="item">
                         <i class="home icon"></i>
@@ -182,8 +151,40 @@ class Explore extends Component {
                             Log off
                         </a>
                       </Link>
-                    </div>
-	        	</div>
+                </div>
+
+                <Popup
+                    trigger={   
+                                <Button id="post"  color="pink" size="massive" animated="fade" onClick={this.createNewStory}>
+                                    <Button.Content visible>New Story!</Button.Content>
+                                    <Button.Content hidden>
+                                        <Icon name="paw"/>
+                                    </Button.Content>
+                                </Button>
+                            }
+                    content={
+                                <form className="new_story" action="/" onSubmit={this.onSubmit}>
+                                    <div>
+                                        <br/>
+                                        <Label>Title</Label>
+                                        <br/>
+                                        <br/>
+                                        <Input id="title" onChange={this.onChangeTitle}/>
+                                            <br/><br/>
+                                        <Label>Text</Label>
+                                        <br/><br/>
+                                        <Input id="text" onChange={this.onChangeText}/>
+                                            <br/><br/>
+                                        <Input type="submit" />
+                                        <br />
+                                    </div>
+                                </form>
+                            }
+                    on='click'
+                    position='top right'
+                 />
+            </div>
+
         )
     }
 }
