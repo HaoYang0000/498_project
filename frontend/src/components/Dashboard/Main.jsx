@@ -24,7 +24,7 @@ class Main extends Component {
 
         //霖霖 added
         this.like = this.like.bind(this);
-        this.dislike = this.dislike.bind(this);
+        //this.dislike = this.dislike.bind(this);
         //霖霖 added
 
         this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
@@ -71,15 +71,6 @@ class Main extends Component {
        })
    }
 
-   //霖霖 added
-   dislike() {
-        // if stack is empty, we need to add 100 more users
-        if(queue) {
-            // add users to stack
-        }
-        var queue.pop()；
-        // we need to check if the other user also liked us
-    }
 
 
     onChangemap(e) {
@@ -87,7 +78,7 @@ class Main extends Component {
         filter.map = e.target.value;
         this.setState({
             filter
-        })
+        });
     }
 
     onChangeage(e) {
@@ -95,7 +86,7 @@ class Main extends Component {
         filter.age = e.target.value;
         this.setState({
             filter
-        })
+        });
     }
 
     onChangesex(e) {
@@ -103,12 +94,12 @@ class Main extends Component {
         filter.sex = e.target.value;
         this.setState({
             filter
-        })
+        });
     }
 
     onSubmit(e) {
         e.preventDefault();
-        console.dir(this.state.filter)
+        console.dir(this.state.filter);
     }
 
 
