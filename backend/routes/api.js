@@ -2,27 +2,66 @@ var User = require('../models/user');
 var Story = require('../models/storySchema');
 
 module.exports = function(router, passport) {
+    // part one: filter out desired users 
+    router.put('/main/filter/:id', function(req, res){
+        // var ret = User.find({"prefered_user_gender":req.body.user_gender, 
+        //                     "prefered_user_age_min":req.body.user_age_min,
+        //                     "prefered_user_age_max":req.body.user_age_max, 
+        //                     "prefered_species":req.body.user_prefered_species});
 
-    router.post('/main/filter', function(req, res){
-        var ret = User.find({'age': req.body.age });
-        console.dir("---------------------------------------------------------------------------------------------------------------------------------------");
-        console.dir(req.body);
-        // var ret = User.find();
-        ret.exec(function(err, filter) {
+        // var red = User.find(); 
+        // ret.exec(function(err, filter) {
+        //     if (err) {
+        //         res.status(500).send({ 
+        //                     message: err, 
+        //                     data:[]
+        //                 }); 
+        //             } else {
+        //                 res.status(200).send({
+        //                     message: "OK" , 
+        //                     data: filter
+        //                 }); 
+        //         }
+        //     });
+        
+        // updsate data base 
+        let newSetting = {
+            prefered_user_gender: req.body.user_gender,
+            prefered_user_age_min:parseInt(req.body.user_age_min,10),
+            prefered_user_age_max: parseInt(req.body.age_max, 10),
+            prefered_species: req.body.prefered_species
+        }
+        console.log("sbsbsb");
+        console.log(req.body);
+
+
+        User.findByIdAndUpdate(req.user.id, newSetting, {new: true}, function(err, target) {
+            console.dir("caooooooo");
+            console.log(newSetting); 
+            console.dir(req.user.id); 
             if (err) {
+                console.dir(err); 
+                console.dir("kakakaakakak"); 
                 res.status(500).send({
-                            message: err,
-                            data:[]
-                        });
-                    } else {
-                        res.status(200).send({
-                            message: "OK" ,
-                            data: filter
-                        });
-                }
+                    message: err,
+                    data: []
+                });
+            } else {
+                if (target == null){
+                    res.status(404).send({
+                    message: 'Not Found',
+                    data: []
             });
-        });
-
+               } else {
+                    res.status(200).send({
+                    message: 'OK',
+                    data: target
+                });
+               }
+            }
+        })
+    });
+        
     router.post('/register',
         passport.authenticate('local-signup'),
         function(req, res) {
