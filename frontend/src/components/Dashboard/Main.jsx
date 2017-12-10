@@ -83,7 +83,7 @@ class Main extends Component {
    }
 
 
-    onChangemap(e) {
+    onChangeGender(e) {
         const filter = this.state.filter;
         filter.map = e.target.value;
         this.setState({
@@ -108,20 +108,23 @@ class Main extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
-        var userId = req.user.id;
-        axios.put('api/main/filter/' + userId.toString(),
-                  this.state.filter
-        ).then(res => {
-            this.setState({
-                filteredUser: res.data.data
-                });
-                console.dir("wocao")
-                console.dir(this.state.filteredUser);
+        e.preventDefault(); 
+        axios.get('/api/get_current_user').then(res => {
+            var userId = res.data; 
+            var path = 'api/main/filter/' + userId.toString();
+            axios.put(path, this.state.filter
+            ).then((res) => {
+                // this.setState({
+                //     filteredUser: res.data.data
+                //     });
+                //     console.dir("wocao")
+                //    console.dir(this.state.filteredUser);
+                console.log("mabibibibibibibibb");
             })
             .catch(function (error) {
                 console.log(error);
             });
+        })
     }
 
 
@@ -149,19 +152,24 @@ class Main extends Component {
                         <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted id="main-sidebar">
                             <form className="filter-main" action="" onSubmit={this.onSubmit}>
                               <Menu.Item name='map'>
-                                <Icon name='map' />
-                                Map
-                                  <input label="map" onChange={this.onChangemap} />
+                                <Icon name='map'/>
+                                Prefered Gender
+                                  <input name="user_gender" onChange={this.onChangeGender} />
                               </Menu.Item>
                               <Menu.Item name='users'>
                                   <Icon name='users' />
-                                  Age
-                                  <input label="age" onChange={this.onChangeage} />
+                                  Prefered minimum age 
+                                  <input name="user_age_min" onChange={this.onChangeMinAge} />
+                              </Menu.Item>
+                              <Menu.Item name='users'>
+                                  <Icon name='users' />
+                                  Prefered maximum age 
+                                  <input label="user_age_max" onChange={this.onChangeMaxAge} />
                               </Menu.Item>
                               <Menu.Item name='heterosexual'>
                                   <Icon name='heterosexual' />
-                                  Gender
-                                  <input label="sex" onChange={this.onChangesex} />
+                                  Prefered pet species
+                                  <input label="user_prefered_species" onChange={this.onChangePetSpecies} />
                               </Menu.Item>
                               <input id="filter-submit" type="submit" />
                             </form>
