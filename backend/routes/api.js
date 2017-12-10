@@ -3,6 +3,26 @@ var Story = require('../models/storySchema');
 
 module.exports = function(router, passport) {
 
+    router.post('/main/filter', function(req, res){
+        var ret = User.find({'age': req.body.age }); 
+        console.dir("---------------------------------------------------------------------------------------------------------------------------------------");
+        console.dir(req.body);
+        // var ret = User.find(); 
+        ret.exec(function(err, filter) {
+            if (err) {
+                res.status(500).send({ 
+                            message: err, 
+                            data:[]
+                        }); 
+                    } else {
+                        res.status(200).send({
+                            message: "OK" , 
+                            data: filter
+                        }); 
+                }
+            });
+        });
+        
     router.post('/register',
         passport.authenticate('local-signup'),
         function(req, res) {
