@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Card, Input } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
+import axios from 'axios'
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
@@ -19,14 +20,14 @@ class Main extends Component {
                 age: '',
                 sex: ''
             },
+            filteredUser: [], 
             queue: []  //霖霖 added
         }
 
         //霖霖 added
-        this.like = this.like.bind(this);
+        //this.like = this.like.bind(this);
         //this.dislike = this.dislike.bind(this);
         //霖霖 added
-
         this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangemap = this.onChangemap.bind(this);
@@ -35,42 +36,20 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/get_current_user').then((res) => {
+        axios.get('/api/get_current_user', {}).then((res) => {
             this.setState({
                 currentUser: {
                 id:res.data.user._id,
                 email:res.data.user.email
                 }
             })
-        }).catch( (err) => {
+        }).catch((err) => {
             this.setState({
                 id:res.data.user.id,
                 currentUser: {email:res.data.user.email}
             })
         });
     }
-
-    //霖霖 added
-    like() {
-       // if queue is empty, we need to add 100 more users
-       if(queue.length) {
-           // add users to stack
-           axios.get('/api/populateQueue')
-           .then((res) => {
-               this.setState({stack: res})
-           })
-       }
-       cur_other_id = queue.shift();
-       // we need to check if the other user also liked us
-       axios.put('/api/like', {
-           user_id: this.state.user_id,
-           other_user_id: this.state.other_user_id
-       })
-       .then((res) => {
-
-       })
-   }
-
 
 
     onChangemap(e) {
@@ -99,7 +78,18 @@ class Main extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        console.dir(this.state.filter);
+        axios.post('api/main/filter',
+            this.state.filter
+        ).then(res => {
+            this.setState({
+                filteredUser: res.data.data
+                });
+                console.dir("wocao")
+                console.dir(this.state.filteredUser);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
 
@@ -108,6 +98,19 @@ class Main extends Component {
 
         return(
             <div>
+                <div> 
+                {this.state.filteredUser.map((idx, number) =>
+                            	<div>
+                            	<div class="content">
+									    <p>ID: {number}</p>
+									    <p>email: {idx.id}</p>
+                                        <p>password: {idx.password}</p>
+                                        <p> email: {idx.email} </p> 
+                                        <p> age:{idx.age} </p> 
+								</div>
+								</div>
+                )} 
+                </div>
                 <Nav/>
                 <div id="filter-div">
                     <Sidebar.Pushable>
