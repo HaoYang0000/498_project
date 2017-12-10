@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
