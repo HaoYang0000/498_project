@@ -79,8 +79,9 @@ class Main extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        axios.post('api/main/filter',
-            this.state.filter
+        var userId = req.user.id;
+        axios.put('api/main/filter/' + userId.toString(),
+                  this.state.filter
         ).then(res => {
             this.setState({
                 filteredUser: res.data.data

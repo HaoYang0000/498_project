@@ -2,12 +2,45 @@ var User = require('../models/user');
 var Story = require('../models/storySchema');
 
 module.exports = function(router, passport) {
+    let newSetting = {
+        prefered_user_gender: String,
+        prefered_user_age_min: Number,
+        prefered_user_age_max: Number,
+        
+    }
+    router.put('/main/filter/:id', function(req, res){
+        User.findByIdAndUpdate(req.params.id, newSetting, {new: true}, function(err, target) {
+            if (err) {
+                res.status(500).send({
+                    message: err,
+                    data: []
+                });
+            } else {
+                if (target == null){
+                    res.status(404).send({
+                    message: 'Not Found',
+                    data: []
+            });
+               } else {
+                    res.status(200).send({
+                    message: 'OK',
+                    data: target
+                });
+               }
+            }
+        })
+    });
 
-    router.post('/main/filter', function(req, res){
-        var ret = User.find({'age': req.body.age }); 
+
+    router.put('/main/filter', function(req, res){
+        var ret = User.findByIdAndUpdate({'age': req.body.age, 
+                                          'user_gender': req.body,
+                                          'prefered_user_age_min':req.body.user_age_min ,
+                                          'prefered_user_age_max':req.body.user_age_max}); 
         console.dir("---------------------------------------------------------------------------------------------------------------------------------------");
         console.dir(req.body);
         // var ret = User.find(); 
+
         ret.exec(function(err, filter) {
             if (err) {
                 res.status(500).send({ 
@@ -21,6 +54,27 @@ module.exports = function(router, passport) {
                         }); 
                 }
             });
+
+            User.findByIdAndUpdate(req.params.id, newSetting, {new: true}, function(err, target) {
+                if (err) {
+                    res.status(500).send({
+                       message: err,
+                       data: []
+                    });
+                } else {
+                       if (target == null){
+                           res.status(404).send({
+                message: 'Not Found',
+                data: []
+               });
+                       } else {
+                        res.status(200).send({
+                            message: 'OK',
+                            data: target
+                        });
+                       }
+                }
+            })
         });
         
     router.post('/register',
