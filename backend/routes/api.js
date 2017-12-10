@@ -190,14 +190,47 @@ module.exports = function(router, passport) {
 
         //get user preference filter
         var user_preference;
-        User.find(user_id, function(err, user) {
+        User.find({_id:user_id}, function(err, user) {
             user_preference = user;
+            //console.log(user_preference);
+
+
+            var query = User.find({age: 19/*user_preference.age*/}).limit(1).select("_id");
+
+            query.exec(function(err, users) {
+                if(err) {
+                    res.status(500).send({
+                        message: err,
+                        data: []
+                    });
+                } else {
+                    res.status(200).send({
+                        message: 'OK',
+                        data: users
+                    });
+                }
+            });
+
+
+
         });
         console.log("lalalalalalalalaallalalalalaalallaallalalala");
         //console.log(user_preference);
-        //var result = User.find("prefered_species=\'" + "dog"+ "\'").limit(100);
-        //console.log(User.findOne());
+        //console.log(users);
+
+        //
+        // User.find({
+        //     $filter: {
+        //         input: "$list",
+        //         as: "item",
+        //         cond: {$gt: ['$$item.age', 3]}
+        //     }
+        // });
+        //console.log(user1);
+
+
     });
+
 
 
 
