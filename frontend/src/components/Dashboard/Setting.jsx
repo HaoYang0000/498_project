@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
@@ -9,16 +9,21 @@ class Setting extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            userId: "",
             firstName: "",
             lastName: "",
             age:"",
+            gender:"",
             address:"",
+            city:"",
             state:"",
             country:"",
             species:"",
             preferspecies:"",
-            gender:"",
-            petAge:""
+            petAge:"",
+            petGender:"",
+            preferedAgeMin:"",
+            preferedAgeMax:""
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,68 +40,118 @@ class Setting extends Component {
         });
     }
 
+    componentWillMount() {
+        axios.get('/api/get_current_user').then((res) => {
+            let id = res.data.user._id;
+            let path = "/api/users/" + id.toString();
+            axios.get(path).then(
+                (res) => {
+                    let currentSetting = res.data.data;
+                    this.setState({
+                        userId: id,
+                        firstName: currentSetting.firstName,
+                        lastName: currentSetting.lastName,
+                        age:currentSetting.age,
+                        gender:currentSetting.gender,
+                        address:currentSetting.address,
+                        city:currentSetting.city,
+                        state:currentSetting.state,
+                        country:currentSetting.country,
+                        species:currentSetting.species,
+                        preferspecies:currentSetting.preferspecies,
+                        petAge:currentSetting.petAge,
+                        petGender:currentSetting.petGender,
+                        preferedAgeMin:currentSetting.preferedAgeMin,
+                        preferedAgeMax:currentSetting.preferedAgeMax
+                    });
+                }
+            ).catch(
+                (err) => {
+                    console.log("hehe1");
+                }
+            );
+        }).catch((err) => {
+            console.log("hehe2");
+        });
+    }
+
     handleSubmit(event) {
         var newSetting = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            age: this.state.age,
-            address: this.state.address,
-            state: this.state.state,
-            country: this.state.country,
-            species: this.state.species,
-            preferspecies: this.state.preferspecies,
-            gender: this.state.gender,
-            petAge: this.state.petAge
+            age:this.state.age,
+            gender:this.state.gender,
+            address:this.state.address,
+            city:this.state.city,
+            state:this.state.state,
+            country:this.state.country,
+            species:this.state.species,
+            preferspecies:this.state.preferspecies,
+            petAge:this.state.petAge,
+            petGender:this.state.petGender,
+            preferedAgeMin:this.state.preferedAgeMin,
+            preferedAgeMax:this.state.preferedAgeMax
         }
-        axios.put(/api/user/id, newSetting).then(() => {
-            console.log("/user/id success")
-        }).catch((err) => {
-            console.log("user/id" + err);
-        });
+        let path = "/api/users/" + this.state.userId.toString();
+        console.dir(newSetting);
+        axios.put(path, newSetting).then(
+            (res) => {
+                console.log("hehe3");
+            }
+        ).catch(
+            () => {
+                console.log("hehe4");
+            }
+        );
     }
 
     render() {
-        axios.put('/profile/update',{}).then((response) => {
-                commit('SET_USER_PROFILE', { profile: response.data })
-            }, (err) => {
-                console.log(err)
-            })
         return(
         	<div>
                 <Nav/>
-	              <div className="Home">
-	                  <h1></h1>
-	              </div>
-
-	              <form class="ui form" id="setting_form" onsubmit={this.handleSubmit}>
-				  <h1 class="ui dividing header">Personal Setting</h1>
-				  <div class="field">
+	              <form className="ui form" id="setting_form" onSubmit={this.handleSubmit}>
+				  <h1 className="ui dividing header">Personal Setting</h1>
+				  <div className="field">
 				    <label>Name *</label>
-				    <div class="two fields">
-				      <div class="field">
+				    <div className="two fields">
+				      <div className="field">
 				        <input type="text" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleInputChange}/>
 				      </div>
-				      <div class="field">
+				      <div className="field">
 				        <input type="text" name="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleInputChange}/>
 				      </div>
 				    </div>
-				    <label>Age</label>
-				    <div class="field">
-				        <input type="text" name="age" placeholder="20" value={this.state.age} onChange={this.handleInputChange}/>
-				    </div>
-				  </div>
-				  <div class="field">
-				    <label>Location</label>
-				    <div class="fields">
-				      <div class="twelve wide field">
+                  </div>
+                  <div className="fields">
+                      <div className="eight wide field">
+                          <label>Age</label>
+                          <input type="text" name="age" placeholder="20" value={this.state.age} onChange={this.handleInputChange}/>
+                      </div>
+                      <div className="eight wide field">
+  				      <label>Gender</label>
+  				      <select className="ui fluid search dropdown" name="gender" value={this.state.gender} onChange={this.handleInputChange}>
+  				            <option value="1">Female</option>
+  				            <option value="2">Male</option>
+  				            <option value="3">Neutral</option>
+  				      </select>
+  				    </div>
+
+                  </div>
+
+				  <div className="fields">
+				    <div className="twelve wide field">
+                        <label>Location</label>
 				        <input type="text" name="address" placeholder="Street Address" value={this.state.address} onChange={this.handleInputChange}/>
-				      </div>
 				    </div>
-				  </div>
-				  <div class="two fields">
-				    <div class="field">
+                    <div className="four wide field">
+                        <label>City</label>
+				        <input type="text" name="city" placeholder="Current City" value={this.state.city} onChange={this.handleInputChange}/>
+				    </div>
+                  </div>
+				  <div className="two fields">
+				    <div className="field">
 					    <label>State</label>
-					    <select class="ui fluid dropdown" name="state" value={this.state.state} onChange={this.handleInputChange}>
+					    <select className="ui fluid dropdown" name="state" value={this.state.state} onChange={this.handleInputChange}>
 					    <option value="">State</option>
 					    <option value="AL">Alabama</option>
 					    <option value="AK">Alaska</option>
@@ -151,9 +206,9 @@ class Setting extends Component {
 					    <option value="WY">Wyoming</option>
 					      </select>
 				    </div>
-				    <div class="field">
+				    <div className="field">
 				    	  <label>County</label>
-				          <select class="ui fluid search dropdown" name="country" value={this.state.country} onChange={this.handleInputChange}>
+				          <select className="ui fluid search dropdown" name="country" value={this.state.country} onChange={this.handleInputChange}>
 				            <option value="">USA</option>
 				            <option value="1">CHINA</option>
 				            <option value="2">INDIA</option>
@@ -170,10 +225,10 @@ class Setting extends Component {
 				          </select>
 				    </div>
 				  </div>
-				  <h4 class="ui dividing header">Pet Information</h4>
-				  <div class="two fields">
-				    <div class="field">
-				          <select class="ui fluid search dropdown" name="species" value={this.state.species} onChange={this.handleInputChange}>
+				  <h4 className="ui dividing header">Pet Information</h4>
+				  <div className="two fields">
+				    <div className="field">
+				          <select className="ui fluid search dropdown" name="species" value={this.state.species} onChange={this.handleInputChange}>
 				            <option value="">SPECIES *</option>
 				            <option value="1">dog</option>
 				            <option value="2">cat</option>
@@ -188,8 +243,8 @@ class Setting extends Component {
 				            <option value="11">Bird</option>
 				          </select>
 				    </div>
-				    <div class="field">
-				          <select class="ui fluid search dropdown" name="preferspecies" value={this.state.preferspecies} onChange={this.handleInputChange}>
+				    <div className="field">
+				          <select className="ui fluid search dropdown" name="preferspecies" value={this.state.preferspecies} onChange={this.handleInputChange}>
 				            <option value="">PREFER SPECIES *</option>
 				            <option value="1">dog</option>
 				            <option value="2">cat</option>
@@ -205,32 +260,44 @@ class Setting extends Component {
 				          </select>
 				    </div>
 				  </div>
-				  <div class="fields">
-				    <div class="seven wide field">
+				  <div className="fields">
+				    <div className="eight wide field">
 				      <label>Gender</label>
-				      <select class="ui fluid search dropdown" name="gender" value={this.state.gender} onChange={this.handleInputChange}>
-				            <option value="">female</option>
-				            <option value="1">male</option>
-				            <option value="2">middle</option>
-				          </select>
+				      <select className="ui fluid search dropdown" name="petGender" value={this.state.petGender} onChange={this.handleInputChange}>
+				            <option value="1">Female</option>
+				            <option value="2">Male</option>
+				            <option value="3">Neutral</option>
+				      </select>
 				    </div>
-				    <div class="three wide field">
+				    <div className="eight wide field">
 				      <label>Age</label>
-				      <input type="text" name="petAge" maxlength="3" placeholder="1" value={this.state.petAge} onChange={this.handleInputChange}/>
+				      <input type="text" name="petAge" maxLength="3" placeholder="1" value={this.state.petAge} onChange={this.handleInputChange}/>
 				    </div>
-				  </div>
-				  <div class="ui button" tabindex="0">Submit Order</div>
+                  </div>
+
+                   <div className="fields">
+                   <div className="eight wide field">
+                   <label>Prefered Age Min</label>
+                   <input type="text" name="preferedAgeMin" maxLength="3" placeholder="Min" value={this.state.preferedAgeMin} onChange={this.handleInputChange}/>
+                   </div>
+                   <div className="eight wide field">
+                   <label>Prefered Age Max</label>
+                   <input type="text" name="preferedAgeMax" maxLength="3" placeholder="Max" value={this.state.preferedAgeMax} onChange={this.handleInputChange}/>
+                   </div>
+                   </div>
+				  <div className="ui button" type="submit" onClick={this.handleSubmit}/>
 				</form>
-				<div class="ui vertical labeled icon menu" id="nav-down">
+
+				<div className="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
-                      <a class="item">
-                        <i class="home icon"></i>
+                      <a className="item">
+                        <i className="home icon"></i>
                         Home
                       </a>
                       </Link>
                       <Link to="/" onClick={this.logOut}>
-                        <a class="item">
-                            <i class="send outline icon"></i>
+                        <a className="item">
+                            <i className="send outline icon"></i>
                             Log off
                         </a>
                       </Link>

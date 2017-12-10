@@ -30,6 +30,47 @@ module.exports = function(router, passport) {
         req.logOut();
         res.status(200).json({ message: "logged out "});
     });
+    //CHANGE-BACK-END
+    router.post('/create_new_story',
+        function(req, res) {
+            //console.log(req.body.title);
+            var newStory = new Story();
+                newStory.title = req.body.title;
+                newStory.text = req.body.text;
+                newStory.author = "test";
+                newStory._authorid = "test";
+                newStory.save();
+            res.status(200).json({ title:newStory.title,text:newStory.text, message: "Welcome!"
+        });
+    });
+
+    router.get('/delete_story',function(req, res){
+        Story.remove();
+    });
+
+    router.get('/get_stories', function(req, res){
+        Story.find({}, function(err, stories) {
+            if(err) {
+                res.status(500).send({
+                message: err,
+                data: []
+            });
+            } else {
+                res.status(200).send({
+                    message: 'OK',
+                    data: stories
+                });
+            }
+        });
+    });
+
+    router.get('/get_current_user',
+        function(req, res) {
+            console.log(req.isAuthenticated());
+            res.status(200).json({ user: req.user
+        });
+    });
+
 
     //----------------Show the User Table--------------------------
     router.get('/users', function(req, res){
@@ -48,6 +89,31 @@ module.exports = function(router, passport) {
         });
     });
 
+    router.get('/users/:id', function(req, res){
+        console.log(req.params.id);
+        let quest = User.findById(req.params.id);
+        console.dir(quest);
+        quest.exec(function(err, target){
+			if (err) {
+				res.status(500).send({
+					message: err,
+					data: []
+				});
+			} else {
+                if (target == null){
+                    res.status(404).send({
+    					message: 'Not Found',
+    					data: []
+    				});
+                } else {
+				    res.status(200).send({
+					    message: 'OK',
+					    data: target
+				    });
+                }
+			}
+        });
+    });
     //----------------Show story line------------------------------
     router.get('/story', function(req, res){
         Story.find({}, function(err, users) {
@@ -64,8 +130,46 @@ module.exports = function(router, passport) {
     });
 
     //----------------Update User------------------------------
-    router.put('/story', function(req, res){
-        //TODO
+    router.put('/users/:id', function(req, res){
+        let newSetting = {
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
+            age: req.body.age,
+            gender: req.body.gender,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            pet_spiecie: req.body.species,
+            prefered_species: req.body.preferspecies,
+            pet_age: req.body.petAge,
+            pet_gender: req.body.petGender,
+            prefered_age_min: req.body.preferedAgeMin,
+            prefered_age_max: req.body.preferedAgeMax
+        }
+        console.dir(newSetting);
+        console.dir(req.body);
+	    User.findByIdAndUpdate(req.params.id, newSetting, {new: true}, function(err, target) {
+	        if (err) {
+	            res.status(500).send({
+	              	message: err,
+	              	data: []
+	            });
+	        } else {
+                if (target == null){
+                    res.status(404).send({
+    					message: 'Not Found',
+    					data: []
+    				});
+                } else {
+	                res.status(200).send({
+	                    message: 'OK',
+	                    data: target
+	                });
+                }
+	        }
+	    })
+        //console.dir(req.params);
     });
 
     //----------------Like User--------------------------------
