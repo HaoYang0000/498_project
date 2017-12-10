@@ -26,8 +26,8 @@ class Main extends Component {
         }
 
         //霖霖 added
-        //this.like = this.like.bind(this);
-        //this.dislike = this.dislike.bind(this);
+        this.like = this.like.bind(this);
+        this.dislike = this.dislike.bind(this);
         //霖霖 added
         this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
         this.onSubmit = this.onSubmit.bind(this);
@@ -51,6 +51,36 @@ class Main extends Component {
             })
         });
     }
+
+    //霖霖 added
+    like() {
+       // if queue is empty, we need to add 100 more users
+
+       if(1) {
+           // add users to stack
+           axios.get('/api/populateQueue')
+           .then((res) => {
+               this.setState({queue: res.data});
+               // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+
+               console.log(res.data);
+           });
+       }
+
+       var cur_other_id = this.state.queue.shift();
+       // we need to check if the other user also liked us
+       axios.put('/api/like', {
+           user_id: this.state.user_id,
+           other_user_id: this.state.other_user_id
+       })
+       .then((res) => {
+
+       });
+   }
+
+   dislike() {
+
+   }
 
 
     onChangemap(e) {
@@ -158,8 +188,8 @@ class Main extends Component {
                             <i aria-hidden="true" class="user icon"></i>22 Friends</a>
                           </div>
                     </div>
-                    <button class="ui positive button" role="button" id="main-but"> Like </button>
-                    <button class="ui negative button" role="button" id="main-but"> Na.. </button>
+                    <button class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
+                    <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
                 <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
