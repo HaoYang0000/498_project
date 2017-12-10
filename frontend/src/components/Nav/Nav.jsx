@@ -29,7 +29,7 @@ class Nav extends Component {
             })
         });
     }
-    
+
     render() {
         return(
             <div className="Nav">
@@ -38,7 +38,7 @@ class Nav extends Component {
                     <Link to="/explore"><Button id="nav-bar" inverted color='yellow' size='mini'>Explore</Button></Link>
                     <Link to="/setting"><Button id="nav-bar" inverted color='yellow' size='mini'>Setting</Button></Link>
                     <div id="nav-icon">
-                        <i class="github alternate icon big"></i>
+                        <i className="github alternate icon big"></i>
                     </div>
                 </nav>
             </div>

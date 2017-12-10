@@ -4,25 +4,25 @@ var Story = require('../models/storySchema');
 module.exports = function(router, passport) {
 
     router.post('/main/filter', function(req, res){
-        var ret = User.find({'age': req.body.age }); 
+        var ret = User.find({'age': req.body.age });
         console.dir("---------------------------------------------------------------------------------------------------------------------------------------");
         console.dir(req.body);
-        // var ret = User.find(); 
+        // var ret = User.find();
         ret.exec(function(err, filter) {
             if (err) {
-                res.status(500).send({ 
-                            message: err, 
+                res.status(500).send({
+                            message: err,
                             data:[]
-                        }); 
+                        });
                     } else {
                         res.status(200).send({
-                            message: "OK" , 
+                            message: "OK" ,
                             data: filter
-                        }); 
+                        });
                 }
             });
         });
-        
+
     router.post('/register',
         passport.authenticate('local-signup'),
         function(req, res) {
@@ -109,6 +109,32 @@ module.exports = function(router, passport) {
         });
     });
 
+    router.get('/users/:id', function(req, res){
+        console.log(req.params.id);
+        let quest = User.findById(req.params.id);
+        console.dir(quest);
+        quest.exec(function(err, target){
+			if (err) {
+				res.status(500).send({
+					message: err,
+					data: []
+				});
+			} else {
+                if (target == null){
+                    res.status(404).send({
+    					message: 'Not Found',
+    					data: []
+    				});
+                } else {
+				    res.status(200).send({
+					    message: 'OK',
+					    data: target
+				    });
+                }
+			}
+        });
+    });
+
     //----------------Show story line------------------------------
     router.get('/story', function(req, res){
         Story.find({}, function(err, users) {
@@ -125,6 +151,51 @@ module.exports = function(router, passport) {
     });
 
 //----------------Update User------------------------------
+        router.put('/users/:id', function(req, res){
+        let newSetting = {
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
+            age: req.body.age,
+            user_gender: req.body.gender,
+            prefered_user_gender: req.body.preferedGender,
+            prefered_user_age_min: req.body.preferedUserAgeMin,
+            prefered_user_age_max: req.body.preferedUserAgeMax,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            pet_spiecie: req.body.species,
+            prefered_species: req.body.preferedSpecies,
+            pet_age: req.body.petAge,
+            prefered_pet_gender: req.body.petGender,
+            prefered_pet_age_min: req.body.preferedPetAgeMin,
+            prefered_pet_age_max: req.body.preferedPetAgeMax
+        }
+        console.dir(newSetting);
+        //console.dir(req.body);
+        User.findByIdAndUpdate(req.params.id, newSetting, {new: true}, function(err, target) {
+            if (err) {
+                res.status(500).send({
+                    message: err,
+                    data: []
+                });
+            } else {
+                if (target == null){
+                    res.status(404).send({
+                        message: 'Not Found',
+                        data: []
+                    });
+                } else {
+                    res.status(200).send({
+                        message: 'OK',
+                        data: target
+                    });
+                }
+            }
+        })
+        //console.dir(req.params);
+    });
+
     router.put('/story', function(req, res){
         //TODO
     });
