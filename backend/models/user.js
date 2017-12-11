@@ -24,6 +24,7 @@ var userSchema = mongoose.Schema({
 
     //pet stuff
     pet_spiecie: String,
+    pet_age: Number,
     prefered_species: String,
     prefered_pet_gender: String,
 

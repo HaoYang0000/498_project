@@ -17,23 +17,25 @@ class Main extends Component {
             },
             visible: false,
             filter: {
-                map: '',
-                age: '',
-                sex: ''
+                user_gender: '',
+                user_age_min: '',
+                user_age_max:'', 
+                user_prefered_species:''
             },
             filteredUser: [], 
             queue: []  //霖霖 added
         }
 
         //霖霖 added
-        //this.like = this.like.bind(this);
-        //this.dislike = this.dislike.bind(this);
+        this.like = this.like.bind(this);
+        this.dislike = this.dislike.bind(this);
         //霖霖 added
         this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
         this.onSubmit = this.onSubmit.bind(this);
-        this.onChangemap = this.onChangemap.bind(this);
-        this.onChangeage = this.onChangeage.bind(this);
-        this.onChangesex = this.onChangesex.bind(this);
+        this.onChangeGender = this.onChangeGender.bind(this);
+        this.onChangeMinAge = this.onChangeMinAge.bind(this);
+        this.onChangeMaxAge = this.onChangeMaxAge.bind(this);
+        this.onChangePetSpecies = this.onChangePetSpecies.bind(this); 
     }
 
     componentDidMount() {
@@ -52,45 +54,88 @@ class Main extends Component {
         });
     }
 
+    //霖霖 added
+    like() {
+       // if queue is empty, we need to add 100 more users
 
-    onChangemap(e) {
+       if(1) {
+           // add users to stack
+           axios.get('/api/populateQueue')
+           .then((res) => {
+               this.setState({queue: res.data});
+               // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+
+               console.log(res.data);
+           });
+       }
+
+       var cur_other_id = this.state.queue.shift();
+       // we need to check if the other user also liked us
+       axios.put('/api/like', {
+           user_id: this.state.user_id,
+           other_user_id: this.state.other_user_id
+       })
+       .then((res) => {
+
+       });
+   }
+
+   dislike() {
+
+   }
+
+
+    onChangeGender(e) {
         const filter = this.state.filter;
-        filter.map = e.target.value;
+        filter.user_gender = e.target.value;
+        this.setState({
+            filter
+        });
+    }
+    onChangeMinAge(e) {
+        const filter = this.state.filter;
+        filter.user_age_min = e.target.value;
         this.setState({
             filter
         });
     }
 
-    onChangeage(e) {
+    onChangeMaxAge(e) {
         const filter = this.state.filter;
-        filter.age = e.target.value;
+        filter.user_age_max = e.target.value;
         this.setState({
             filter
         });
     }
 
-    onChangesex(e) {
+    onChangePetSpecies(e) {
         const filter = this.state.filter;
-        filter.sex = e.target.value;
+        filter.user_prefered_species = e.target.value;
         this.setState({
             filter
         });
     }
 
     onSubmit(e) {
-        e.preventDefault();
-        axios.post('api/main/filter',
-            this.state.filter
-        ).then(res => {
-            this.setState({
-                filteredUser: res.data.data
-                });
-                console.dir("wocao")
-                console.dir(this.state.filteredUser);
+        e.preventDefault(); 
+        axios.get('/api/get_current_user').then(res => {
+            var userId = res.data; 
+            axios.put('api/main/filter/updateUserPreference', this.state.filter
+            ).then((res) => {
+                axios.post('api/main/filter/getDisiredUser').then(res => {
+                    this.setState({
+                    filteredUser: res.data.data
+                    });
+                    console.dir("wocao")
+                   console.dir(this.state.filteredUser);
+                })
+                
+                console.log("mabibibibibibibibb");
             })
             .catch(function (error) {
                 console.log(error);
             });
+        })
     }
 
 
@@ -118,19 +163,24 @@ class Main extends Component {
                         <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted id="main-sidebar">
                             <form className="filter-main" action="" onSubmit={this.onSubmit}>
                               <Menu.Item name='map'>
-                                <Icon name='map' />
-                                Map
-                                  <input label="map" onChange={this.onChangemap} />
+                                <Icon name='map'/>
+                                Prefered Gender
+                                  <input name="user_gender" onChange={this.onChangeGender} />
                               </Menu.Item>
                               <Menu.Item name='users'>
                                   <Icon name='users' />
-                                  Age
-                                  <input label="age" onChange={this.onChangeage} />
+                                  Prefered minimum age 
+                                  <input name="user_age_min" onChange={this.onChangeMinAge} />
+                              </Menu.Item>
+                              <Menu.Item name='users'>
+                                  <Icon name='users' />
+                                  Prefered maximum age 
+                                  <input label="user_age_max" onChange={this.onChangeMaxAge} />
                               </Menu.Item>
                               <Menu.Item name='heterosexual'>
                                   <Icon name='heterosexual' />
-                                  Gender
-                                  <input label="sex" onChange={this.onChangesex} />
+                                  Prefered pet species
+                                  <input name="user_prefered_species" onChange={this.onChangePetSpecies} />
                               </Menu.Item>
                               <input id="filter-submit" type="submit" />
                             </form>
@@ -158,8 +208,8 @@ class Main extends Component {
                             <i aria-hidden="true" class="user icon"></i>22 Friends</a>
                           </div>
                     </div>
-                    <button class="ui positive button" role="button" id="main-but"> Like </button>
-                    <button class="ui negative button" role="button" id="main-but"> Na.. </button>
+                    <button class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
+                    <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
                 <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">

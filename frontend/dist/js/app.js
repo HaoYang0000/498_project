@@ -1616,7 +1616,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Responsive", function() { return __WEBPACK_IMPORTED_MODULE_0__addons_Responsive__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addons_Confirm__ = __webpack_require__(671);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Confirm", function() { return __WEBPACK_IMPORTED_MODULE_1__addons_Confirm__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__addons_Portal__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__addons_Portal__ = __webpack_require__(82);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Portal", function() { return __WEBPACK_IMPORTED_MODULE_2__addons_Portal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__addons_Radio__ = __webpack_require__(191);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Radio", function() { return __WEBPACK_IMPORTED_MODULE_3__addons_Radio__["a"]; });
@@ -2302,7 +2302,7 @@ var baseIndexOf = __webpack_require__(103),
     isArrayLike = __webpack_require__(29),
     isString = __webpack_require__(188),
     toInteger = __webpack_require__(35),
-    values = __webpack_require__(80);
+    values = __webpack_require__(81);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -2774,7 +2774,7 @@ module.exports = has;
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(69);
+var isObject = __webpack_require__(70);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -2966,7 +2966,7 @@ module.exports = baseEach;
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(43);
-var createDesc = __webpack_require__(70);
+var createDesc = __webpack_require__(71);
 module.exports = __webpack_require__(48) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -3038,7 +3038,7 @@ module.exports = Symbol;
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(76),
+var arrayEach = __webpack_require__(77),
     baseEach = __webpack_require__(55),
     castFunction = __webpack_require__(277),
     isArray = __webpack_require__(12);
@@ -3093,6 +3093,12 @@ module.exports = forEach;
 
 /***/ }),
 /* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(776);
+
+/***/ }),
+/* 64 */
 /***/ (function(module, exports) {
 
 /*
@@ -3174,7 +3180,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -3546,7 +3552,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3643,7 +3649,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3703,7 +3709,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3770,7 +3776,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3841,7 +3847,7 @@ var createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -3850,7 +3856,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -3864,7 +3870,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(12),
@@ -3891,7 +3897,7 @@ module.exports = castPath;
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 /**
@@ -3934,7 +3940,7 @@ module.exports = eq;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(20),
@@ -3979,7 +3985,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(171)(module)))
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -4007,7 +4013,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -4031,7 +4037,7 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 /**
@@ -4059,7 +4065,7 @@ module.exports = arrayEach;
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4116,7 +4122,7 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(21);
@@ -4152,7 +4158,7 @@ module.exports = baseCreate;
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(122),
@@ -4198,7 +4204,7 @@ module.exports = copyObject;
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseValues = __webpack_require__(626),
@@ -4238,7 +4244,7 @@ module.exports = values;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4248,7 +4254,7 @@ module.exports = values;
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4268,7 +4274,7 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _axios = __webpack_require__(83);
+var _axios = __webpack_require__(63);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -4357,7 +4363,7 @@ var Nav = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         { id: 'nav-icon' },
-                        _react2.default.createElement('i', { 'class': 'github alternate icon big' })
+                        _react2.default.createElement('i', { className: 'github alternate icon big' })
                     )
                 )
             );
@@ -4368,12 +4374,6 @@ var Nav = function (_Component) {
 }(_react.Component);
 
 exports.default = Nav;
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(776);
 
 /***/ }),
 /* 84 */
@@ -4673,7 +4673,7 @@ var matchPath = function matchPath(pathname) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(69);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -4887,7 +4887,7 @@ module.exports = ListCache;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(72);
+var eq = __webpack_require__(73);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -4938,7 +4938,7 @@ module.exports = getMapData;
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var castPath = __webpack_require__(71),
+var castPath = __webpack_require__(72),
     toKey = __webpack_require__(54);
 
 /**
@@ -5384,7 +5384,7 @@ module.exports = isTypedArray;
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(75),
+var isPrototype = __webpack_require__(76),
     nativeKeys = __webpack_require__(528);
 
 /** Used for built-in method references. */
@@ -5513,8 +5513,8 @@ var baseKeys = __webpack_require__(112),
     isArguments = __webpack_require__(107),
     isArray = __webpack_require__(12),
     isArrayLike = __webpack_require__(29),
-    isBuffer = __webpack_require__(73),
-    isPrototype = __webpack_require__(75),
+    isBuffer = __webpack_require__(74),
+    isPrototype = __webpack_require__(76),
     isTypedArray = __webpack_require__(111);
 
 /** `Object#toString` result references. */
@@ -5622,9 +5622,9 @@ module.exports = baseAssignValue;
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(72),
+var eq = __webpack_require__(73),
     isArrayLike = __webpack_require__(29),
-    isIndex = __webpack_require__(74),
+    isIndex = __webpack_require__(75),
     isObject = __webpack_require__(21);
 
 /**
@@ -5770,7 +5770,7 @@ module.exports = createWrap;
 /* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(78),
+var baseCreate = __webpack_require__(79),
     isObject = __webpack_require__(21);
 
 /**
@@ -5875,7 +5875,7 @@ module.exports = replaceHolders;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseAssignValue = __webpack_require__(116),
-    eq = __webpack_require__(72);
+    eq = __webpack_require__(73);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -6564,7 +6564,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(64)(content, options);
+var update = __webpack_require__(65)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -6595,7 +6595,7 @@ if(false) {
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(66);
+  var invariant = __webpack_require__(67);
   var warning = __webpack_require__(85);
   var ReactPropTypesSecret = __webpack_require__(137);
   var loggedTypeFailures = {};
@@ -6803,7 +6803,7 @@ var _valueEqual = __webpack_require__(224);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(67);
+var _PathUtils = __webpack_require__(68);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7234,7 +7234,7 @@ module.exports = function (fn, that, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(69);
+var isObject = __webpack_require__(70);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -7440,7 +7440,7 @@ module.exports = function (name) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(91);
-var createDesc = __webpack_require__(70);
+var createDesc = __webpack_require__(71);
 var toIObject = __webpack_require__(50);
 var toPrimitive = __webpack_require__(146);
 var has = __webpack_require__(49);
@@ -8020,7 +8020,7 @@ var numberToWordMap = {
 /* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(78),
+var baseCreate = __webpack_require__(79),
     baseLodash = __webpack_require__(179);
 
 /** Used as references for the maximum length and index of an array. */
@@ -8091,7 +8091,7 @@ module.exports = getData;
 /* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(78),
+var baseCreate = __webpack_require__(79),
     baseLodash = __webpack_require__(179);
 
 /**
@@ -11478,7 +11478,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(86);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -11800,7 +11800,7 @@ module.exports = !__webpack_require__(48) && !__webpack_require__(57)(function (
 /* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(69);
+var isObject = __webpack_require__(70);
 var document = __webpack_require__(42).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -12563,8 +12563,8 @@ module.exports = arrayFilter;
 var baseTimes = __webpack_require__(261),
     isArguments = __webpack_require__(107),
     isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(73),
-    isIndex = __webpack_require__(74),
+    isBuffer = __webpack_require__(74),
+    isIndex = __webpack_require__(75),
     isTypedArray = __webpack_require__(111);
 
 /** Used for built-in method references. */
@@ -13006,10 +13006,10 @@ module.exports = hasIn;
 /* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var castPath = __webpack_require__(71),
+var castPath = __webpack_require__(72),
     isArguments = __webpack_require__(107),
     isArray = __webpack_require__(12),
-    isIndex = __webpack_require__(74),
+    isIndex = __webpack_require__(75),
     isLength = __webpack_require__(168),
     toKey = __webpack_require__(54);
 
@@ -13677,7 +13677,7 @@ module.exports = setWrapToString;
 /* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var copyObject = __webpack_require__(79),
+var copyObject = __webpack_require__(80),
     keys = __webpack_require__(22);
 
 /**
@@ -13701,7 +13701,7 @@ module.exports = baseAssign;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(172),
-    arrayEach = __webpack_require__(76),
+    arrayEach = __webpack_require__(77),
     assignValue = __webpack_require__(122),
     baseAssign = __webpack_require__(293),
     baseAssignIn = __webpack_require__(592),
@@ -13716,7 +13716,7 @@ var Stack = __webpack_require__(172),
     initCloneByTag = __webpack_require__(599),
     initCloneObject = __webpack_require__(608),
     isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(73),
+    isBuffer = __webpack_require__(74),
     isObject = __webpack_require__(21),
     keys = __webpack_require__(22);
 
@@ -14064,7 +14064,7 @@ module.exports = stringToArray;
 
 var baseGet = __webpack_require__(99),
     baseSet = __webpack_require__(302),
-    castPath = __webpack_require__(71);
+    castPath = __webpack_require__(72);
 
 /**
  * The base implementation of  `_.pickBy` without support for iteratee shorthands.
@@ -14099,8 +14099,8 @@ module.exports = basePickBy;
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(122),
-    castPath = __webpack_require__(71),
-    isIndex = __webpack_require__(74),
+    castPath = __webpack_require__(72),
+    isIndex = __webpack_require__(75),
     isObject = __webpack_require__(21),
     toKey = __webpack_require__(54);
 
@@ -17264,7 +17264,7 @@ Transition.propTypes = process.env.NODE_ENV !== "production" ? {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_values__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_values__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_get__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_get___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash_get__);
@@ -20516,7 +20516,7 @@ StepContent.create = Object(__WEBPACK_IMPORTED_MODULE_4__lib__["l" /* createShor
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_values__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_values__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_keys__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_keys__);
@@ -23880,7 +23880,7 @@ _reactDom2.default.render(_react2.default.createElement(
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(65),n=__webpack_require__(84),p=__webpack_require__(40),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
+var m=__webpack_require__(66),n=__webpack_require__(84),p=__webpack_require__(40),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
 function y(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var z={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function A(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}A.prototype.isReactComponent={};A.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?y("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};A.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function B(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}function C(){}C.prototype=A.prototype;var D=B.prototype=new C;D.constructor=B;m(D,A.prototype);D.isPureReactComponent=!0;function E(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}var F=E.prototype=new C;F.constructor=E;m(F,A.prototype);F.unstable_isAsyncReactComponent=!0;F.render=function(){return this.props.children};var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
@@ -23916,9 +23916,9 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(65);
+var _assign = __webpack_require__(66);
 var emptyObject = __webpack_require__(84);
-var invariant = __webpack_require__(66);
+var invariant = __webpack_require__(67);
 var warning = __webpack_require__(85);
 var emptyFunction = __webpack_require__(40);
 var checkPropTypes = __webpack_require__(136);
@@ -25276,7 +25276,7 @@ module.exports = react;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),l=__webpack_require__(218),B=__webpack_require__(65),C=__webpack_require__(40),ba=__webpack_require__(219),da=__webpack_require__(220),ea=__webpack_require__(139),fa=__webpack_require__(221),ia=__webpack_require__(222),D=__webpack_require__(84);
+var aa=__webpack_require__(0),l=__webpack_require__(218),B=__webpack_require__(66),C=__webpack_require__(40),ba=__webpack_require__(219),da=__webpack_require__(220),ea=__webpack_require__(139),fa=__webpack_require__(221),ia=__webpack_require__(222),D=__webpack_require__(84);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -25574,10 +25574,10 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var React = __webpack_require__(0);
-var invariant = __webpack_require__(66);
+var invariant = __webpack_require__(67);
 var warning = __webpack_require__(85);
 var ExecutionEnvironment = __webpack_require__(218);
-var _assign = __webpack_require__(65);
+var _assign = __webpack_require__(66);
 var emptyFunction = __webpack_require__(40);
 var EventListener = __webpack_require__(219);
 var getActiveElement = __webpack_require__(220);
@@ -41191,9 +41191,9 @@ BrowserRouter.propTypes = {
 
 
 var emptyFunction = __webpack_require__(40);
-var invariant = __webpack_require__(66);
+var invariant = __webpack_require__(67);
 var warning = __webpack_require__(85);
-var assign = __webpack_require__(65);
+var assign = __webpack_require__(66);
 
 var ReactPropTypesSecret = __webpack_require__(137);
 var checkPropTypes = __webpack_require__(136);
@@ -41741,7 +41741,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 var emptyFunction = __webpack_require__(40);
-var invariant = __webpack_require__(66);
+var invariant = __webpack_require__(67);
 var ReactPropTypesSecret = __webpack_require__(137);
 
 module.exports = function() {
@@ -41814,7 +41814,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(140);
 
-var _PathUtils = __webpack_require__(67);
+var _PathUtils = __webpack_require__(68);
 
 var _createTransitionManager = __webpack_require__(141);
 
@@ -42191,7 +42191,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(140);
 
-var _PathUtils = __webpack_require__(67);
+var _PathUtils = __webpack_require__(68);
 
 var _createTransitionManager = __webpack_require__(141);
 
@@ -42528,7 +42528,7 @@ var _warning = __webpack_require__(16);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(67);
+var _PathUtils = __webpack_require__(68);
 
 var _LocationUtils = __webpack_require__(140);
 
@@ -43245,7 +43245,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(88);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(69);
 /* unused harmony reexport parsePath */
 /* unused harmony reexport createPath */
 
@@ -43268,7 +43268,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(231);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -43572,7 +43572,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(231);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -43890,7 +43890,7 @@ var createHashHistory = function createHashHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(144);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -44188,7 +44188,7 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _Nav = __webpack_require__(82);
+var _Nav = __webpack_require__(83);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -44644,7 +44644,7 @@ module.exports = function (TO_STRING) {
 "use strict";
 
 var create = __webpack_require__(155);
-var descriptor = __webpack_require__(70);
+var descriptor = __webpack_require__(71);
 var setToStringTag = __webpack_require__(156);
 var IteratorPrototype = {};
 
@@ -44783,7 +44783,7 @@ var isArray = __webpack_require__(474);
 var anObject = __webpack_require__(47);
 var toIObject = __webpack_require__(50);
 var toPrimitive = __webpack_require__(146);
-var createDesc = __webpack_require__(70);
+var createDesc = __webpack_require__(71);
 var _create = __webpack_require__(155);
 var gOPNExt = __webpack_require__(475);
 var $GOPD = __webpack_require__(160);
@@ -45004,7 +45004,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ (function(module, exports, __webpack_require__) {
 
 var META = __webpack_require__(90)('meta');
-var isObject = __webpack_require__(69);
+var isObject = __webpack_require__(70);
 var has = __webpack_require__(49);
 var setDesc = __webpack_require__(43).f;
 var id = 0;
@@ -45164,7 +45164,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(482).set });
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(69);
+var isObject = __webpack_require__(70);
 var anObject = __webpack_require__(47);
 var check = function (O, proto) {
   anObject(O);
@@ -45220,7 +45220,7 @@ $export($export.S, 'Object', { create: __webpack_require__(155) });
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = __webpack_require__(94),
-    castPath = __webpack_require__(71),
+    castPath = __webpack_require__(72),
     last = __webpack_require__(249),
     parent = __webpack_require__(512),
     toKey = __webpack_require__(54);
@@ -46950,7 +46950,7 @@ var Stack = __webpack_require__(172),
     equalObjects = __webpack_require__(539),
     getTag = __webpack_require__(114),
     isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(73),
+    isBuffer = __webpack_require__(74),
     isTypedArray = __webpack_require__(111);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -47035,7 +47035,7 @@ module.exports = baseIsEqualDeep;
 
 var Symbol = __webpack_require__(60),
     Uint8Array = __webpack_require__(265),
-    eq = __webpack_require__(72),
+    eq = __webpack_require__(73),
     equalArrays = __webpack_require__(263),
     mapToArray = __webpack_require__(266),
     setToArray = __webpack_require__(113);
@@ -47584,7 +47584,7 @@ module.exports = baseHas;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getChildMapping; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mergeChildMappings; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_has__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_has___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_has__);
@@ -48614,7 +48614,7 @@ module.exports = function (it) {
 "use strict";
 
 var $defineProperty = __webpack_require__(43);
-var createDesc = __webpack_require__(70);
+var createDesc = __webpack_require__(71);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -49618,7 +49618,7 @@ module.exports = {
   'assign': __webpack_require__(293),
   'clone': __webpack_require__(591),
   'curry': __webpack_require__(298),
-  'forEach': __webpack_require__(76),
+  'forEach': __webpack_require__(77),
   'isArray': __webpack_require__(12),
   'isFunction': __webpack_require__(53),
   'iteratee': __webpack_require__(609),
@@ -50025,7 +50025,7 @@ module.exports = insertWrapDetails;
 /* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(76),
+var arrayEach = __webpack_require__(77),
     arrayIncludes = __webpack_require__(102);
 
 /** Used to compose bitmasks for function metadata. */
@@ -50078,7 +50078,7 @@ module.exports = updateWrapDetails;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyArray = __webpack_require__(120),
-    isIndex = __webpack_require__(74);
+    isIndex = __webpack_require__(75);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMin = Math.min;
@@ -50299,7 +50299,7 @@ module.exports = clone;
 /* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var copyObject = __webpack_require__(79),
+var copyObject = __webpack_require__(80),
     keysIn = __webpack_require__(295);
 
 /**
@@ -50323,7 +50323,7 @@ module.exports = baseAssignIn;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(21),
-    isPrototype = __webpack_require__(75),
+    isPrototype = __webpack_require__(76),
     nativeKeysIn = __webpack_require__(594);
 
 /** Used for built-in method references. */
@@ -50429,7 +50429,7 @@ module.exports = cloneBuffer;
 /* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var copyObject = __webpack_require__(79),
+var copyObject = __webpack_require__(80),
     getSymbols = __webpack_require__(174);
 
 /**
@@ -50451,7 +50451,7 @@ module.exports = copySymbols;
 /* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var copyObject = __webpack_require__(79),
+var copyObject = __webpack_require__(80),
     getSymbolsIn = __webpack_require__(296);
 
 /**
@@ -50780,9 +50780,9 @@ module.exports = cloneTypedArray;
 /* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(78),
+var baseCreate = __webpack_require__(79),
     getPrototype = __webpack_require__(123),
-    isPrototype = __webpack_require__(75);
+    isPrototype = __webpack_require__(76);
 
 /**
  * Initializes an object clone.
@@ -52616,7 +52616,7 @@ module.exports = func;
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(14),
-    func = convert('eq', __webpack_require__(72));
+    func = convert('eq', __webpack_require__(73));
 
 func.placeholder = __webpack_require__(13);
 module.exports = func;
@@ -52649,7 +52649,7 @@ module.exports = func;
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(14),
-    func = convert('values', __webpack_require__(80), __webpack_require__(37));
+    func = convert('values', __webpack_require__(81), __webpack_require__(37));
 
 func.placeholder = __webpack_require__(13);
 module.exports = func;
@@ -52702,7 +52702,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ALL_ICONS_IN_ALL_CONTEXTS", function() { return ALL_ICONS_IN_ALL_CONTEXTS; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_values__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_values__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_keys__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_keys__);
@@ -53197,13 +53197,13 @@ keyboardKey.RightSquareBracket = keyboardKey[']'];
 /* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(76),
-    baseCreate = __webpack_require__(78),
+var arrayEach = __webpack_require__(77),
+    baseCreate = __webpack_require__(79),
     baseForOwn = __webpack_require__(170),
     baseIteratee = __webpack_require__(23),
     getPrototype = __webpack_require__(123),
     isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(73),
+    isBuffer = __webpack_require__(74),
     isFunction = __webpack_require__(53),
     isObject = __webpack_require__(21),
     isTypedArray = __webpack_require__(111);
@@ -53472,7 +53472,7 @@ Confirm.propTypes = process.env.NODE_ENV !== "production" ? {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__lib__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__addons_Portal__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__addons_Portal__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__DimmerDimmable__ = __webpack_require__(320);
 
 
@@ -54246,7 +54246,7 @@ Ref.propTypes = process.env.NODE_ENV !== "production" ? {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__lib__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__elements_Icon__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__addons_Portal__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__addons_Portal__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ModalHeader__ = __webpack_require__(328);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ModalContent__ = __webpack_require__(329);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ModalActions__ = __webpack_require__(330);
@@ -54714,7 +54714,7 @@ Radio.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(77);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -57213,7 +57213,7 @@ TextArea.propTypes = process.env.NODE_ENV !== "production" ? {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Portal__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Portal__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modules_Transition__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__lib__ = __webpack_require__(4);
 
@@ -57424,7 +57424,7 @@ TransitionablePortal.propTypes = process.env.NODE_ENV !== "production" ? {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(77);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -58232,7 +58232,7 @@ Form.propTypes = process.env.NODE_ENV !== "production" ? {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(77);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -60601,7 +60601,7 @@ Embed.propTypes = process.env.NODE_ENV !== "production" ? {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__lib__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__addons_Portal__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__addons_Portal__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__PopupContent__ = __webpack_require__(381);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__PopupHeader__ = __webpack_require__(382);
 
@@ -61007,10 +61007,10 @@ Popup.propTypes = process.env.NODE_ENV !== "production" ? {
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(122),
-    copyObject = __webpack_require__(79),
+    copyObject = __webpack_require__(80),
     createAssigner = __webpack_require__(749),
     isArrayLike = __webpack_require__(29),
-    isPrototype = __webpack_require__(75),
+    isPrototype = __webpack_require__(76),
     keys = __webpack_require__(22);
 
 /** Used for built-in method references. */
@@ -61711,7 +61711,7 @@ Rating.propTypes = process.env.NODE_ENV !== "production" ? {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(77);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_slicedToArray__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
@@ -64529,7 +64529,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(64)(content, options);
+var update = __webpack_require__(65)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -64549,7 +64549,7 @@ if(false) {
 /* 795 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(63)(undefined);
+exports = module.exports = __webpack_require__(64)(undefined);
 // imports
 
 
@@ -64789,7 +64789,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(64)(content, options);
+var update = __webpack_require__(65)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -64809,7 +64809,7 @@ if(false) {
 /* 799 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(63)(undefined);
+exports = module.exports = __webpack_require__(64)(undefined);
 // imports
 
 
@@ -64840,7 +64840,7 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _axios = __webpack_require__(83);
+var _axios = __webpack_require__(63);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -65025,7 +65025,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(64)(content, options);
+var update = __webpack_require__(65)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -65045,7 +65045,7 @@ if(false) {
 /* 802 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(63)(undefined);
+exports = module.exports = __webpack_require__(64)(undefined);
 // imports
 
 
@@ -65279,7 +65279,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(64)(content, options);
+var update = __webpack_require__(65)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -65299,7 +65299,7 @@ if(false) {
 /* 806 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(63)(undefined);
+exports = module.exports = __webpack_require__(64)(undefined);
 // imports
 
 
@@ -65330,11 +65330,11 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _axios = __webpack_require__(83);
+var _axios = __webpack_require__(63);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Nav = __webpack_require__(82);
+var _Nav = __webpack_require__(83);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -65547,12 +65547,12 @@ exports.default = Dashboard;
 /* 808 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(63)(undefined);
+exports = module.exports = __webpack_require__(64)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: #f5117b;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 5%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard h1 {\n    margin-top: 0; }\n  .Dashboard p {\n    margin-left: 10px; }\n  .Dashboard .cardWrap {\n    margin-bottom: 40px;\n    margin-left: 44px; }\n  .Dashboard .ui.card .content img {\n    left: 5px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n", ""]);
+exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n\n#storycard {\n  margin-top: 20px;\n  margin-bottom: 60px; }\n\n#storyhome {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 10%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  #storyhome .explore_img {\n    margin: 20px; }\n", ""]);
 
 // exports
 
@@ -65578,7 +65578,7 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _axios = __webpack_require__(83);
+var _axios = __webpack_require__(63);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -65586,7 +65586,7 @@ var _styles = __webpack_require__(135);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _Nav = __webpack_require__(82);
+var _Nav = __webpack_require__(83);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -65613,25 +65613,27 @@ var Main = function (_Component) {
             },
             visible: false,
             filter: {
-                map: '',
-                age: '',
-                sex: ''
+                user_gender: '',
+                user_age_min: '',
+                user_age_max: '',
+                user_prefered_species: ''
             },
             filteredUser: [],
             queue: [] //霖霖 added
 
 
             //霖霖 added
-            //this.like = this.like.bind(this);
-            //this.dislike = this.dislike.bind(this);
-            //霖霖 added
-        };_this.toggleVisibility = function () {
+        };_this.like = _this.like.bind(_this);
+        _this.dislike = _this.dislike.bind(_this);
+        //霖霖 added
+        _this.toggleVisibility = function () {
             return _this.setState({ visible: !_this.state.visible });
         };
         _this.onSubmit = _this.onSubmit.bind(_this);
-        _this.onChangemap = _this.onChangemap.bind(_this);
-        _this.onChangeage = _this.onChangeage.bind(_this);
-        _this.onChangesex = _this.onChangesex.bind(_this);
+        _this.onChangeGender = _this.onChangeGender.bind(_this);
+        _this.onChangeMinAge = _this.onChangeMinAge.bind(_this);
+        _this.onChangeMaxAge = _this.onChangeMaxAge.bind(_this);
+        _this.onChangePetSpecies = _this.onChangePetSpecies.bind(_this);
         return _this;
     }
 
@@ -65654,29 +65656,68 @@ var Main = function (_Component) {
                 });
             });
         }
+
+        //霖霖 added
+
     }, {
-        key: 'onChangemap',
-        value: function onChangemap(e) {
+        key: 'like',
+        value: function like() {
+            var _this3 = this;
+
+            // if queue is empty, we need to add 100 more users
+
+            if (1) {
+                // add users to stack
+                _axios2.default.get('/api/populateQueue').then(function (res) {
+                    _this3.setState({ queue: res.data });
+                    // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+
+                    console.log(res.data);
+                });
+            }
+
+            var cur_other_id = this.state.queue.shift();
+            // we need to check if the other user also liked us
+            _axios2.default.put('/api/like', {
+                user_id: this.state.user_id,
+                other_user_id: this.state.other_user_id
+            }).then(function (res) {});
+        }
+    }, {
+        key: 'dislike',
+        value: function dislike() {}
+    }, {
+        key: 'onChangeGender',
+        value: function onChangeGender(e) {
             var filter = this.state.filter;
-            filter.map = e.target.value;
+            filter.user_gender = e.target.value;
             this.setState({
                 filter: filter
             });
         }
     }, {
-        key: 'onChangeage',
-        value: function onChangeage(e) {
+        key: 'onChangeMinAge',
+        value: function onChangeMinAge(e) {
             var filter = this.state.filter;
-            filter.age = e.target.value;
+            filter.user_age_min = e.target.value;
             this.setState({
                 filter: filter
             });
         }
     }, {
-        key: 'onChangesex',
-        value: function onChangesex(e) {
+        key: 'onChangeMaxAge',
+        value: function onChangeMaxAge(e) {
             var filter = this.state.filter;
-            filter.sex = e.target.value;
+            filter.user_age_max = e.target.value;
+            this.setState({
+                filter: filter
+            });
+        }
+    }, {
+        key: 'onChangePetSpecies',
+        value: function onChangePetSpecies(e) {
+            var filter = this.state.filter;
+            filter.user_prefered_species = e.target.value;
             this.setState({
                 filter: filter
             });
@@ -65684,17 +65725,24 @@ var Main = function (_Component) {
     }, {
         key: 'onSubmit',
         value: function onSubmit(e) {
-            var _this3 = this;
+            var _this4 = this;
 
             e.preventDefault();
-            _axios2.default.post('api/main/filter', this.state.filter).then(function (res) {
-                _this3.setState({
-                    filteredUser: res.data.data
+            _axios2.default.get('/api/get_current_user').then(function (res) {
+                var userId = res.data;
+                _axios2.default.put('api/main/filter/updateUserPreference', _this4.state.filter).then(function (res) {
+                    _axios2.default.post('api/main/filter/getDisiredUser').then(function (res) {
+                        _this4.setState({
+                            filteredUser: res.data.data
+                        });
+                        console.dir("wocao");
+                        console.dir(_this4.state.filteredUser);
+                    });
+
+                    console.log("mabibibibibibibibb");
+                }).catch(function (error) {
+                    console.log(error);
                 });
-                console.dir("wocao");
-                console.dir(_this3.state.filteredUser);
-            }).catch(function (error) {
-                console.log(error);
             });
         }
     }, {
@@ -65769,22 +65817,29 @@ var Main = function (_Component) {
                                     _semanticUiReact.Menu.Item,
                                     { name: 'map' },
                                     _react2.default.createElement(_semanticUiReact.Icon, { name: 'map' }),
-                                    'Map',
-                                    _react2.default.createElement('input', { label: 'map', onChange: this.onChangemap })
+                                    'Prefered Gender',
+                                    _react2.default.createElement('input', { name: 'user_gender', onChange: this.onChangeGender })
                                 ),
                                 _react2.default.createElement(
                                     _semanticUiReact.Menu.Item,
                                     { name: 'users' },
                                     _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
-                                    'Age',
-                                    _react2.default.createElement('input', { label: 'age', onChange: this.onChangeage })
+                                    'Prefered minimum age',
+                                    _react2.default.createElement('input', { name: 'user_age_min', onChange: this.onChangeMinAge })
+                                ),
+                                _react2.default.createElement(
+                                    _semanticUiReact.Menu.Item,
+                                    { name: 'users' },
+                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
+                                    'Prefered maximum age',
+                                    _react2.default.createElement('input', { label: 'user_age_max', onChange: this.onChangeMaxAge })
                                 ),
                                 _react2.default.createElement(
                                     _semanticUiReact.Menu.Item,
                                     { name: 'heterosexual' },
                                     _react2.default.createElement(_semanticUiReact.Icon, { name: 'heterosexual' }),
-                                    'Gender',
-                                    _react2.default.createElement('input', { label: 'sex', onChange: this.onChangesex })
+                                    'Prefered pet species',
+                                    _react2.default.createElement('input', { name: 'user_prefered_species', onChange: this.onChangePetSpecies })
                                 ),
                                 _react2.default.createElement('input', { id: 'filter-submit', type: 'submit' })
                             )
@@ -65852,12 +65907,12 @@ var Main = function (_Component) {
                     ),
                     _react2.default.createElement(
                         'button',
-                        { 'class': 'ui positive button', role: 'button', id: 'main-but' },
+                        { 'class': 'ui positive button', role: 'button', id: 'main-but', onClick: this.like },
                         ' Like '
                     ),
                     _react2.default.createElement(
                         'button',
-                        { 'class': 'ui negative button', role: 'button', id: 'main-but' },
+                        { 'class': 'ui negative button', role: 'button', id: 'main-but', onClick: this.dislike },
                         ' Na.. '
                     )
                 ),
@@ -65915,7 +65970,7 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
-var _axios = __webpack_require__(83);
+var _axios = __webpack_require__(63);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -65923,7 +65978,7 @@ var _styles = __webpack_require__(135);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _Nav = __webpack_require__(82);
+var _Nav = __webpack_require__(83);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -66064,104 +66119,51 @@ var Explore = function (_Component) {
                 _react2.default.createElement(_Nav2.default, null),
                 _react2.default.createElement(
                     'div',
-                    { className: 'Home' },
+                    { id: 'storyhome' },
                     _react2.default.createElement(
                         'h1',
                         null,
                         'Story Line'
                     ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'ui raised card' },
-                        this.state.stories.map(function (idx, number) {
-                            return _react2.default.createElement(
+                    this.state.stories.map(function (idx, number) {
+                        return _react2.default.createElement(
+                            'div',
+                            { className: 'ui raised card', id: 'storycard' },
+                            _react2.default.createElement(
                                 'div',
-                                null,
+                                { id: 'content' },
+                                _react2.default.createElement('br', null),
                                 _react2.default.createElement(
-                                    'div',
-                                    { 'class': 'content' },
-                                    _react2.default.createElement(
-                                        'p',
-                                        null,
-                                        'ID: ',
-                                        number
-                                    ),
-                                    _react2.default.createElement(
-                                        'p',
-                                        null,
-                                        'email: ',
-                                        idx.title
-                                    ),
-                                    _react2.default.createElement(
-                                        'p',
-                                        null,
-                                        'password: ',
-                                        idx.text
-                                    )
+                                    'h1',
+                                    null,
+                                    idx.title
+                                ),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'ID: ',
+                                    number
                                 ),
                                 _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    idx.text
+                                ),
+                                _react2.default.createElement('br', null)
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { id: 'extra content' },
+                                _react2.default.createElement(
                                     'div',
-                                    { 'class': 'extra content' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { 'class': 'right floated author' },
-                                        _react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
-                                        'Matt'
-                                    )
+                                    { 'class': 'right floated author explore_img' },
+                                    _react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
+                                    'Matt'
                                 )
-                            );
-                        })
-                    )
-                ),
-                _react2.default.createElement(
-                    _semanticUiReact.Button,
-                    { id: 'post', color: 'pink', size: 'massive', animated: 'fade', onClick: this.createNewStory },
-                    _react2.default.createElement(
-                        _semanticUiReact.Button.Content,
-                        { visible: true },
-                        'New Story!'
-                    ),
-                    _react2.default.createElement(
-                        _semanticUiReact.Button.Content,
-                        { hidden: true },
-                        _react2.default.createElement(_semanticUiReact.Icon, { name: 'paw' })
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        this.state.message
-                    )
-                ),
-                _react2.default.createElement(
-                    'form',
-                    { className: 'new_story', action: '/', onSubmit: this.onSubmit },
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            'Title'
-                        ),
-                        _react2.default.createElement(
-                            _semanticUiReact.Label,
-                            null,
-                            'Title'
-                        ),
-                        _react2.default.createElement(_semanticUiReact.Input, { id: 'title', onChange: this.onChangeTitle }),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement(
-                            _semanticUiReact.Label,
-                            null,
-                            'Text'
-                        ),
-                        _react2.default.createElement(_semanticUiReact.Input, { id: 'text', onChange: this.onChangeText }),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement(_semanticUiReact.Input, { type: 'submit' }),
-                        _react2.default.createElement('br', null)
-                    )
+                            )
+                        );
+                    })
                 ),
                 _react2.default.createElement(
                     'div',
@@ -66186,7 +66188,56 @@ var Explore = function (_Component) {
                             'Log off'
                         )
                     )
-                )
+                ),
+                _react2.default.createElement(_semanticUiReact.Popup, {
+                    trigger: _react2.default.createElement(
+                        _semanticUiReact.Button,
+                        { id: 'post', color: 'pink', size: 'massive', animated: 'fade', onClick: this.createNewStory },
+                        _react2.default.createElement(
+                            _semanticUiReact.Button.Content,
+                            { visible: true },
+                            'New Story!'
+                        ),
+                        _react2.default.createElement(
+                            _semanticUiReact.Button.Content,
+                            { hidden: true },
+                            _react2.default.createElement(_semanticUiReact.Icon, { name: 'paw' })
+                        )
+                    ),
+                    content: _react2.default.createElement(
+                        'form',
+                        { className: 'new_story', action: '/', onSubmit: this.onSubmit },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(
+                                _semanticUiReact.Label,
+                                null,
+                                'Title'
+                            ),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(_semanticUiReact.Input, { id: 'title', onChange: this.onChangeTitle }),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(
+                                _semanticUiReact.Label,
+                                null,
+                                'Text'
+                            ),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(_semanticUiReact.Input, { id: 'text', onChange: this.onChangeText }),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(_semanticUiReact.Input, { type: 'submit' }),
+                            _react2.default.createElement('br', null)
+                        )
+                    ),
+                    on: 'click',
+                    position: 'top right'
+                })
             );
         }
     }]);
@@ -66204,7 +66255,7 @@ exports.default = Explore;
 
 
 Object.defineProperty(exports, "__esModule", {
-				value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -66217,15 +66268,21 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
+var _axios = __webpack_require__(63);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _styles = __webpack_require__(135);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _Nav = __webpack_require__(82);
+var _Nav = __webpack_require__(83);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66234,662 +66291,906 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Setting = function (_Component) {
-				_inherits(Setting, _Component);
+    _inherits(Setting, _Component);
 
-				function Setting() {
-								_classCallCheck(this, Setting);
+    function Setting(props) {
+        _classCallCheck(this, Setting);
 
-								return _possibleConstructorReturn(this, (Setting.__proto__ || Object.getPrototypeOf(Setting)).apply(this, arguments));
-				}
+        var _this = _possibleConstructorReturn(this, (Setting.__proto__ || Object.getPrototypeOf(Setting)).call(this, props));
 
-				_createClass(Setting, [{
-								key: 'render',
-								value: function render() {
-												return _react2.default.createElement(
-																'div',
-																null,
-																_react2.default.createElement(_Nav2.default, null),
-																_react2.default.createElement(
-																				'div',
-																				{ className: 'Home' },
-																				_react2.default.createElement('h1', null)
-																),
-																_react2.default.createElement(
-																				'form',
-																				{ 'class': 'ui form', id: 'setting_form' },
-																				_react2.default.createElement(
-																								'h1',
-																								{ 'class': 'ui dividing header' },
-																								'Personal Setting'
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'field' },
-																								_react2.default.createElement(
-																												'label',
-																												null,
-																												'Name *'
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'two fields' },
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[first-name]', placeholder: 'First Name' })
-																												),
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[last-name]', placeholder: 'Last Name' })
-																												)
-																								),
-																								_react2.default.createElement(
-																												'label',
-																												null,
-																												'Age'
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'field' },
-																												_react2.default.createElement('input', { type: 'text', name: 'age', placeholder: '20' })
-																								)
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'field' },
-																								_react2.default.createElement(
-																												'label',
-																												null,
-																												'Location'
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'fields' },
-																												_react2.default.createElement(
-																																'div',
-																																{ 'class': 'twelve wide field' },
-																																_react2.default.createElement('input', { type: 'text', name: 'shipping[address]', placeholder: 'Street Address' })
-																												)
-																								)
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'two fields' },
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'field' },
-																												_react2.default.createElement(
-																																'label',
-																																null,
-																																'State'
-																												),
-																												_react2.default.createElement(
-																																'select',
-																																{ 'class': 'ui fluid dropdown' },
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '' },
-																																				'State'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'AL' },
-																																				'Alabama'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'AK' },
-																																				'Alaska'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'AZ' },
-																																				'Arizona'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'AR' },
-																																				'Arkansas'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'CA' },
-																																				'California'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'CO' },
-																																				'Colorado'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'CT' },
-																																				'Connecticut'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'DE' },
-																																				'Delaware'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'DC' },
-																																				'District Of Columbia'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'FL' },
-																																				'Florida'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'GA' },
-																																				'Georgia'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'HI' },
-																																				'Hawaii'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'ID' },
-																																				'Idaho'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'IL' },
-																																				'Illinois'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'IN' },
-																																				'Indiana'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'IA' },
-																																				'Iowa'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'KS' },
-																																				'Kansas'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'KY' },
-																																				'Kentucky'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'LA' },
-																																				'Louisiana'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'ME' },
-																																				'Maine'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MD' },
-																																				'Maryland'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MA' },
-																																				'Massachusetts'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MI' },
-																																				'Michigan'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MN' },
-																																				'Minnesota'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MS' },
-																																				'Mississippi'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MO' },
-																																				'Missouri'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'MT' },
-																																				'Montana'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NE' },
-																																				'Nebraska'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NV' },
-																																				'Nevada'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NH' },
-																																				'New Hampshire'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NJ' },
-																																				'New Jersey'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NM' },
-																																				'New Mexico'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NY' },
-																																				'New York'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'NC' },
-																																				'North Carolina'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'ND' },
-																																				'North Dakota'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'OH' },
-																																				'Ohio'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'OK' },
-																																				'Oklahoma'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'OR' },
-																																				'Oregon'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'PA' },
-																																				'Pennsylvania'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'RI' },
-																																				'Rhode Island'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'SC' },
-																																				'South Carolina'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'SD' },
-																																				'South Dakota'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'TN' },
-																																				'Tennessee'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'TX' },
-																																				'Texas'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'UT' },
-																																				'Utah'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'VT' },
-																																				'Vermont'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'VA' },
-																																				'Virginia'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'WA' },
-																																				'Washington'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'WV' },
-																																				'West Virginia'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'WI' },
-																																				'Wisconsin'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: 'WY' },
-																																				'Wyoming'
-																																)
-																												)
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'field' },
-																												_react2.default.createElement(
-																																'label',
-																																null,
-																																'County'
-																												),
-																												_react2.default.createElement(
-																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'country' },
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '' },
-																																				'USA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '1' },
-																																				'CHINA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '2' },
-																																				'INDIA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '3' },
-																																				'JAPAN'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '4' },
-																																				'CANADA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '5' },
-																																				'RUSSIA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '6' },
-																																				'GERMAN'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '7' },
-																																				'UK'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '8' },
-																																				'BRAZIL'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '9' },
-																																				'AUSTRILIA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '10' },
-																																				'MEXICO'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '11' },
-																																				'KOREA'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '12' },
-																																				'OTHER'
-																																)
-																												)
-																								)
-																				),
-																				_react2.default.createElement(
-																								'h4',
-																								{ 'class': 'ui dividing header' },
-																								'Pet Information'
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'two fields' },
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'field' },
-																												_react2.default.createElement(
-																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'type' },
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '' },
-																																				'SPECIES *'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '1' },
-																																				'dog'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '2' },
-																																				'cat'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '3' },
-																																				'fish'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '4' },
-																																				'human'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '5' },
-																																				'Pikachu'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '6' },
-																																				'Pig'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '7' },
-																																				'Squirrel'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '8' },
-																																				'Rabbit'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '9' },
-																																				'Turtle'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '10' },
-																																				'Lizard'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '11' },
-																																				'Bird'
-																																)
-																												)
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'field' },
-																												_react2.default.createElement(
-																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'prefer' },
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '' },
-																																				'PREFER SPECIES *'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '1' },
-																																				'dog'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '2' },
-																																				'cat'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '3' },
-																																				'fish'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '4' },
-																																				'human'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '5' },
-																																				'Pikachu'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '6' },
-																																				'Pig'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '7' },
-																																				'Squirrel'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '8' },
-																																				'Rabbit'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '9' },
-																																				'Turtle'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '10' },
-																																				'Lizard'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '11' },
-																																				'Bird'
-																																)
-																												)
-																								)
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'fields' },
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'seven wide field' },
-																												_react2.default.createElement(
-																																'label',
-																																null,
-																																'Gender'
-																												),
-																												_react2.default.createElement(
-																																'select',
-																																{ 'class': 'ui fluid search dropdown', name: 'gender' },
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '' },
-																																				'female'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '1' },
-																																				'male'
-																																),
-																																_react2.default.createElement(
-																																				'option',
-																																				{ value: '2' },
-																																				'middle'
-																																)
-																												)
-																								),
-																								_react2.default.createElement(
-																												'div',
-																												{ 'class': 'three wide field' },
-																												_react2.default.createElement(
-																																'label',
-																																null,
-																																'Age'
-																												),
-																												_react2.default.createElement('input', { type: 'text', name: 'petage', maxlength: '3', placeholder: '1' })
-																								)
-																				),
-																				_react2.default.createElement(
-																								'div',
-																								{ 'class': 'ui button', tabindex: '0' },
-																								'Submit Order'
-																				)
-																),
-																_react2.default.createElement(
-																				'div',
-																				{ 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
-																				_react2.default.createElement(
-																								_reactRouterDom.Link,
-																								{ to: '/dashboard' },
-																								_react2.default.createElement(
-																												'a',
-																												{ 'class': 'item' },
-																												_react2.default.createElement('i', { 'class': 'home icon' }),
-																												'Home'
-																								)
-																				),
-																				_react2.default.createElement(
-																								_reactRouterDom.Link,
-																								{ to: '/', onClick: this.logOut },
-																								_react2.default.createElement(
-																												'a',
-																												{ 'class': 'item' },
-																												_react2.default.createElement('i', { 'class': 'send outline icon' }),
-																												'Log off'
-																								)
-																				)
-																)
-												);
-								}
-				}]);
+        _this.state = {
+            userId: "",
+            firstName: "",
+            lastName: "",
+            age: "",
+            gender: "",
+            preferedGender: "",
+            preferedUserAgeMin: "",
+            preferedUserAgeMax: "",
+            address: "",
+            city: "",
+            state: "",
+            country: "",
+            species: "",
+            preferedSpecies: "",
+            petAge: "",
+            petGender: "",
+            preferedPetAgeMin: "",
+            preferedPetAgeMax: ""
+        };
 
-				return Setting;
+        _this.handleInputChange = _this.handleInputChange.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        return _this;
+    }
+
+    _createClass(Setting, [{
+        key: 'handleInputChange',
+        value: function handleInputChange(event) {
+            var target = event.target;
+            var value = target.value;
+            var name = target.name;
+
+            this.setState(_defineProperty({}, name, value));
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var _this2 = this;
+
+            _axios2.default.get('/api/get_current_user').then(function (res) {
+                console.dir(res.data);
+                var id = res.data.user._id;
+                console.log(id);
+                var path = "api/users/" + id.toString();
+
+                _axios2.default.get(path).then(function (res) {
+                    var currentSetting = res.data.data;
+                    console.dir(currentSetting);
+                    _this2.setState({
+                        userId: id,
+                        firstName: currentSetting.first_name,
+                        lastName: currentSetting.last_name,
+                        age: currentSetting.age,
+                        gender: currentSetting.user_gender,
+                        preferedGender: currentSetting.prefered_user_gender,
+                        preferedUserAgeMin: currentSetting.prefered_user_age_min,
+                        preferedUserAgeMax: currentSetting.prefered_user_age_max,
+                        address: currentSetting.address,
+                        city: currentSetting.city,
+                        state: currentSetting.state,
+                        country: currentSetting.country,
+                        species: currentSetting.pet_spiecie,
+                        preferedSpecies: currentSetting.prefered_species,
+                        petAge: currentSetting.pet_age,
+                        petGender: currentSetting.prefered_pet_gender,
+                        preferedPetAgeMin: currentSetting.prefered_pet_age_min,
+                        preferedPetAgeMax: currentSetting.prefered_pet_age_max
+                    });
+                }).catch(function (err) {
+                    console.log("hehe1");
+                });
+            }).catch(function (err) {
+                console.log("hehe2");
+            });
+        }
+    }, {
+        key: 'handleSubmit',
+        value: function handleSubmit(event) {
+            var newSetting = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                age: this.state.age,
+                gender: this.state.gender,
+                preferedGender: this.state.preferedGender,
+                preferedUserAgeMin: this.state.preferedUserAgeMin,
+                preferedUserAgeMax: this.state.preferedUserAgeMax,
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                country: this.state.country,
+                species: this.state.species,
+                preferedSpecies: this.state.preferedSpecies,
+                petAge: this.state.petAge,
+                petGender: this.state.petGender,
+                preferedPetAgeMin: this.state.preferedPetAgeMin,
+                preferedPetAgeMax: this.state.preferedPetAgeMax
+                //console.dir(newSetting);
+            };var path = "/api/users/" + this.state.userId.toString();
+            console.log(path);
+            //console.dir(newSetting);
+            _axios2.default.put(path, newSetting).then(function (res) {
+                console.log("hehe3");
+            }).catch(function () {
+                console.log("hehe4");
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_Nav2.default, null),
+                _react2.default.createElement(
+                    'form',
+                    { className: 'ui form', id: 'setting_form', onSubmit: this.handleSubmit },
+                    _react2.default.createElement(
+                        'h1',
+                        { className: 'ui dividing header' },
+                        'Personal Setting'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'field' },
+                        _react2.default.createElement(
+                            'label',
+                            null,
+                            'Name *'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'two fields' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'field' },
+                                _react2.default.createElement('input', { type: 'text', name: 'firstName', placeholder: 'First Name', value: this.state.firstName, onChange: this.handleInputChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'field' },
+                                _react2.default.createElement('input', { type: 'text', name: 'lastName', placeholder: 'Last Name', value: this.state.lastName, onChange: this.handleInputChange })
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'eight wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Age'
+                            ),
+                            _react2.default.createElement('input', { type: 'number', name: 'age', placeholder: 20, value: this.state.age, onChange: this.handleInputChange })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'eight wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Gender'
+                            ),
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid search dropdown', name: 'gender', value: this.state.gender, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '' },
+                                    'Gender'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'female' },
+                                    'Female'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'male' },
+                                    'Male'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'neutral' },
+                                    'Neutral'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'six wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Prefered User Gender'
+                            ),
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid search dropdown', name: 'preferedGender', value: this.state.preferedGender, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '' },
+                                    'Gender'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'female' },
+                                    'Female'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'male' },
+                                    'Male'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'neutral' },
+                                    'Neutral'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'five wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Prefered User Age Min'
+                            ),
+                            _react2.default.createElement('input', { type: 'number', name: 'preferedUserAgeMin', maxLength: '3', placeholder: 0, value: this.state.preferedUserAgeMin, onChange: this.handleInputChange })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'five wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Prefered User Age Max'
+                            ),
+                            _react2.default.createElement('input', { type: 'number', name: 'preferedUserAgeMax', maxLength: '3', placeholder: 0, value: this.state.preferedUserAgeMax, onChange: this.handleInputChange })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'twelve wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Location'
+                            ),
+                            _react2.default.createElement('input', { type: 'text', name: 'address', placeholder: 'Street Address', value: this.state.address, onChange: this.handleInputChange })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'four wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'City'
+                            ),
+                            _react2.default.createElement('input', { type: 'text', name: 'city', placeholder: 'Current City', value: this.state.city, onChange: this.handleInputChange })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'two fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'State'
+                            ),
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid dropdown', name: 'state', value: this.state.state, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '' },
+                                    'State'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'AL' },
+                                    'Alabama'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'AK' },
+                                    'Alaska'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'AZ' },
+                                    'Arizona'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'AR' },
+                                    'Arkansas'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'CA' },
+                                    'California'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'CO' },
+                                    'Colorado'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'CT' },
+                                    'Connecticut'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'DE' },
+                                    'Delaware'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'DC' },
+                                    'District Of Columbia'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'FL' },
+                                    'Florida'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'GA' },
+                                    'Georgia'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'HI' },
+                                    'Hawaii'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'ID' },
+                                    'Idaho'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'IL' },
+                                    'Illinois'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'IN' },
+                                    'Indiana'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'IA' },
+                                    'Iowa'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'KS' },
+                                    'Kansas'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'KY' },
+                                    'Kentucky'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'LA' },
+                                    'Louisiana'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'ME' },
+                                    'Maine'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MD' },
+                                    'Maryland'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MA' },
+                                    'Massachusetts'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MI' },
+                                    'Michigan'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MN' },
+                                    'Minnesota'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MS' },
+                                    'Mississippi'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MO' },
+                                    'Missouri'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'MT' },
+                                    'Montana'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NE' },
+                                    'Nebraska'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NV' },
+                                    'Nevada'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NH' },
+                                    'New Hampshire'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NJ' },
+                                    'New Jersey'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NM' },
+                                    'New Mexico'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NY' },
+                                    'New York'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'NC' },
+                                    'North Carolina'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'ND' },
+                                    'North Dakota'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'OH' },
+                                    'Ohio'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'OK' },
+                                    'Oklahoma'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'OR' },
+                                    'Oregon'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'PA' },
+                                    'Pennsylvania'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'RI' },
+                                    'Rhode Island'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'SC' },
+                                    'South Carolina'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'SD' },
+                                    'South Dakota'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'TN' },
+                                    'Tennessee'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'TX' },
+                                    'Texas'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'UT' },
+                                    'Utah'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'VT' },
+                                    'Vermont'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'VA' },
+                                    'Virginia'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'WA' },
+                                    'Washington'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'WV' },
+                                    'West Virginia'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'WI' },
+                                    'Wisconsin'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'WY' },
+                                    'Wyoming'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'County'
+                            ),
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid search dropdown', name: 'country', value: this.state.country, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '' },
+                                    'County'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '0' },
+                                    'USA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '1' },
+                                    'CHINA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '2' },
+                                    'INDIA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '3' },
+                                    'JAPAN'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '4' },
+                                    'CANADA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '5' },
+                                    'RUSSIA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '6' },
+                                    'GERMAN'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '7' },
+                                    'UK'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '8' },
+                                    'BRAZIL'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '9' },
+                                    'AUSTRILIA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '10' },
+                                    'MEXICO'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '11' },
+                                    'KOREA'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '12' },
+                                    'OTHER'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'h4',
+                        { className: 'ui dividing header' },
+                        'Pet Information'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'two fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'field' },
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid search dropdown', name: 'species', value: this.state.species, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '' },
+                                    'SPECIES *'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '1' },
+                                    'dog'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '2' },
+                                    'cat'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '3' },
+                                    'fish'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '4' },
+                                    'human'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '5' },
+                                    'Pikachu'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '6' },
+                                    'Pig'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '7' },
+                                    'Squirrel'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '8' },
+                                    'Rabbit'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '9' },
+                                    'Turtle'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '10' },
+                                    'Lizard'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '11' },
+                                    'Bird'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'field' },
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid search dropdown', name: 'preferedSpecies', value: this.state.preferedSpecies, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '0' },
+                                    'PREFER SPECIES* '
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '1' },
+                                    'dog'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '2' },
+                                    'cat'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '3' },
+                                    'fish'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '4' },
+                                    'human'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '5' },
+                                    'Pikachu'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '6' },
+                                    'Pig'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '7' },
+                                    'Squirrel'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '8' },
+                                    'Rabbit'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '9' },
+                                    'Turtle'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '10' },
+                                    'Lizard'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '11' },
+                                    'Bird'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'eight wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Gender'
+                            ),
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'ui fluid search dropdown', name: 'petGender', value: this.state.petGender, onChange: this.handleInputChange },
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: '' },
+                                    'Gender'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'female' },
+                                    'Female'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'male' },
+                                    'Male'
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    { value: 'neutral' },
+                                    'Neutral'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'eight wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Age'
+                            ),
+                            _react2.default.createElement('input', { type: 'number', name: 'petAge', maxLength: '3', placeholder: 1, value: this.state.petAge, onChange: this.handleInputChange })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'fields' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'eight wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Prefered Age Min'
+                            ),
+                            _react2.default.createElement('input', { type: 'number', name: 'preferedPetAgeMin', maxLength: '3', placeholder: 1, value: this.state.preferedPetAgeMin, onChange: this.handleInputChange })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'eight wide field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Prefered Age Max'
+                            ),
+                            _react2.default.createElement('input', { type: 'number', name: 'preferedPetAgeMax', maxLength: '3', placeholder: 100, value: this.state.preferedPetAgeMax, onChange: this.handleInputChange })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _semanticUiReact.Button,
+                        { type: 'submit', color: 'pink', size: 'huge', animated: 'fade', onClick: this.handleSubmit },
+                        _react2.default.createElement(
+                            _semanticUiReact.Button.Content,
+                            { visible: true },
+                            'Submit!'
+                        ),
+                        _react2.default.createElement(
+                            _semanticUiReact.Button.Content,
+                            { hidden: true },
+                            _react2.default.createElement(_semanticUiReact.Icon, { name: 'thumbs outline up' })
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'ui vertical labeled icon menu', id: 'nav-down' },
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/dashboard' },
+                        _react2.default.createElement(
+                            'a',
+                            { className: 'item' },
+                            _react2.default.createElement('i', { className: 'home icon' }),
+                            'Home'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/', onClick: this.logOut },
+                        _react2.default.createElement(
+                            'a',
+                            { className: 'item' },
+                            _react2.default.createElement('i', { className: 'send outline icon' }),
+                            'Log off'
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Setting;
 }(_react.Component);
 
 exports.default = Setting;
@@ -66909,7 +67210,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(64)(content, options);
+var update = __webpack_require__(65)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -66929,7 +67230,7 @@ if(false) {
 /* 813 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(63)(undefined);
+exports = module.exports = __webpack_require__(64)(undefined);
 // imports
 
 
