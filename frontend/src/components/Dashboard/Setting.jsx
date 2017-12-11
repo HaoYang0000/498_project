@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
+import Upload from '../Upload/Upload.jsx'
 
 class Setting extends Component {
     constructor(props) {
@@ -124,8 +125,10 @@ class Setting extends Component {
         return(
         	<div>
                 <Nav/>
-	              <form className="ui form" id="setting_form" onSubmit={this.handleSubmit}>
-				  <h1 className="ui dividing header">Personal Setting</h1>
+                <div className="ui form" >
+                
+	              <form id="setting_form" onSubmit={this.handleSubmit}>
+				  <h1 className="ui dividing header">Personal Setting</h1> 
 				  <div className="field">
 				    <label>Name *</label>
 				    <div className="two fields">
@@ -328,6 +331,8 @@ class Setting extends Component {
                        </Button.Content>
                    </Button>
 				</form>
+        </div>
+        <Upload type={'Profile'}/>
 
 				<div className="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
