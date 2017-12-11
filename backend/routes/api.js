@@ -1,5 +1,11 @@
 var User = require('../models/user');
 var Story = require('../models/storySchema');
+var Image = require('../models/image');
+//For upload
+const multer  = require('multer');
+const upload = multer({ dest: 'backend/static/uploads/'});
+const fs = require('fs');
+var type = upload.single('file');
 
 module.exports = function(router, passport) {
     // part one: filter out desired users 
@@ -126,9 +132,31 @@ module.exports = function(router, passport) {
         });
     });
 
+    router.get('/get_profile_image',
+        function(req, res) {
+
+            Image.findOne({user_id:req.user._id, type:"Profile"}, function(err, image) {
+                if (err) {
+                    res.status(500).json({
+                        image:'error'
+                    });
+                } else {
+                    if (image == null){
+                        res.status(404).json({
+                            image:''
+                        });
+                    } else {
+                        res.status(200).json({
+                            image:image
+                        });
+                    }
+                }
+            });
+    });
+
     router.get('/get_current_user',
         function(req, res) {
-            console.log(req.isAuthenticated());
+            console.log(req.user.id);
             res.status(200).json({ user: req.user
         });
     });
@@ -175,6 +203,36 @@ module.exports = function(router, passport) {
                 }
 			}
         });
+    });
+
+    //Upload image
+    router.post('/upload', type, function (req,res) {
+
+        
+      var tmp_path = req.file.path;
+      
+      var target_path = 'backend/static/uploads/' + req.file.originalname;
+
+      var image = new Image();
+      image.original_name = req.file.originalname;
+      image.hashed_name = image.generateHash(req.file.originalname);
+      image.user_id = req.user.id;
+      image.path = 'uploads/' + req.file.originalname;
+      image.type = req.body.type;
+      image.save();
+
+      var src = fs.createReadStream(tmp_path);
+      var dest = fs.createWriteStream(target_path);
+      src.pipe(dest);
+      src.on('end', function() { 
+        console.log('complete'); 
+        res.redirect('/setting');
+      });
+      src.on('error', function(err) { 
+        console.log('complete'); 
+        res.redirect('/error');
+       });
+
     });
 
     //----------------Show story line------------------------------
