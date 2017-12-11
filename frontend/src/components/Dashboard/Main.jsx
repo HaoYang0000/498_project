@@ -22,6 +22,7 @@ class Main extends Component {
                 user_age_max:'',
                 user_prefered_species:''
             },
+            cur_desired_user: {},
             filteredUser: [],
             queue: []  //霖霖 added
         }
@@ -62,6 +63,8 @@ class Main extends Component {
                 console.log("populating the queue");
                 this.setState({queue: this.state.queue.concat(res.data.data)});   // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
                 console.log("queue after populating", this.state.queue);
+            }).then((res) => {
+                this.setState({cur_desired_user: this.state.queue.shift()});
             });
         }
     }
@@ -69,19 +72,53 @@ class Main extends Component {
 
     //霖霖 added
     like() {
-        var cur_other_id = this.state.queue.shift();
+        var cur_other_id = this.state.cur_desired_user._id;
+        //console.log("cur_desired_user", cur_other_id);
         // we need to check if the other user also liked us
         axios.put('/api/like', {
            user_id: this.state.currentUser.id,
-           other_user_id: cur_other_id._id
+           other_user_id: cur_other_id
        })
        .then((res) => {
-           
+           let new_queue = this.state.queue;
+           let next = new_queue.shift();
+           this.setState({cur_desired_user: next});
+           this.setState({queue: new_queue});
        });
+
+       // if queue is empty, we need to add 100 more users
+       if(this.state.queue) {
+           // add users to stack
+           axios.get('/api/populateQueue')
+           .then((res) => {
+               console.log("populating the queue");
+               this.setState({queue: this.state.queue.concat(res.data.data)});   // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+               console.log("queue after populating", this.state.queue);
+           }).then((res) => {
+               this.setState({cur_desired_user: this.state.queue.shift()});
+           });
+       }
    }
 
-   dislike() {
 
+   dislike() {
+       let new_queue = this.state.queue;
+       let next = new_queue.shift();
+       this.setState({cur_desired_user: next});
+       this.setState({queue: new_queue});
+
+       // if queue is empty, we need to add 100 more users
+       if(this.state.queue) {
+           // add users to stack
+           axios.get('/api/populateQueue')
+           .then((res) => {
+               console.log("populating the queue");
+               this.setState({queue: this.state.queue.concat(res.data.data)});   // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+               console.log("queue after populating", this.state.queue);
+           }).then((res) => {
+               this.setState({cur_desired_user: this.state.queue.shift()});
+           });
+       }
    }
 
 
@@ -122,17 +159,19 @@ class Main extends Component {
             var userId = res.data;
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
-                axios.post('api/main/filter/getDisiredUser').then(res => {
+                axios.get('api/populateQueue').then(res => {
                     this.setState({
-                    filteredUser: res.data.data
+                        queue: res.data.data
                     });
-                    console.dir("wocao")
-                   console.dir(this.state.filteredUser);
+
+               }).then ((res) => {
+                    if (this.state.filteredUser != null) {
+                        this.state.cur_desired_user = this.state.queue.shift();
+                    }
                 })
 
                 console.log("mabibibibibibibibb");
-            })
-            .catch(function (error) {
+            }) .catch(function (error) {
                 console.log(error);
             });
         })
@@ -143,24 +182,10 @@ class Main extends Component {
         const { visible } = this.state;
 
         return(
-<<<<<<< HEAD
-            <div>
-                <div>
-                {this.state.filteredUser.map((idx, number) =>
-                            	<div>
-                            	<div class="content">
-									    <p>ID: {number}</p>
-									    <p>email: {idx.id}</p>
-                                        <p>password: {idx.password}</p>
-                                        <p> email: {idx.email} </p>
-                                        <p> age:{idx.age} </p>
-								</div>
-								</div>
-                )}
-                </div>
-=======
+
+
+
             <div className="Mainpage">
->>>>>>> master
                 <Nav/>
                 <div id="filter-div">
                     <Sidebar.Pushable>
@@ -200,26 +225,25 @@ class Main extends Component {
 
                     <div className='prepffered_user'>
                             <Card.Group>
-                                {this.state.filteredUser.map((idx, number) =>
-                                    <div className="cardWrapping">
-                                        <Card>
-                                            <Card.Content>
-                                                <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/> 
-                                                <Card.Header> 
-                                                    <p>email: {idx.email}</p>
-                                                    <p> age:{idx.age} </p>                                                 </Card.Header>
-                                                <Card.Meta> 
-                                                    <p>_id: {idx._id}</p>
-                                                </Card.Meta>
-                                            </Card.Content>
-                                            
-                                        </Card>
-                                    </div>
-                                )}
+                                <div className="cardWrapping">
+                                    <Card>
+                                        <Card.Content>
+                                            <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/>
+                                            <Card.Header>
+                                                <p>email: {this.state.cur_desired_user.email}</p>
+                                                <p> age:{this.state.cur_desired_user.age} </p>
+                                            </Card.Header>
+                                            <Card.Meta>
+                                                <p>_id: {this.state.cur_desired_user._id}</p>
+                                            </Card.Meta>
+                                        </Card.Content>
+
+                                    </Card>
+                                </div>
                             </Card.Group>
                         </div>
 
-                   
+
                     <button class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
                     <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>

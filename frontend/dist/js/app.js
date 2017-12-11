@@ -65602,10 +65602,400 @@ exports.push([module.i, ".mainPage {\n  position: relative;\n  height: 100%;\n  
 
 /***/ }),
 /* 809 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (146:1)\n\n\u001b[0m \u001b[90m 144 | \u001b[39m\n \u001b[90m 145 | \u001b[39m        \u001b[36mreturn\u001b[39m(\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 146 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m     | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 147 | \u001b[39m            \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 148 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 149 | \u001b[39m                {\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mfilteredUser\u001b[33m.\u001b[39mmap((idx\u001b[33m,\u001b[39m number) \u001b[33m=>\u001b[39m\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = __webpack_require__(31);
+
+var _reactRouterDom = __webpack_require__(30);
+
+var _axios = __webpack_require__(64);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _styles = __webpack_require__(135);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+var _Nav = __webpack_require__(83);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Main = function (_Component) {
+    _inherits(Main, _Component);
+
+    function Main() {
+        _classCallCheck(this, Main);
+
+        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
+
+        _this.state = {
+            currentUser: {
+                id: '',
+                email: ''
+            },
+            visible: false,
+            filter: {
+                user_gender: '',
+                user_age_min: '',
+                user_age_max: '',
+                user_prefered_species: ''
+            },
+            cur_desired_user: {},
+            filteredUser: [],
+            queue: [] //霖霖 added
+
+
+            //霖霖 added
+        };_this.like = _this.like.bind(_this);
+        _this.dislike = _this.dislike.bind(_this);
+        //霖霖 added
+        _this.toggleVisibility = function () {
+            return _this.setState({ visible: !_this.state.visible });
+        };
+        _this.onSubmit = _this.onSubmit.bind(_this);
+        _this.onChangeGender = _this.onChangeGender.bind(_this);
+        _this.onChangeMinAge = _this.onChangeMinAge.bind(_this);
+        _this.onChangeMaxAge = _this.onChangeMaxAge.bind(_this);
+        _this.onChangePetSpecies = _this.onChangePetSpecies.bind(_this);
+        return _this;
+    }
+
+    _createClass(Main, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            _axios2.default.get('/api/get_current_user', {}).then(function (res) {
+                _this2.setState({
+                    currentUser: {
+                        id: res.data.user._id,
+                        email: res.data.user.email
+                    }
+                });
+            }).catch(function (err) {
+                _this2.setState({
+                    id: res.data.user.id,
+                    currentUser: { email: res.data.user.email }
+                });
+            });
+
+            //霖霖 周五 12/10
+            // if queue is empty, we need to add 100 more users
+            if (this.state.queue) {
+                // add users to stack
+                _axios2.default.get('/api/populateQueue').then(function (res) {
+                    console.log("populating the queue");
+                    _this2.setState({ queue: _this2.state.queue.concat(res.data.data) }); // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+                    console.log("queue after populating", _this2.state.queue);
+                }).then(function (res) {
+                    _this2.setState({ cur_desired_user: _this2.state.queue.shift() });
+                });
+            }
+        }
+
+        //霖霖 added
+
+    }, {
+        key: 'like',
+        value: function like() {
+            var _this3 = this;
+
+            var cur_other_id = this.state.cur_desired_user._id;
+            //console.log("cur_desired_user", cur_other_id);
+            // we need to check if the other user also liked us
+            _axios2.default.put('/api/like', {
+                user_id: this.state.currentUser.id,
+                other_user_id: cur_other_id
+            }).then(function (res) {
+                var new_queue = _this3.state.queue;
+                var next = new_queue.shift();
+                _this3.setState({ cur_desired_user: next });
+                _this3.setState({ queue: new_queue });
+            });
+
+            // if queue is empty, we need to add 100 more users
+            if (this.state.queue) {
+                // add users to stack
+                _axios2.default.get('/api/populateQueue').then(function (res) {
+                    console.log("populating the queue");
+                    _this3.setState({ queue: _this3.state.queue.concat(res.data.data) }); // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+                    console.log("queue after populating", _this3.state.queue);
+                }).then(function (res) {
+                    _this3.setState({ cur_desired_user: _this3.state.queue.shift() });
+                });
+            }
+        }
+    }, {
+        key: 'dislike',
+        value: function dislike() {
+            var _this4 = this;
+
+            var new_queue = this.state.queue;
+            var next = new_queue.shift();
+            this.setState({ cur_desired_user: next });
+            this.setState({ queue: new_queue });
+
+            // if queue is empty, we need to add 100 more users
+            if (this.state.queue) {
+                // add users to stack
+                _axios2.default.get('/api/populateQueue').then(function (res) {
+                    console.log("populating the queue");
+                    _this4.setState({ queue: _this4.state.queue.concat(res.data.data) }); // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+                    console.log("queue after populating", _this4.state.queue);
+                }).then(function (res) {
+                    _this4.setState({ cur_desired_user: _this4.state.queue.shift() });
+                });
+            }
+        }
+    }, {
+        key: 'onChangeGender',
+        value: function onChangeGender(e) {
+            var filter = this.state.filter;
+            filter.user_gender = e.target.value;
+            this.setState({
+                filter: filter
+            });
+        }
+    }, {
+        key: 'onChangeMinAge',
+        value: function onChangeMinAge(e) {
+            var filter = this.state.filter;
+            filter.user_age_min = e.target.value;
+            this.setState({
+                filter: filter
+            });
+        }
+    }, {
+        key: 'onChangeMaxAge',
+        value: function onChangeMaxAge(e) {
+            var filter = this.state.filter;
+            filter.user_age_max = e.target.value;
+            this.setState({
+                filter: filter
+            });
+        }
+    }, {
+        key: 'onChangePetSpecies',
+        value: function onChangePetSpecies(e) {
+            var filter = this.state.filter;
+            filter.user_prefered_species = e.target.value;
+            this.setState({
+                filter: filter
+            });
+        }
+    }, {
+        key: 'onSubmit',
+        value: function onSubmit(e) {
+            var _this5 = this;
+
+            e.preventDefault();
+            _axios2.default.get('/api/get_current_user').then(function (res) {
+                var userId = res.data;
+                _axios2.default.put('api/main/filter/updateUserPreference', _this5.state.filter).then(function (res) {
+                    _axios2.default.get('api/populateQueue').then(function (res) {
+                        _this5.setState({
+                            queue: res.data.data
+                        });
+                    }).then(function (res) {
+                        if (_this5.state.filteredUser != null) {
+                            _this5.state.cur_desired_user = _this5.state.queue.shift();
+                        }
+                    });
+
+                    console.log("mabibibibibibibibb");
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var visible = this.state.visible;
+
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'Mainpage' },
+                _react2.default.createElement(_Nav2.default, null),
+                _react2.default.createElement(
+                    'div',
+                    { id: 'filter-div' },
+                    _react2.default.createElement(
+                        _semanticUiReact.Sidebar.Pushable,
+                        null,
+                        _react2.default.createElement(
+                            _semanticUiReact.Sidebar,
+                            { as: _semanticUiReact.Menu, animation: 'push', width: 'thin', visible: visible, icon: 'labeled', vertical: true, inverted: true, id: 'main-sidebar' },
+                            _react2.default.createElement(
+                                'form',
+                                { className: 'filter-main', action: '', onSubmit: this.onSubmit },
+                                _react2.default.createElement(
+                                    _semanticUiReact.Menu.Item,
+                                    { name: 'map' },
+                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'map' }),
+                                    'Prefered Gender',
+                                    _react2.default.createElement('input', { name: 'user_gender', onChange: this.onChangeGender })
+                                ),
+                                _react2.default.createElement(
+                                    _semanticUiReact.Menu.Item,
+                                    { name: 'users' },
+                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
+                                    'Prefered minimum age',
+                                    _react2.default.createElement('input', { name: 'user_age_min', onChange: this.onChangeMinAge })
+                                ),
+                                _react2.default.createElement(
+                                    _semanticUiReact.Menu.Item,
+                                    { name: 'users' },
+                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
+                                    'Prefered maximum age',
+                                    _react2.default.createElement('input', { label: 'user_age_max', onChange: this.onChangeMaxAge })
+                                ),
+                                _react2.default.createElement(
+                                    _semanticUiReact.Menu.Item,
+                                    { name: 'heterosexual' },
+                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'heterosexual' }),
+                                    'Prefered pet species',
+                                    _react2.default.createElement('input', { name: 'user_prefered_species', onChange: this.onChangePetSpecies })
+                                ),
+                                _react2.default.createElement('input', { id: 'filter-submit', type: 'submit' })
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _semanticUiReact.Sidebar.Pusher,
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                { id: 'sidebar-but', onClick: this.toggleVisibility },
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'FILTER'
+                                )
+                            )
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'Home' },
+                    _react2.default.createElement(
+                        'h1',
+                        null,
+                        'PAIR PAIR PAIR'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'prepffered_user' },
+                        _react2.default.createElement(
+                            _semanticUiReact.Card.Group,
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'cardWrapping' },
+                                _react2.default.createElement(
+                                    _semanticUiReact.Card,
+                                    null,
+                                    _react2.default.createElement(
+                                        _semanticUiReact.Card.Content,
+                                        null,
+                                        _react2.default.createElement(_semanticUiReact.Image, { className: 'profile_img', src: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png' }),
+                                        _react2.default.createElement(
+                                            _semanticUiReact.Card.Header,
+                                            null,
+                                            _react2.default.createElement(
+                                                'p',
+                                                null,
+                                                'email: ',
+                                                this.state.cur_desired_user.email
+                                            ),
+                                            _react2.default.createElement(
+                                                'p',
+                                                null,
+                                                ' age:',
+                                                this.state.cur_desired_user.age,
+                                                ' '
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            _semanticUiReact.Card.Meta,
+                                            null,
+                                            _react2.default.createElement(
+                                                'p',
+                                                null,
+                                                '_id: ',
+                                                this.state.cur_desired_user._id
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { 'class': 'ui positive button', role: 'button', id: 'main-but', onClick: this.like },
+                        ' Like '
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { 'class': 'ui negative button', role: 'button', id: 'main-but', onClick: this.dislike },
+                        ' Na.. '
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/dashboard' },
+                        _react2.default.createElement(
+                            'a',
+                            { 'class': 'item' },
+                            _react2.default.createElement('i', { 'class': 'home icon' }),
+                            'Home'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/', onClick: this.logOut },
+                        _react2.default.createElement(
+                            'a',
+                            { 'class': 'item' },
+                            _react2.default.createElement('i', { 'class': 'send outline icon' }),
+                            'Log off'
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Main;
+}(_react.Component);
+
+exports.default = Main;
 
 /***/ }),
 /* 810 */

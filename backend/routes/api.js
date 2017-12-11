@@ -9,26 +9,26 @@ var type = upload.single('file');
 
 module.exports = function(router, passport) {
     // part one: filter out desired users
-    router.post('/main/filter/getDisiredUser', function(req, res){
-        var ret = User.find({"prefered_user_gender":req.body.user_gender,
-                            "age":req.body.user_age_min,
-                            "prefered_user_age_max":req.body.user_age_max,
-                            "prefered_species":req.body.user_prefered_species});
-
-        ret.exec(function(err, filter) {
-            if (err) {
-                res.status(500).send({
-                            message: err,
-                            data:[]
-                        });
-                    } else {
-                        res.status(200).send({
-                            message: "OK" ,
-                            data: filter
-                        });
-                }
-            });
-    });
+    // router.post('/main/filter/getDisiredUser', function(req, res){
+    //     var ret = User.find({"prefered_user_gender":req.body.user_gender,
+    //                         "age":req.body.user_age_min,
+    //                         "prefered_user_age_max":req.body.user_age_max,
+    //                         "prefered_species":req.body.user_prefered_species});
+    //
+    //     ret.exec(function(err, filter) {
+    //         if (err) {
+    //             res.status(500).send({
+    //                         message: err,
+    //                         data:[]
+    //                     });
+    //                 } else {
+    //                     res.status(200).send({
+    //                         message: "OK" ,
+    //                         data: filter
+    //                     });
+    //             }
+    //         });
+    // });
 
     router.put('/main/filter/updateUserPreference', function(req, res){
 
@@ -208,9 +208,9 @@ module.exports = function(router, passport) {
     //Upload image
     router.post('/upload', type, function (req,res) {
 
-        
+
       var tmp_path = req.file.path;
-      
+
       var target_path = 'backend/static/uploads/' + req.file.originalname;
 
       var image = new Image();
@@ -224,12 +224,12 @@ module.exports = function(router, passport) {
       var src = fs.createReadStream(tmp_path);
       var dest = fs.createWriteStream(target_path);
       src.pipe(dest);
-      src.on('end', function() { 
-        console.log('complete'); 
+      src.on('end', function() {
+        console.log('complete');
         res.redirect('/setting');
       });
-      src.on('error', function(err) { 
-        console.log('complete'); 
+      src.on('error', function(err) {
+        console.log('complete');
         res.redirect('/error');
        });
 
@@ -315,7 +315,7 @@ module.exports = function(router, passport) {
                 "prefered_user_age_max":req.body.user_age_max,
                 "prefered_species":req.body.user_prefered_species,
 
-            }).limit(1).select("_id");
+            }).limit(10);
 
             query.exec(function(err, users) {
                 if(err) {
@@ -379,10 +379,12 @@ module.exports = function(router, passport) {
 
         // check if we are in other user's liked_users list
         User.findById(req.body.other_user_id, function(err, other_user) {
-            //console.log("llalallalalallllalallalalallllalallalalallllalallalalallllalallalalallllalallalalall");
-
+            console.log("llalallalalallllalallalalallllalallalalallllalallalalallllalallalalallllalallalalall");
+            console.log(req.body.other_user_id);
             //get other user's liked_users
             var other_user_liked = other_user.liked_users;
+            //console.log("liiiiikkk");
+            //console.dir(other_user.liked_users);
 
 
             //Now, let's check if we are in other's liked_user list
