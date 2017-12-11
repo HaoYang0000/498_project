@@ -19,10 +19,10 @@ class Main extends Component {
             filter: {
                 user_gender: '',
                 user_age_min: '',
-                user_age_max:'', 
+                user_age_max:'',
                 user_prefered_species:''
             },
-            filteredUser: [], 
+            filteredUser: [],
             queue: []  //霖霖 added
         }
 
@@ -35,7 +35,7 @@ class Main extends Component {
         this.onChangeGender = this.onChangeGender.bind(this);
         this.onChangeMinAge = this.onChangeMinAge.bind(this);
         this.onChangeMaxAge = this.onChangeMaxAge.bind(this);
-        this.onChangePetSpecies = this.onChangePetSpecies.bind(this); 
+        this.onChangePetSpecies = this.onChangePetSpecies.bind(this);
     }
 
     componentDidMount() {
@@ -52,31 +52,31 @@ class Main extends Component {
                 currentUser: {email:res.data.user.email}
             })
         });
+
+        //霖霖 周五 12/10
+        // if queue is empty, we need to add 100 more users
+        if(this.state.queue) {
+            // add users to stack
+            axios.get('/api/populateQueue')
+            .then((res) => {
+                console.log("populating the queue");
+                this.setState({queue: this.state.queue.concat(res.data.data)});   // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+                console.log("queue after populating", this.state.queue);
+            });
+        }
     }
+
 
     //霖霖 added
     like() {
-       // if queue is empty, we need to add 100 more users
-
-       if(1) {
-           // add users to stack
-           axios.get('/api/populateQueue')
-           .then((res) => {
-               this.setState({queue: res.data});
-               // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
-
-               console.log(res.data);
-           });
-       }
-
-       var cur_other_id = this.state.queue.shift();
-       // we need to check if the other user also liked us
-       axios.put('/api/like', {
-           user_id: this.state.user_id,
-           other_user_id: this.state.other_user_id
+        var cur_other_id = this.state.queue.shift();
+        // we need to check if the other user also liked us
+        axios.put('/api/like', {
+           user_id: this.state.currentUser.id,
+           other_user_id: cur_other_id._id
        })
        .then((res) => {
-
+           
        });
    }
 
@@ -117,9 +117,9 @@ class Main extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault(); 
+        e.preventDefault();
         axios.get('/api/get_current_user').then(res => {
-            var userId = res.data; 
+            var userId = res.data;
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
                 axios.post('api/main/filter/getDisiredUser').then(res => {
@@ -129,7 +129,7 @@ class Main extends Component {
                     console.dir("wocao")
                    console.dir(this.state.filteredUser);
                 })
-                
+
                 console.log("mabibibibibibibibb");
             })
             .catch(function (error) {
@@ -143,7 +143,24 @@ class Main extends Component {
         const { visible } = this.state;
 
         return(
+<<<<<<< HEAD
+            <div>
+                <div>
+                {this.state.filteredUser.map((idx, number) =>
+                            	<div>
+                            	<div class="content">
+									    <p>ID: {number}</p>
+									    <p>email: {idx.id}</p>
+                                        <p>password: {idx.password}</p>
+                                        <p> email: {idx.email} </p>
+                                        <p> age:{idx.age} </p>
+								</div>
+								</div>
+                )}
+                </div>
+=======
             <div className="Mainpage">
+>>>>>>> master
                 <Nav/>
                 <div id="filter-div">
                     <Sidebar.Pushable>
@@ -156,12 +173,12 @@ class Main extends Component {
                               </Menu.Item>
                               <Menu.Item name='users'>
                                   <Icon name='users' />
-                                  Prefered minimum age 
+                                  Prefered minimum age
                                   <input name="user_age_min" onChange={this.onChangeMinAge} />
                               </Menu.Item>
                               <Menu.Item name='users'>
                                   <Icon name='users' />
-                                  Prefered maximum age 
+                                  Prefered maximum age
                                   <input label="user_age_max" onChange={this.onChangeMaxAge} />
                               </Menu.Item>
                               <Menu.Item name='heterosexual'>
