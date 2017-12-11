@@ -17,9 +17,10 @@ class Main extends Component {
             },
             visible: false,
             filter: {
-                map: '',
-                age: '',
-                sex: ''
+                user_gender: '',
+                user_age_min: '',
+                user_age_max:'', 
+                user_prefered_species:''
             },
             filteredUser: [], 
             queue: []  //霖霖 added
@@ -31,9 +32,10 @@ class Main extends Component {
         //霖霖 added
         this.toggleVisibility = () => this.setState({ visible: !this.state.visible });
         this.onSubmit = this.onSubmit.bind(this);
-        this.onChangemap = this.onChangemap.bind(this);
-        this.onChangeage = this.onChangeage.bind(this);
-        this.onChangesex = this.onChangesex.bind(this);
+        this.onChangeGender = this.onChangeGender.bind(this);
+        this.onChangeMinAge = this.onChangeMinAge.bind(this);
+        this.onChangeMaxAge = this.onChangeMaxAge.bind(this);
+        this.onChangePetSpecies = this.onChangePetSpecies.bind(this); 
     }
 
     componentDidMount() {
@@ -85,23 +87,30 @@ class Main extends Component {
 
     onChangeGender(e) {
         const filter = this.state.filter;
-        filter.map = e.target.value;
+        filter.user_gender = e.target.value;
+        this.setState({
+            filter
+        });
+    }
+    onChangeMinAge(e) {
+        const filter = this.state.filter;
+        filter.user_age_min = e.target.value;
         this.setState({
             filter
         });
     }
 
-    onChangeage(e) {
+    onChangeMaxAge(e) {
         const filter = this.state.filter;
-        filter.age = e.target.value;
+        filter.user_age_max = e.target.value;
         this.setState({
             filter
         });
     }
 
-    onChangesex(e) {
+    onChangePetSpecies(e) {
         const filter = this.state.filter;
-        filter.sex = e.target.value;
+        filter.user_prefered_species = e.target.value;
         this.setState({
             filter
         });
@@ -111,14 +120,16 @@ class Main extends Component {
         e.preventDefault(); 
         axios.get('/api/get_current_user').then(res => {
             var userId = res.data; 
-            var path = 'api/main/filter/' + userId.toString();
-            axios.put(path, this.state.filter
+            axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
-                // this.setState({
-                //     filteredUser: res.data.data
-                //     });
-                //     console.dir("wocao")
-                //    console.dir(this.state.filteredUser);
+                axios.post('api/main/filter/getDisiredUser').then(res => {
+                    this.setState({
+                    filteredUser: res.data.data
+                    });
+                    console.dir("wocao")
+                   console.dir(this.state.filteredUser);
+                })
+                
                 console.log("mabibibibibibibibb");
             })
             .catch(function (error) {
@@ -169,7 +180,7 @@ class Main extends Component {
                               <Menu.Item name='heterosexual'>
                                   <Icon name='heterosexual' />
                                   Prefered pet species
-                                  <input label="user_prefered_species" onChange={this.onChangePetSpecies} />
+                                  <input name="user_prefered_species" onChange={this.onChangePetSpecies} />
                               </Menu.Item>
                               <input id="filter-submit" type="submit" />
                             </form>

@@ -65613,9 +65613,10 @@ var Main = function (_Component) {
             },
             visible: false,
             filter: {
-                map: '',
-                age: '',
-                sex: ''
+                user_gender: '',
+                user_age_min: '',
+                user_age_max: '',
+                user_prefered_species: ''
             },
             filteredUser: [],
             queue: [] //霖霖 added
@@ -65629,9 +65630,10 @@ var Main = function (_Component) {
             return _this.setState({ visible: !_this.state.visible });
         };
         _this.onSubmit = _this.onSubmit.bind(_this);
-        _this.onChangemap = _this.onChangemap.bind(_this);
-        _this.onChangeage = _this.onChangeage.bind(_this);
-        _this.onChangesex = _this.onChangesex.bind(_this);
+        _this.onChangeGender = _this.onChangeGender.bind(_this);
+        _this.onChangeMinAge = _this.onChangeMinAge.bind(_this);
+        _this.onChangeMaxAge = _this.onChangeMaxAge.bind(_this);
+        _this.onChangePetSpecies = _this.onChangePetSpecies.bind(_this);
         return _this;
     }
 
@@ -65688,25 +65690,34 @@ var Main = function (_Component) {
         key: 'onChangeGender',
         value: function onChangeGender(e) {
             var filter = this.state.filter;
-            filter.map = e.target.value;
+            filter.user_gender = e.target.value;
             this.setState({
                 filter: filter
             });
         }
     }, {
-        key: 'onChangeage',
-        value: function onChangeage(e) {
+        key: 'onChangeMinAge',
+        value: function onChangeMinAge(e) {
             var filter = this.state.filter;
-            filter.age = e.target.value;
+            filter.user_age_min = e.target.value;
             this.setState({
                 filter: filter
             });
         }
     }, {
-        key: 'onChangesex',
-        value: function onChangesex(e) {
+        key: 'onChangeMaxAge',
+        value: function onChangeMaxAge(e) {
             var filter = this.state.filter;
-            filter.sex = e.target.value;
+            filter.user_age_max = e.target.value;
+            this.setState({
+                filter: filter
+            });
+        }
+    }, {
+        key: 'onChangePetSpecies',
+        value: function onChangePetSpecies(e) {
+            var filter = this.state.filter;
+            filter.user_prefered_species = e.target.value;
             this.setState({
                 filter: filter
             });
@@ -65719,13 +65730,15 @@ var Main = function (_Component) {
             e.preventDefault();
             _axios2.default.get('/api/get_current_user').then(function (res) {
                 var userId = res.data;
-                var path = 'api/main/filter/' + userId.toString();
-                _axios2.default.put(path, _this4.state.filter).then(function (res) {
-                    // this.setState({
-                    //     filteredUser: res.data.data
-                    //     });
-                    //     console.dir("wocao")
-                    //    console.dir(this.state.filteredUser);
+                _axios2.default.put('api/main/filter/updateUserPreference', _this4.state.filter).then(function (res) {
+                    _axios2.default.post('api/main/filter/getDisiredUser').then(function (res) {
+                        _this4.setState({
+                            filteredUser: res.data.data
+                        });
+                        console.dir("wocao");
+                        console.dir(_this4.state.filteredUser);
+                    });
+
                     console.log("mabibibibibibibibb");
                 }).catch(function (error) {
                     console.log(error);
@@ -65826,7 +65839,7 @@ var Main = function (_Component) {
                                     { name: 'heterosexual' },
                                     _react2.default.createElement(_semanticUiReact.Icon, { name: 'heterosexual' }),
                                     'Prefered pet species',
-                                    _react2.default.createElement('input', { label: 'user_prefered_species', onChange: this.onChangePetSpecies })
+                                    _react2.default.createElement('input', { name: 'user_prefered_species', onChange: this.onChangePetSpecies })
                                 ),
                                 _react2.default.createElement('input', { id: 'filter-submit', type: 'submit' })
                             )
