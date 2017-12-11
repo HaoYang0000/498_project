@@ -95,14 +95,14 @@ class Register extends Component {
         return(
             <form className="Register" action="/" onSubmit={this.onSubmit}>
                 <Card className="Register__content">
-                    <div>
+                    <div className="register_bar">
                         <h1 id="title">Register</h1>
                         <Input label="Email" onChange={this.onChangeEmail} />
                         <br/><br/>
                         <Input label="Password" onChange={this.onChangePassword} />
                         <br/><br/>
                         <p>{this.state.message}</p>
-                        <Input type="submit" />
+                        <Input id="register_submit" type="submit" />
                         <h4>Already registered? Click <Link to="/login">here</Link> to Log-in!</h4>
 
                         <Link to="/dashboard"><p>Go to Dashboard</p></Link>
