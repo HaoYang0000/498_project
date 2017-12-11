@@ -65595,7 +65595,7 @@ exports = module.exports = __webpack_require__(64)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  height: 100%;\n  width: 100%;\n  color: magenta;\n  position: relative;\n  top: 100px;\n  left: 51%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard .title {\n    color: magenta;\n    position: absolute;\n    top: 0;\n    left: 600px; }\n  .Dashboard .cardWrap {\n    margin-top: 40px;\n    margin-left: 40px; }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  -webkit-transition: 0.5s;\n  transition: 0.5s; }\n\n#nav-down:hover {\n  -webkit-transform: rotate(8deg);\n          transform: rotate(8deg); }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n\n#storycard {\n  margin-top: 20px;\n  margin-bottom: 60px; }\n\n#storyhome {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 10%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  #storyhome .explore_img {\n    margin: 20px; }\n\n#storycard {\n  display: block;\n  margin: auto;\n  margin-bottom: 60px;\n  -webkit-transition: width 1s;\n  transition: width 1s; }\n\n#storycard:hover {\n  width: 500px; }\n", ""]);
+exports.push([module.i, ".mainPage {\n  position: relative;\n  height: 100%;\n  width: 100%; }\n  .mainPage .Home {\n    position: relative; }\n    .mainPage .Home .cardWrapping {\n      position: absolute;\n      left: 0;\n      top: 0; }\n\n.Dashboard {\n  height: 100%;\n  width: 100%;\n  color: magenta;\n  position: relative;\n  top: 100px;\n  left: 51%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard .title {\n    color: magenta;\n    position: absolute;\n    top: 0;\n    left: 600px; }\n  .Dashboard .cardWrap {\n    margin-top: 40px;\n    margin-left: 40px; }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  -webkit-transition: 0.5s;\n  transition: 0.5s; }\n\n#nav-down:hover {\n  -webkit-transform: rotate(8deg);\n          transform: rotate(8deg); }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n\n#storycard {\n  margin-top: 20px;\n  margin-bottom: 60px; }\n\n#storyhome {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 10%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  #storyhome .explore_img {\n    margin: 20px; }\n\n#storycard {\n  display: block;\n  margin: auto;\n  margin-bottom: 60px;\n  -webkit-transition: width 1s;\n  transition: width 1s; }\n\n#storycard:hover {\n  width: 500px; }\n", ""]);
 
 // exports
 
@@ -65796,53 +65796,7 @@ var Main = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    this.state.filteredUser.map(function (idx, number) {
-                        return _react2.default.createElement(
-                            'div',
-                            null,
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'content' },
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'ID: ',
-                                    number
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'email: ',
-                                    idx.id
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'password: ',
-                                    idx.password
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    ' email: ',
-                                    idx.email,
-                                    ' '
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    ' age:',
-                                    idx.age,
-                                    ' '
-                                )
-                            )
-                        );
-                    })
-                ),
+                { className: 'Mainpage' },
                 _react2.default.createElement(_Nav2.default, null),
                 _react2.default.createElement(
                     'div',
@@ -65912,40 +65866,53 @@ var Main = function (_Component) {
                     ),
                     _react2.default.createElement(
                         'div',
-                        { 'class': 'ui card' },
-                        _react2.default.createElement('img', { 'class': 'ui image', src: 'https://semantic-ui.com/images/avatar/large/jenny.jpg' }),
+                        { className: 'prepffered_user' },
                         _react2.default.createElement(
-                            'div',
-                            { 'class': 'content' },
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'header' },
-                                'Matthew'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'meta' },
-                                _react2.default.createElement(
-                                    'span',
-                                    { 'class': 'date' },
-                                    'Joined in 2015'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'description' },
-                                'Matthew is a musician living in Nashville.'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'extra content' },
-                            _react2.default.createElement(
-                                'a',
-                                null,
-                                _react2.default.createElement('i', { 'aria-hidden': 'true', 'class': 'user icon' }),
-                                '22 Friends'
-                            )
+                            _semanticUiReact.Card.Group,
+                            null,
+                            this.state.filteredUser.map(function (idx, number) {
+                                return _react2.default.createElement(
+                                    'div',
+                                    { className: 'cardWrapping' },
+                                    _react2.default.createElement(
+                                        _semanticUiReact.Card,
+                                        null,
+                                        _react2.default.createElement(
+                                            _semanticUiReact.Card.Content,
+                                            null,
+                                            _react2.default.createElement(_semanticUiReact.Image, { className: 'profile_img', src: 'https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png' }),
+                                            _react2.default.createElement(
+                                                _semanticUiReact.Card.Header,
+                                                null,
+                                                _react2.default.createElement(
+                                                    'p',
+                                                    null,
+                                                    'email: ',
+                                                    idx.email
+                                                ),
+                                                _react2.default.createElement(
+                                                    'p',
+                                                    null,
+                                                    ' age:',
+                                                    idx.age,
+                                                    ' '
+                                                ),
+                                                '                                                 '
+                                            ),
+                                            _react2.default.createElement(
+                                                _semanticUiReact.Card.Meta,
+                                                null,
+                                                _react2.default.createElement(
+                                                    'p',
+                                                    null,
+                                                    '_id: ',
+                                                    idx._id
+                                                )
+                                            )
+                                        )
+                                    )
+                                );
+                            })
                         )
                     ),
                     _react2.default.createElement(
