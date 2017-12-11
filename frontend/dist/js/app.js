@@ -65678,9 +65678,7 @@ var Main = function (_Component) {
             _axios2.default.put('/api/like', {
                 user_id: this.state.currentUser.id,
                 other_user_id: cur_other_id._id
-            }).then(function (res) {
-                console.log(res.data);
-            });
+            }).then(function (res) {});
         }
     }, {
         key: 'dislike',

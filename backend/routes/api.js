@@ -2,32 +2,32 @@ var User = require('../models/user');
 var Story = require('../models/storySchema');
 
 module.exports = function(router, passport) {
-    // part one: filter out desired users 
-    router.post('/main/filter/getDisiredUser', function(req, res){ 
-        var ret = User.find({"prefered_user_gender":req.body.user_gender, 
+    // part one: filter out desired users
+    router.post('/main/filter/getDisiredUser', function(req, res){
+        var ret = User.find({"prefered_user_gender":req.body.user_gender,
                             "age":req.body.user_age_min,
-                            "prefered_user_age_max":req.body.user_age_max, 
+                            "prefered_user_age_max":req.body.user_age_max,
                             "prefered_species":req.body.user_prefered_species});
 
         ret.exec(function(err, filter) {
             if (err) {
-                res.status(500).send({ 
-                            message: err, 
+                res.status(500).send({
+                            message: err,
                             data:[]
-                        }); 
+                        });
                     } else {
                         res.status(200).send({
-                            message: "OK" , 
+                            message: "OK" ,
                             data: filter
-                        }); 
+                        });
                 }
             });
-    }); 
+    });
 
     router.put('/main/filter/updateUserPreference', function(req, res){
-        
-        
-        // updsate data base 
+
+
+        // updsate data base
         let newSetting = {
             prefered_user_gender: req.body.user_gender || null,
             prefered_user_age_min:parseInt(req.body.user_age_min,10) || null,
@@ -40,11 +40,11 @@ module.exports = function(router, passport) {
 
         User.findByIdAndUpdate(req.user.id, newSetting, {new: true}, function(err, target) {
             console.dir("caooooooo");
-            console.log(newSetting); 
-            console.dir(req.user.id); 
+            console.log(newSetting);
+            console.dir(req.user.id);
             if (err) {
-                console.dir(err); 
-                console.dir("kakakaakakak"); 
+                console.dir(err);
+                console.dir("kakakaakakak");
                 res.status(500).send({
                     message: err,
                     data: []
@@ -64,7 +64,7 @@ module.exports = function(router, passport) {
             }
         })
     });
-        
+
     router.post('/register',
         passport.authenticate('local-signup'),
         function(req, res) {
@@ -248,13 +248,16 @@ module.exports = function(router, passport) {
         var user_id = req.user.id;
 
         //get user preference filter
-        var user_preference;
-        User.find({_id:user_id}, function(err, user) {
-            user_preference = user;
-            //console.log(user_preference);
+        User.findById(user_id, function(err, user_pref) {
+            console.log("fuckfuckfuckfuckfuckfuck");
 
+            var query = User.find({
+                "prefered_user_gender":req.body.user_gender,
+                "age":req.body.user_age_min,
+                "prefered_user_age_max":req.body.user_age_max,
+                "prefered_species":req.body.user_prefered_species,
 
-            var query = User.find({age: 19/*user_preference.age*/}).limit(1).select("_id");
+            }).limit(1).select("_id");
 
             query.exec(function(err, users) {
                 if(err) {
@@ -280,61 +283,86 @@ module.exports = function(router, passport) {
 // updated by 霖霖 周日 12/10
 //----------------Like User--------------------------------
     router.put('/like', function(req, res){
+        //console.log("user id is", req.user.id);
+        User.findOne({"_id": req.body.user_id/*req.user.id*/}, {liked_users: 1}, function(err, users) {
 
-        var liked_users = User.find({"_id": req.user.id},  {email: 1}, function(err, user) {
-            if(err) {
-                res.status(500).send({
-                    message: err,
-                    data: []
-                });
-            } else {
-                if (user) {
-                    res.status(200).send({
-                        message: 'OK',
-                        data: user
-                    });
-                } else {
-                    res.status(404).send({
-                        message: 'User does not exist',
+            var new_liked_users = users.liked_users;
+            new_liked_users.push(req.body.other_user_id);
+            // add cur_other_user to liked_users
+            let updates = {
+                liked_users: new_liked_users,
+            }
+
+
+            User.findByIdAndUpdate(req.body.user_id, updates, function(err, users){
+                if(err) {
+                    res.status(500).send({
+                        message: err,
                         data: []
                     });
-                }
-
-            }
-        });
-        console.log("llalallalalallllalallalalallllalallalalallllalallalalallllalallalalallllalallalalall");
-        console.log(liked_users);
-        console.log("printing like users!!!!!!!!!" + liked_users);
-
-        // add cur_other_user to liked_users
-        liked_users.push(req.body.other_user_id);
-
-        var new_liked_users = {
-            liked_users: liked_users,
-        }
-        console.log("after adding!!!", liked_users);
-        User.findByIdAndUpdate(req.user.id, liked_users, function(err, user) {
-            if(err) {
-                res.status(500).send({
-                    message: err,
-                    data: []
-                });
-            } else {
-                if (user) {
-                    res.status(200).send({
-                        message: 'OK',
-                        data: user
-                    });
                 } else {
-                    res.status(404).send({
-                        message: 'User does not exist',
-                        data: []
-                    });
+                    if (users) {
+                        res.status(200).send({
+                            message: 'OK',
+                            data: users
+                        });
+                    } else {
+                        res.status(404).send({
+                            message: 'User does not exist',
+                            data: []
+                        });
+                    }
                 }
+            });
 
-            }
         });
+
+
+
+        // check if we are in other user's liked_users list
+        User.findById(req.body.other_user_id, function(err, other_user) {
+            //console.log("llalallalalallllalallalalallllalallalalallllalallalalallllalallalalallllalallalalall");
+
+            //get other user's liked_users
+            var other_user_liked = other_user.liked_users;
+
+
+            //Now, let's check if we are in other's liked_user list
+            // IF WE GOT A MATCH
+            if (other_user_liked.indexOf(req.body.user_id) >= 0) {   //req.bod.user_id is a STRING
+                console.log("we found a match!!!!!!");
+
+
+                //把user_id加入other user’s match_list
+                var new_matched_users = users.matched_users;
+                new_matched_users.push(req.body.req.body.user_id);
+                // add cur_other_user to liked_users
+                let updates = {
+                    matched_users: new_matched_users,
+                }
+                User.findByIdAndUpdate(req.body.user_id, update);
+
+
+
+                //把other user id加入 user的 match_list
+                User.findOne({"_id": req.body.user_id/*req.user.id*/}, function(err, users) {
+                    let new_matched_users = users.matched_users;
+                    new_matched_users.push(req.body.other_user_id);
+                    // add other_user_id to matched_users
+                    let updates = {
+                        matched_users: new_matched_users,
+                    }
+
+                    User.findByIdAndUpdate(req.body.user_id, updates);
+
+                });
+            }//
+        });
+
     });
+
+
+
 
     //----------------Delete User------------------------------
     router.delete('/user', function(req, res){

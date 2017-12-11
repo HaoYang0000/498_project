@@ -19,7 +19,7 @@ class Main extends Component {
             filter: {
                 user_gender: '',
                 user_age_min: '',
-                user_age_max:'', 
+                user_age_max:'',
                 user_prefered_species:''
             },
             filteredUser: [],
@@ -35,7 +35,7 @@ class Main extends Component {
         this.onChangeGender = this.onChangeGender.bind(this);
         this.onChangeMinAge = this.onChangeMinAge.bind(this);
         this.onChangeMaxAge = this.onChangeMaxAge.bind(this);
-        this.onChangePetSpecies = this.onChangePetSpecies.bind(this); 
+        this.onChangePetSpecies = this.onChangePetSpecies.bind(this);
     }
 
     componentDidMount() {
@@ -76,7 +76,7 @@ class Main extends Component {
            other_user_id: cur_other_id._id
        })
        .then((res) => {
-           console.log(res.data);
+           
        });
    }
 
@@ -117,9 +117,9 @@ class Main extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault(); 
+        e.preventDefault();
         axios.get('/api/get_current_user').then(res => {
-            var userId = res.data; 
+            var userId = res.data;
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
                 axios.post('api/main/filter/getDisiredUser').then(res => {
@@ -129,7 +129,7 @@ class Main extends Component {
                     console.dir("wocao")
                    console.dir(this.state.filteredUser);
                 })
-                
+
                 console.log("mabibibibibibibibb");
             })
             .catch(function (error) {
@@ -169,12 +169,12 @@ class Main extends Component {
                               </Menu.Item>
                               <Menu.Item name='users'>
                                   <Icon name='users' />
-                                  Prefered minimum age 
+                                  Prefered minimum age
                                   <input name="user_age_min" onChange={this.onChangeMinAge} />
                               </Menu.Item>
                               <Menu.Item name='users'>
                                   <Icon name='users' />
-                                  Prefered maximum age 
+                                  Prefered maximum age
                                   <input label="user_age_max" onChange={this.onChangeMaxAge} />
                               </Menu.Item>
                               <Menu.Item name='heterosexual'>
