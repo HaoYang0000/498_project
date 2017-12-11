@@ -5,11 +5,10 @@ module.exports = function(router, passport) {
     // part one: filter out desired users 
     router.post('/main/filter/getDisiredUser', function(req, res){ 
         var ret = User.find({"prefered_user_gender":req.body.user_gender, 
-                            "prefered_user_age_min":req.body.user_age_min,
+                            "age":req.body.user_age_min,
                             "prefered_user_age_max":req.body.user_age_max, 
                             "prefered_species":req.body.user_prefered_species});
 
-        var red = User.find(); 
         ret.exec(function(err, filter) {
             if (err) {
                 res.status(500).send({ 
