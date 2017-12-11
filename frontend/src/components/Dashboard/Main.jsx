@@ -143,6 +143,7 @@ class Main extends Component {
         const { visible } = this.state;
 
         return(
+<<<<<<< HEAD
             <div>
                 <div>
                 {this.state.filteredUser.map((idx, number) =>
@@ -157,6 +158,9 @@ class Main extends Component {
 								</div>
                 )}
                 </div>
+=======
+            <div className="Mainpage">
+>>>>>>> master
                 <Nav/>
                 <div id="filter-div">
                     <Sidebar.Pushable>
@@ -194,20 +198,28 @@ class Main extends Component {
                 <div className="Home">
                     <h1>PAIR PAIR PAIR</h1>
 
-                    <div class="ui card">
-                          <img class="ui image" src={'https://semantic-ui.com/images/avatar/large/jenny.jpg'} />
-                          <div class="content">
-                                <div class="header">Matthew</div>
-                                <div class="meta">
-                                    <span class="date">Joined in 2015</span>
-                                </div>
-                                <div class="description">Matthew is a musician living in Nashville.</div>
-                          </div>
-                            <div class="extra content">
-                            <a>
-                            <i aria-hidden="true" class="user icon"></i>22 Friends</a>
-                          </div>
-                    </div>
+                    <div className='prepffered_user'>
+                            <Card.Group>
+                                {this.state.filteredUser.map((idx, number) =>
+                                    <div className="cardWrapping">
+                                        <Card>
+                                            <Card.Content>
+                                                <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/> 
+                                                <Card.Header> 
+                                                    <p>email: {idx.email}</p>
+                                                    <p> age:{idx.age} </p>                                                 </Card.Header>
+                                                <Card.Meta> 
+                                                    <p>_id: {idx._id}</p>
+                                                </Card.Meta>
+                                            </Card.Content>
+                                            
+                                        </Card>
+                                    </div>
+                                )}
+                            </Card.Group>
+                        </div>
+
+                   
                     <button class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
                     <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>

@@ -64662,7 +64662,7 @@ module.exports = function (css) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -64675,6 +64675,10 @@ var _semanticUiReact = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(30);
 
+var _axios = __webpack_require__(64);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64684,92 +64688,125 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Upload = function (_Component) {
-  _inherits(Upload, _Component);
+    _inherits(Upload, _Component);
 
-  function Upload(props) {
-    _classCallCheck(this, Upload);
+    function Upload(props) {
+        _classCallCheck(this, Upload);
 
-    var _this = _possibleConstructorReturn(this, (Upload.__proto__ || Object.getPrototypeOf(Upload)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Upload.__proto__ || Object.getPrototypeOf(Upload)).call(this, props));
 
-    _this.state = {
-      file: '',
-      imagePreviewUrl: ''
-    };
-    return _this;
-  }
-
-  _createClass(Upload, [{
-    key: '_handleSubmit',
-    value: function _handleSubmit(e) {
-      e.preventDefault();
-      // TODO: do something with -> this.state.file
-      console.log('handle uploading-', this.state.file);
+        _this.state = {
+            currentUser: {
+                id: '',
+                email: ''
+            },
+            file: '',
+            imagePreviewUrl: '',
+            type: _this.props.type
+        };
+        return _this;
     }
-  }, {
-    key: '_handleImageChange',
-    value: function _handleImageChange(e) {
-      var _this2 = this;
 
-      e.preventDefault();
+    _createClass(Upload, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
 
-      var reader = new FileReader();
-      var file = e.target.files[0];
+            //For profile picture
+            if (this.state.type == "Profile") {
 
-      reader.onloadend = function () {
-        _this2.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
-      };
+                _axios2.default.get('/api/get_profile_image').then(function (res) {
+                    console.log(res.data.image);
+                    _this2.setState({
+                        imagePreviewUrl: res.data.image.path
+                    });
+                }).catch(function (err) {});
+            }
+            //For explore picture or blah
+            else {}
+        }
+    }, {
+        key: '_handleImageChange',
+        value: function _handleImageChange(e) {
+            var _this3 = this;
 
-      reader.readAsDataURL(file);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
+            e.preventDefault();
 
-      var imagePreviewUrl = this.state.imagePreviewUrl;
+            var reader = new FileReader();
+            var file = e.target.files[0];
 
-      var $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = _react2.default.createElement('img', { src: imagePreviewUrl });
-      } else {
-        $imagePreview = _react2.default.createElement(
-          'div',
-          { className: 'previewText' },
-          'Please select an Image for Preview'
-        );
-      }
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'form',
-          { onSubmit: function onSubmit(e) {
-              return _this3._handleSubmit(e);
-            } },
-          _react2.default.createElement('input', { type: 'file', onChange: function onChange(e) {
-              return _this3._handleImageChange(e);
-            } }),
-          _react2.default.createElement(
-            'button',
-            { type: 'submit', onClick: function onClick(e) {
-                return _this3._handleSubmit(e);
-              } },
-            'Upload Image'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'imgPreview' },
-          $imagePreview
-        )
-      );
-    }
-  }]);
+            reader.onloadend = function () {
+                _this3.setState({
+                    file: file,
+                    imagePreviewUrl: reader.result
+                });
+            };
 
-  return Upload;
+            reader.readAsDataURL(file);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this4 = this;
+
+            var imageType = null;
+            if (this.state.type == "Profile") {
+                imageType = _react2.default.createElement('img', { className: 'profile' });
+            } else {
+                imageType = _react2.default.createElement('img', { className: 'explore' });
+            }
+            var imagePreviewUrl = this.state.imagePreviewUrl;
+
+            var $imagePreview = null;
+            if (imagePreviewUrl) {
+                $imagePreview = _react2.default.createElement('img', { src: imagePreviewUrl
+                });
+            } else {
+                $imagePreview = _react2.default.createElement(
+                    'div',
+                    { className: 'previewText' },
+                    ' Please select an Image for Preview '
+                );
+            }
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'form',
+                    { action: '/api/upload',
+                        enctype: 'multipart/form-data',
+                        method: 'post' },
+                    _react2.default.createElement('input', { type: 'file',
+                        name: 'file',
+                        onChange: function onChange(e) {
+                            return _this4._handleImageChange(e);
+                        }
+                    }),
+                    _react2.default.createElement('input', { type: 'hidden',
+                        name: 'type',
+                        value: this.state.type
+                    }),
+                    _react2.default.createElement(
+                        'button',
+                        { type: 'submit' },
+                        'Upload Image '
+                    ),
+                    ' '
+                ),
+                ' ',
+                _react2.default.createElement(
+                    'div',
+                    { className: 'imgPreview' },
+                    ' ',
+                    $imagePreview,
+                    ' '
+                ),
+                ' '
+            );
+        }
+    }]);
+
+    return Upload;
 }(_react.Component);
 
 exports.default = Upload;
@@ -65434,13 +65471,19 @@ var Dashboard = function (_Component) {
                         'div',
                         { className: 'Dashboard' },
                         _react2.default.createElement(
-                            'h1',
-                            null,
-                            'Welcome to the App!'
+                            'div',
+                            { className: 'title' },
+                            ' ',
+                            _react2.default.createElement(
+                                'h1',
+                                null,
+                                'Go and explore users here '
+                            ),
+                            ' '
                         ),
                         _react2.default.createElement(
                             'div',
-                            null,
+                            { className: 'cardd' },
                             _react2.default.createElement(
                                 _semanticUiReact.Card.Group,
                                 null,
@@ -65552,399 +65595,17 @@ exports = module.exports = __webpack_require__(65)(undefined);
 
 
 // module
-exports.push([module.i, ".Dashboard {\n  color: magenta;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px; }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n\n#storycard {\n  margin-top: 20px;\n  margin-bottom: 60px; }\n\n#storyhome {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 10%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  #storyhome .explore_img {\n    margin: 20px; }\n", ""]);
+exports.push([module.i, ".mainPage {\n  position: relative;\n  height: 100%;\n  width: 100%; }\n  .mainPage .Home {\n    position: relative; }\n    .mainPage .Home .cardWrapping {\n      position: absolute;\n      left: 0;\n      top: 0; }\n\n.Dashboard {\n  height: 100%;\n  width: 100%;\n  color: magenta;\n  position: relative;\n  top: 100px;\n  left: 51%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  .Dashboard .title {\n    color: magenta;\n    position: absolute;\n    top: 0;\n    left: 600px; }\n  .Dashboard .cardWrap {\n    margin-top: 40px;\n    margin-left: 40px; }\n  .Dashboard p {\n    margin-left: 10px; }\n\n#setting_form {\n  width: 60%;\n  margin-top: 100px;\n  margin-left: 20%; }\n\n#main-but {\n  margin-left: 40px;\n  margin-right: 40px; }\n\nh1 {\n  color: #e03997; }\n\n#nav-down {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  -webkit-transition: 0.5s;\n  transition: 0.5s; }\n\n#nav-down:hover {\n  -webkit-transform: rotate(8deg);\n          transform: rotate(8deg); }\n\n#post {\n  position: fixed;\n  margin: auto;\n  left: 50%;\n  bottom: 0%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  border-top-left-radius: 100%;\n  border-top-right-radius: 100%; }\n\n#filter {\n  height: 213px;\n  margin-right: 0px; }\n\n#filter-div {\n  margin-top: 110px;\n  height: 320px; }\n  #filter-div p {\n    font-size: 1.5em;\n    color: white;\n    position: absolute;\n    top: 45%;\n    left: -5px;\n    -webkit-transform: rotate(90deg); }\n  #filter-div input {\n    width: 100px;\n    background-color: #1b1c1d;\n    border-style: none;\n    border-color: white;\n    border-bottom-style: dotted;\n    outline: none;\n    color: white; }\n  #filter-div #filter-submit {\n    font-size: 20px;\n    border-style: none; }\n  #filter-div #main-sidebar {\n    height: 320px; }\n  #filter-div #sidebar-but {\n    background-color: #e03997;\n    width: 50px;\n    height: 320px;\n    border-radius: 0px 10px 10px 0px; }\n\n#storycard {\n  margin-top: 20px;\n  margin-bottom: 60px; }\n\n#storyhome {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 10%;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%); }\n  #storyhome .explore_img {\n    margin: 20px; }\n\n#storycard {\n  display: block;\n  margin: auto;\n  margin-bottom: 60px;\n  -webkit-transition: width 1s;\n  transition: width 1s; }\n\n#storycard:hover {\n  width: 500px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 809 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _semanticUiReact = __webpack_require__(31);
-
-var _reactRouterDom = __webpack_require__(30);
-
-var _axios = __webpack_require__(64);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _styles = __webpack_require__(135);
-
-var _styles2 = _interopRequireDefault(_styles);
-
-var _Nav = __webpack_require__(83);
-
-var _Nav2 = _interopRequireDefault(_Nav);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Main = function (_Component) {
-    _inherits(Main, _Component);
-
-    function Main() {
-        _classCallCheck(this, Main);
-
-        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
-
-        _this.state = {
-            currentUser: {
-                id: '',
-                email: ''
-            },
-            visible: false,
-            filter: {
-                user_gender: '',
-                user_age_min: '',
-                user_age_max: '',
-                user_prefered_species: ''
-            },
-            filteredUser: [],
-            queue: [] //霖霖 added
-
-
-            //霖霖 added
-        };_this.like = _this.like.bind(_this);
-        _this.dislike = _this.dislike.bind(_this);
-        //霖霖 added
-        _this.toggleVisibility = function () {
-            return _this.setState({ visible: !_this.state.visible });
-        };
-        _this.onSubmit = _this.onSubmit.bind(_this);
-        _this.onChangeGender = _this.onChangeGender.bind(_this);
-        _this.onChangeMinAge = _this.onChangeMinAge.bind(_this);
-        _this.onChangeMaxAge = _this.onChangeMaxAge.bind(_this);
-        _this.onChangePetSpecies = _this.onChangePetSpecies.bind(_this);
-        return _this;
-    }
-
-    _createClass(Main, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            _axios2.default.get('/api/get_current_user', {}).then(function (res) {
-                _this2.setState({
-                    currentUser: {
-                        id: res.data.user._id,
-                        email: res.data.user.email
-                    }
-                });
-            }).catch(function (err) {
-                _this2.setState({
-                    id: res.data.user.id,
-                    currentUser: { email: res.data.user.email }
-                });
-            });
-
-            //霖霖 周五 12/10
-            // if queue is empty, we need to add 100 more users
-            if (this.state.queue) {
-                // add users to stack
-                _axios2.default.get('/api/populateQueue').then(function (res) {
-                    console.log("populating the queue");
-                    _this2.setState({ queue: _this2.state.queue.concat(res.data.data) }); // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
-                    console.log("queue after populating", _this2.state.queue);
-                });
-            }
-        }
-
-        //霖霖 added
-
-    }, {
-        key: 'like',
-        value: function like() {
-            var cur_other_id = this.state.queue.shift();
-            // we need to check if the other user also liked us
-            _axios2.default.put('/api/like', {
-                user_id: this.state.currentUser.id,
-                other_user_id: cur_other_id._id
-            }).then(function (res) {});
-        }
-    }, {
-        key: 'dislike',
-        value: function dislike() {}
-    }, {
-        key: 'onChangeGender',
-        value: function onChangeGender(e) {
-            var filter = this.state.filter;
-            filter.user_gender = e.target.value;
-            this.setState({
-                filter: filter
-            });
-        }
-    }, {
-        key: 'onChangeMinAge',
-        value: function onChangeMinAge(e) {
-            var filter = this.state.filter;
-            filter.user_age_min = e.target.value;
-            this.setState({
-                filter: filter
-            });
-        }
-    }, {
-        key: 'onChangeMaxAge',
-        value: function onChangeMaxAge(e) {
-            var filter = this.state.filter;
-            filter.user_age_max = e.target.value;
-            this.setState({
-                filter: filter
-            });
-        }
-    }, {
-        key: 'onChangePetSpecies',
-        value: function onChangePetSpecies(e) {
-            var filter = this.state.filter;
-            filter.user_prefered_species = e.target.value;
-            this.setState({
-                filter: filter
-            });
-        }
-    }, {
-        key: 'onSubmit',
-        value: function onSubmit(e) {
-            var _this3 = this;
-
-            e.preventDefault();
-            _axios2.default.get('/api/get_current_user').then(function (res) {
-                var userId = res.data;
-                _axios2.default.put('api/main/filter/updateUserPreference', _this3.state.filter).then(function (res) {
-                    _axios2.default.post('api/main/filter/getDisiredUser').then(function (res) {
-                        _this3.setState({
-                            filteredUser: res.data.data
-                        });
-                        console.dir("wocao");
-                        console.dir(_this3.state.filteredUser);
-                    });
-
-                    console.log("mabibibibibibibibb");
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var visible = this.state.visible;
-
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    this.state.filteredUser.map(function (idx, number) {
-                        return _react2.default.createElement(
-                            'div',
-                            null,
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'content' },
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'ID: ',
-                                    number
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'email: ',
-                                    idx.id
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'password: ',
-                                    idx.password
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    ' email: ',
-                                    idx.email,
-                                    ' '
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    ' age:',
-                                    idx.age,
-                                    ' '
-                                )
-                            )
-                        );
-                    })
-                ),
-                _react2.default.createElement(_Nav2.default, null),
-                _react2.default.createElement(
-                    'div',
-                    { id: 'filter-div' },
-                    _react2.default.createElement(
-                        _semanticUiReact.Sidebar.Pushable,
-                        null,
-                        _react2.default.createElement(
-                            _semanticUiReact.Sidebar,
-                            { as: _semanticUiReact.Menu, animation: 'push', width: 'thin', visible: visible, icon: 'labeled', vertical: true, inverted: true, id: 'main-sidebar' },
-                            _react2.default.createElement(
-                                'form',
-                                { className: 'filter-main', action: '', onSubmit: this.onSubmit },
-                                _react2.default.createElement(
-                                    _semanticUiReact.Menu.Item,
-                                    { name: 'map' },
-                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'map' }),
-                                    'Prefered Gender',
-                                    _react2.default.createElement('input', { name: 'user_gender', onChange: this.onChangeGender })
-                                ),
-                                _react2.default.createElement(
-                                    _semanticUiReact.Menu.Item,
-                                    { name: 'users' },
-                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
-                                    'Prefered minimum age',
-                                    _react2.default.createElement('input', { name: 'user_age_min', onChange: this.onChangeMinAge })
-                                ),
-                                _react2.default.createElement(
-                                    _semanticUiReact.Menu.Item,
-                                    { name: 'users' },
-                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'users' }),
-                                    'Prefered maximum age',
-                                    _react2.default.createElement('input', { label: 'user_age_max', onChange: this.onChangeMaxAge })
-                                ),
-                                _react2.default.createElement(
-                                    _semanticUiReact.Menu.Item,
-                                    { name: 'heterosexual' },
-                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'heterosexual' }),
-                                    'Prefered pet species',
-                                    _react2.default.createElement('input', { name: 'user_prefered_species', onChange: this.onChangePetSpecies })
-                                ),
-                                _react2.default.createElement('input', { id: 'filter-submit', type: 'submit' })
-                            )
-                        ),
-                        _react2.default.createElement(
-                            _semanticUiReact.Sidebar.Pusher,
-                            null,
-                            _react2.default.createElement(
-                                'div',
-                                { id: 'sidebar-but', onClick: this.toggleVisibility },
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
-                                    'FILTER'
-                                )
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'Home' },
-                    _react2.default.createElement(
-                        'h1',
-                        null,
-                        'PAIR PAIR PAIR'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { 'class': 'ui card' },
-                        _react2.default.createElement('img', { 'class': 'ui image', src: 'https://semantic-ui.com/images/avatar/large/jenny.jpg' }),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'content' },
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'header' },
-                                'Matthew'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'meta' },
-                                _react2.default.createElement(
-                                    'span',
-                                    { 'class': 'date' },
-                                    'Joined in 2015'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { 'class': 'description' },
-                                'Matthew is a musician living in Nashville.'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'extra content' },
-                            _react2.default.createElement(
-                                'a',
-                                null,
-                                _react2.default.createElement('i', { 'aria-hidden': 'true', 'class': 'user icon' }),
-                                '22 Friends'
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { 'class': 'ui positive button', role: 'button', id: 'main-but', onClick: this.like },
-                        ' Like '
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { 'class': 'ui negative button', role: 'button', id: 'main-but', onClick: this.dislike },
-                        ' Na.. '
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { 'class': 'ui vertical labeled icon menu', id: 'nav-down' },
-                    _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: '/dashboard' },
-                        _react2.default.createElement(
-                            'a',
-                            { 'class': 'item' },
-                            _react2.default.createElement('i', { 'class': 'home icon' }),
-                            'Home'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: '/', onClick: this.logOut },
-                        _react2.default.createElement(
-                            'a',
-                            { 'class': 'item' },
-                            _react2.default.createElement('i', { 'class': 'send outline icon' }),
-                            'Log off'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Main;
-}(_react.Component);
-
-exports.default = Main;
+throw new Error("Module build failed: SyntaxError: Unexpected token (146:1)\n\n\u001b[0m \u001b[90m 144 | \u001b[39m\n \u001b[90m 145 | \u001b[39m        \u001b[36mreturn\u001b[39m(\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 146 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m     | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 147 | \u001b[39m            \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 148 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 149 | \u001b[39m                {\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mfilteredUser\u001b[33m.\u001b[39mmap((idx\u001b[33m,\u001b[39m number) \u001b[33m=>\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 810 */
@@ -65999,12 +65660,18 @@ var Explore = function (_Component) {
         _this.state = {
             story: {
                 title: '',
-                text: ''
+                text: '',
+                author: '',
+                _authorid: ''
             },
+            visible: true,
             message: '',
-            stories: []
+            stories: [],
+            currentUser: {
+                id: '',
+                email: ''
+            }
         };
-
         _this.onSubmit = _this.onSubmit.bind(_this);
         _this.onChangeTitle = _this.onChangeTitle.bind(_this);
         _this.onChangeText = _this.onChangeText.bind(_this);
@@ -66024,6 +65691,20 @@ var Explore = function (_Component) {
             }).catch(function (err) {
                 _this2.setState({
                     stories: res.data.data
+                });
+            });
+
+            _axios2.default.get('/api/get_current_user').then(function (res) {
+                _this2.setState({
+                    currentUser: {
+                        id: res.data.user._id,
+                        email: res.data.user.email
+                    }
+                });
+            }).catch(function (err) {
+                _this2.setState({
+                    id: res.data.user.id,
+                    currentUser: { email: res.data.user.email }
                 });
             });
         }
@@ -66063,18 +65744,20 @@ var Explore = function (_Component) {
             var title = encodeURIComponent(this.state.story.title);
             //CHANGE-FONT-END
             var text = encodeURIComponent(this.state.story.text);
-
-            //CHANGE-FONT-END
-            var formData = 'title=' + title + '&text=' + text;
+            var author = encodeURIComponent(this.state.currentUser.email);
+            var authorid = encodeURIComponent(this.state.currentUser.id);
 
             _axios2.default.post('/api/create_new_story', {
                 title: title,
-                text: text
+                text: text,
+                author: author,
+                authorid: authorid
             }).then(function (res) {
+                console.log("nowjaoiejofijaowif");
                 _this3.state.story;
                 if (res.status == 200) {
                     var newArray = _this3.state.stories;
-                    newArray.push({ "title": title, "text": text });
+                    newArray.push({ "title": title, "text": text, "author": author, "_authorid": authorid });
                     _this3.setState({
                         story: newArray,
                         message: 'Successfully create!'
@@ -66087,29 +65770,13 @@ var Explore = function (_Component) {
             }).catch(function (error) {
                 console.log("error" + error);
             });
-
-            // // create an AJAX request (This should probably done with Axios instead) 
-            // const xhr = new XMLHttpRequest();
-            // //CHANGE-BACK-END
-            // xhr.open('post', '/api/create_new_story');
-            // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            // xhr.responseType = 'json';
-            // xhr.addEventListener('load', () => {
-            //     if (xhr.status === 200) {
-            //         this.setState({
-            //             message: 'Successfully create!'
-            //         })
-            //     } else {
-            //         this.setState({
-            //             message: 'Unable to create!'
-            //         })
-            //     }
-            // });
-            // xhr.send(formData);
         }
     }, {
         key: 'render',
         value: function render() {
+            var visible = this.state.visible;
+
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -66139,12 +65806,6 @@ var Explore = function (_Component) {
                                 _react2.default.createElement(
                                     'p',
                                     null,
-                                    'ID: ',
-                                    number
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    null,
                                     idx.text
                                 ),
                                 _react2.default.createElement('br', null)
@@ -66156,7 +65817,12 @@ var Explore = function (_Component) {
                                     'div',
                                     { 'class': 'right floated author explore_img' },
                                     _react2.default.createElement('img', { 'class': 'ui avatar image', src: 'https://semantic-ui.com/images/avatar/small/jenny.jpg' }),
-                                    'Matt'
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        ' ',
+                                        idx.author
+                                    )
                                 )
                             )
                         );
@@ -66276,6 +65942,10 @@ var _styles2 = _interopRequireDefault(_styles);
 var _Nav = __webpack_require__(83);
 
 var _Nav2 = _interopRequireDefault(_Nav);
+
+var _Upload = __webpack_require__(797);
+
+var _Upload2 = _interopRequireDefault(_Upload);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66410,20 +66080,166 @@ var Setting = function (_Component) {
                 null,
                 _react2.default.createElement(_Nav2.default, null),
                 _react2.default.createElement(
-                    'form',
-                    { className: 'ui form', id: 'setting_form', onSubmit: this.handleSubmit },
+                    'div',
+                    { className: 'ui form' },
                     _react2.default.createElement(
-                        'h1',
-                        { className: 'ui dividing header' },
-                        'Personal Setting'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'field' },
+                        'form',
+                        { id: 'setting_form', onSubmit: this.handleSubmit },
                         _react2.default.createElement(
-                            'label',
-                            null,
-                            'Name *'
+                            'h1',
+                            { className: 'ui dividing header' },
+                            'Personal Setting'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'field' },
+                            _react2.default.createElement(
+                                'label',
+                                null,
+                                'Name *'
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'two fields' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'field' },
+                                    _react2.default.createElement('input', { type: 'text', name: 'firstName', placeholder: 'First Name', value: this.state.firstName, onChange: this.handleInputChange })
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'field' },
+                                    _react2.default.createElement('input', { type: 'text', name: 'lastName', placeholder: 'Last Name', value: this.state.lastName, onChange: this.handleInputChange })
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'fields' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'eight wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Age'
+                                ),
+                                _react2.default.createElement('input', { type: 'number', name: 'age', placeholder: 20, value: this.state.age, onChange: this.handleInputChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'eight wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Gender'
+                                ),
+                                _react2.default.createElement(
+                                    'select',
+                                    { className: 'ui fluid search dropdown', name: 'gender', value: this.state.gender, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '' },
+                                        'Gender'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'female' },
+                                        'Female'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'male' },
+                                        'Male'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'neutral' },
+                                        'Neutral'
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'fields' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'six wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Prefered User Gender'
+                                ),
+                                _react2.default.createElement(
+                                    'select',
+                                    { className: 'ui fluid search dropdown', name: 'preferedGender', value: this.state.preferedGender, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '' },
+                                        'Gender'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'female' },
+                                        'Female'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'male' },
+                                        'Male'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'neutral' },
+                                        'Neutral'
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'five wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Prefered User Age Min'
+                                ),
+                                _react2.default.createElement('input', { type: 'number', name: 'preferedUserAgeMin', maxLength: '3', placeholder: 0, value: this.state.preferedUserAgeMin, onChange: this.handleInputChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'five wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Prefered User Age Max'
+                                ),
+                                _react2.default.createElement('input', { type: 'number', name: 'preferedUserAgeMax', maxLength: '3', placeholder: 0, value: this.state.preferedUserAgeMax, onChange: this.handleInputChange })
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'fields' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'twelve wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Location'
+                                ),
+                                _react2.default.createElement('input', { type: 'text', name: 'address', placeholder: 'Street Address', value: this.state.address, onChange: this.handleInputChange })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'four wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'City'
+                                ),
+                                _react2.default.createElement('input', { type: 'text', name: 'city', placeholder: 'Current City', value: this.state.city, onChange: this.handleInputChange })
+                            )
                         ),
                         _react2.default.createElement(
                             'div',
@@ -66431,734 +66247,593 @@ var Setting = function (_Component) {
                             _react2.default.createElement(
                                 'div',
                                 { className: 'field' },
-                                _react2.default.createElement('input', { type: 'text', name: 'firstName', placeholder: 'First Name', value: this.state.firstName, onChange: this.handleInputChange })
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'State'
+                                ),
+                                _react2.default.createElement(
+                                    'select',
+                                    { className: 'ui fluid dropdown', name: 'state', value: this.state.state, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '' },
+                                        'State'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'AL' },
+                                        'Alabama'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'AK' },
+                                        'Alaska'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'AZ' },
+                                        'Arizona'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'AR' },
+                                        'Arkansas'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'CA' },
+                                        'California'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'CO' },
+                                        'Colorado'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'CT' },
+                                        'Connecticut'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'DE' },
+                                        'Delaware'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'DC' },
+                                        'District Of Columbia'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'FL' },
+                                        'Florida'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'GA' },
+                                        'Georgia'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'HI' },
+                                        'Hawaii'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'ID' },
+                                        'Idaho'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'IL' },
+                                        'Illinois'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'IN' },
+                                        'Indiana'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'IA' },
+                                        'Iowa'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'KS' },
+                                        'Kansas'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'KY' },
+                                        'Kentucky'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'LA' },
+                                        'Louisiana'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'ME' },
+                                        'Maine'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MD' },
+                                        'Maryland'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MA' },
+                                        'Massachusetts'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MI' },
+                                        'Michigan'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MN' },
+                                        'Minnesota'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MS' },
+                                        'Mississippi'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MO' },
+                                        'Missouri'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'MT' },
+                                        'Montana'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NE' },
+                                        'Nebraska'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NV' },
+                                        'Nevada'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NH' },
+                                        'New Hampshire'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NJ' },
+                                        'New Jersey'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NM' },
+                                        'New Mexico'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NY' },
+                                        'New York'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'NC' },
+                                        'North Carolina'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'ND' },
+                                        'North Dakota'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'OH' },
+                                        'Ohio'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'OK' },
+                                        'Oklahoma'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'OR' },
+                                        'Oregon'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'PA' },
+                                        'Pennsylvania'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'RI' },
+                                        'Rhode Island'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'SC' },
+                                        'South Carolina'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'SD' },
+                                        'South Dakota'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'TN' },
+                                        'Tennessee'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'TX' },
+                                        'Texas'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'UT' },
+                                        'Utah'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'VT' },
+                                        'Vermont'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'VA' },
+                                        'Virginia'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'WA' },
+                                        'Washington'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'WV' },
+                                        'West Virginia'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'WI' },
+                                        'Wisconsin'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'WY' },
+                                        'Wyoming'
+                                    )
+                                )
                             ),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'field' },
-                                _react2.default.createElement('input', { type: 'text', name: 'lastName', placeholder: 'Last Name', value: this.state.lastName, onChange: this.handleInputChange })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'fields' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'eight wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Age'
-                            ),
-                            _react2.default.createElement('input', { type: 'number', name: 'age', placeholder: 20, value: this.state.age, onChange: this.handleInputChange })
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'eight wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Gender'
-                            ),
-                            _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid search dropdown', name: 'gender', value: this.state.gender, onChange: this.handleInputChange },
                                 _react2.default.createElement(
-                                    'option',
-                                    { value: '' },
-                                    'Gender'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'female' },
-                                    'Female'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'male' },
-                                    'Male'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'neutral' },
-                                    'Neutral'
-                                )
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'fields' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'six wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Prefered User Gender'
-                            ),
-                            _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid search dropdown', name: 'preferedGender', value: this.state.preferedGender, onChange: this.handleInputChange },
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '' },
-                                    'Gender'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'female' },
-                                    'Female'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'male' },
-                                    'Male'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'neutral' },
-                                    'Neutral'
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'five wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Prefered User Age Min'
-                            ),
-                            _react2.default.createElement('input', { type: 'number', name: 'preferedUserAgeMin', maxLength: '3', placeholder: 0, value: this.state.preferedUserAgeMin, onChange: this.handleInputChange })
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'five wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Prefered User Age Max'
-                            ),
-                            _react2.default.createElement('input', { type: 'number', name: 'preferedUserAgeMax', maxLength: '3', placeholder: 0, value: this.state.preferedUserAgeMax, onChange: this.handleInputChange })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'fields' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'twelve wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Location'
-                            ),
-                            _react2.default.createElement('input', { type: 'text', name: 'address', placeholder: 'Street Address', value: this.state.address, onChange: this.handleInputChange })
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'four wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'City'
-                            ),
-                            _react2.default.createElement('input', { type: 'text', name: 'city', placeholder: 'Current City', value: this.state.city, onChange: this.handleInputChange })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'two fields' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'State'
-                            ),
-                            _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid dropdown', name: 'state', value: this.state.state, onChange: this.handleInputChange },
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '' },
-                                    'State'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'AL' },
-                                    'Alabama'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'AK' },
-                                    'Alaska'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'AZ' },
-                                    'Arizona'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'AR' },
-                                    'Arkansas'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'CA' },
-                                    'California'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'CO' },
-                                    'Colorado'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'CT' },
-                                    'Connecticut'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'DE' },
-                                    'Delaware'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'DC' },
-                                    'District Of Columbia'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'FL' },
-                                    'Florida'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'GA' },
-                                    'Georgia'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'HI' },
-                                    'Hawaii'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'ID' },
-                                    'Idaho'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'IL' },
-                                    'Illinois'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'IN' },
-                                    'Indiana'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'IA' },
-                                    'Iowa'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'KS' },
-                                    'Kansas'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'KY' },
-                                    'Kentucky'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'LA' },
-                                    'Louisiana'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'ME' },
-                                    'Maine'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MD' },
-                                    'Maryland'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MA' },
-                                    'Massachusetts'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MI' },
-                                    'Michigan'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MN' },
-                                    'Minnesota'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MS' },
-                                    'Mississippi'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MO' },
-                                    'Missouri'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'MT' },
-                                    'Montana'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NE' },
-                                    'Nebraska'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NV' },
-                                    'Nevada'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NH' },
-                                    'New Hampshire'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NJ' },
-                                    'New Jersey'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NM' },
-                                    'New Mexico'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NY' },
-                                    'New York'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'NC' },
-                                    'North Carolina'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'ND' },
-                                    'North Dakota'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'OH' },
-                                    'Ohio'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'OK' },
-                                    'Oklahoma'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'OR' },
-                                    'Oregon'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'PA' },
-                                    'Pennsylvania'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'RI' },
-                                    'Rhode Island'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'SC' },
-                                    'South Carolina'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'SD' },
-                                    'South Dakota'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'TN' },
-                                    'Tennessee'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'TX' },
-                                    'Texas'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'UT' },
-                                    'Utah'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'VT' },
-                                    'Vermont'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'VA' },
-                                    'Virginia'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'WA' },
-                                    'Washington'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'WV' },
-                                    'West Virginia'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'WI' },
-                                    'Wisconsin'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'WY' },
-                                    'Wyoming'
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'County'
-                            ),
-                            _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid search dropdown', name: 'country', value: this.state.country, onChange: this.handleInputChange },
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '' },
+                                    'label',
+                                    null,
                                     'County'
                                 ),
                                 _react2.default.createElement(
-                                    'option',
-                                    { value: '0' },
-                                    'USA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '1' },
-                                    'CHINA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '2' },
-                                    'INDIA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '3' },
-                                    'JAPAN'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '4' },
-                                    'CANADA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '5' },
-                                    'RUSSIA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '6' },
-                                    'GERMAN'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '7' },
-                                    'UK'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '8' },
-                                    'BRAZIL'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '9' },
-                                    'AUSTRILIA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '10' },
-                                    'MEXICO'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '11' },
-                                    'KOREA'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '12' },
-                                    'OTHER'
+                                    'select',
+                                    { className: 'ui fluid search dropdown', name: 'country', value: this.state.country, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '' },
+                                        'County'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '0' },
+                                        'USA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '1' },
+                                        'CHINA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '2' },
+                                        'INDIA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '3' },
+                                        'JAPAN'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '4' },
+                                        'CANADA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '5' },
+                                        'RUSSIA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '6' },
+                                        'GERMAN'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '7' },
+                                        'UK'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '8' },
+                                        'BRAZIL'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '9' },
+                                        'AUSTRILIA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '10' },
+                                        'MEXICO'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '11' },
+                                        'KOREA'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '12' },
+                                        'OTHER'
+                                    )
                                 )
                             )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'h4',
-                        { className: 'ui dividing header' },
-                        'Pet Information'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'two fields' },
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            { className: 'ui dividing header' },
+                            'Pet Information'
+                        ),
                         _react2.default.createElement(
                             'div',
-                            { className: 'field' },
+                            { className: 'two fields' },
                             _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid search dropdown', name: 'species', value: this.state.species, onChange: this.handleInputChange },
+                                'div',
+                                { className: 'field' },
                                 _react2.default.createElement(
-                                    'option',
-                                    { value: '' },
-                                    'SPECIES *'
-                                ),
+                                    'select',
+                                    { className: 'ui fluid search dropdown', name: 'species', value: this.state.species, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '' },
+                                        'SPECIES *'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '1' },
+                                        'dog'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '2' },
+                                        'cat'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '3' },
+                                        'fish'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '4' },
+                                        'human'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '5' },
+                                        'Pikachu'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '6' },
+                                        'Pig'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '7' },
+                                        'Squirrel'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '8' },
+                                        'Rabbit'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '9' },
+                                        'Turtle'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '10' },
+                                        'Lizard'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '11' },
+                                        'Bird'
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'field' },
                                 _react2.default.createElement(
-                                    'option',
-                                    { value: '1' },
-                                    'dog'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '2' },
-                                    'cat'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '3' },
-                                    'fish'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '4' },
-                                    'human'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '5' },
-                                    'Pikachu'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '6' },
-                                    'Pig'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '7' },
-                                    'Squirrel'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '8' },
-                                    'Rabbit'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '9' },
-                                    'Turtle'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '10' },
-                                    'Lizard'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '11' },
-                                    'Bird'
+                                    'select',
+                                    { className: 'ui fluid search dropdown', name: 'preferedSpecies', value: this.state.preferedSpecies, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '0' },
+                                        'PREFER SPECIES* '
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '1' },
+                                        'dog'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '2' },
+                                        'cat'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '3' },
+                                        'fish'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '4' },
+                                        'human'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '5' },
+                                        'Pikachu'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '6' },
+                                        'Pig'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '7' },
+                                        'Squirrel'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '8' },
+                                        'Rabbit'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '9' },
+                                        'Turtle'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '10' },
+                                        'Lizard'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '11' },
+                                        'Bird'
+                                    )
                                 )
                             )
                         ),
                         _react2.default.createElement(
                             'div',
-                            { className: 'field' },
+                            { className: 'fields' },
                             _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid search dropdown', name: 'preferedSpecies', value: this.state.preferedSpecies, onChange: this.handleInputChange },
+                                'div',
+                                { className: 'eight wide field' },
                                 _react2.default.createElement(
-                                    'option',
-                                    { value: '0' },
-                                    'PREFER SPECIES* '
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '1' },
-                                    'dog'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '2' },
-                                    'cat'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '3' },
-                                    'fish'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '4' },
-                                    'human'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '5' },
-                                    'Pikachu'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '6' },
-                                    'Pig'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '7' },
-                                    'Squirrel'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '8' },
-                                    'Rabbit'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '9' },
-                                    'Turtle'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '10' },
-                                    'Lizard'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '11' },
-                                    'Bird'
-                                )
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'fields' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'eight wide field' },
-                            _react2.default.createElement(
-                                'label',
-                                null,
-                                'Gender'
-                            ),
-                            _react2.default.createElement(
-                                'select',
-                                { className: 'ui fluid search dropdown', name: 'petGender', value: this.state.petGender, onChange: this.handleInputChange },
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: '' },
+                                    'label',
+                                    null,
                                     'Gender'
                                 ),
                                 _react2.default.createElement(
-                                    'option',
-                                    { value: 'female' },
-                                    'Female'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'male' },
-                                    'Male'
-                                ),
-                                _react2.default.createElement(
-                                    'option',
-                                    { value: 'neutral' },
-                                    'Neutral'
+                                    'select',
+                                    { className: 'ui fluid search dropdown', name: 'petGender', value: this.state.petGender, onChange: this.handleInputChange },
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: '' },
+                                        'Gender'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'female' },
+                                        'Female'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'male' },
+                                        'Male'
+                                    ),
+                                    _react2.default.createElement(
+                                        'option',
+                                        { value: 'neutral' },
+                                        'Neutral'
+                                    )
                                 )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'eight wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Age'
+                                ),
+                                _react2.default.createElement('input', { type: 'number', name: 'petAge', maxLength: '3', placeholder: 1, value: this.state.petAge, onChange: this.handleInputChange })
                             )
                         ),
                         _react2.default.createElement(
                             'div',
-                            { className: 'eight wide field' },
+                            { className: 'fields' },
                             _react2.default.createElement(
-                                'label',
-                                null,
-                                'Age'
+                                'div',
+                                { className: 'eight wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Prefered Age Min'
+                                ),
+                                _react2.default.createElement('input', { type: 'number', name: 'preferedPetAgeMin', maxLength: '3', placeholder: 1, value: this.state.preferedPetAgeMin, onChange: this.handleInputChange })
                             ),
-                            _react2.default.createElement('input', { type: 'number', name: 'petAge', maxLength: '3', placeholder: 1, value: this.state.petAge, onChange: this.handleInputChange })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'fields' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'eight wide field' },
                             _react2.default.createElement(
-                                'label',
-                                null,
-                                'Prefered Age Min'
-                            ),
-                            _react2.default.createElement('input', { type: 'number', name: 'preferedPetAgeMin', maxLength: '3', placeholder: 1, value: this.state.preferedPetAgeMin, onChange: this.handleInputChange })
+                                'div',
+                                { className: 'eight wide field' },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    'Prefered Age Max'
+                                ),
+                                _react2.default.createElement('input', { type: 'number', name: 'preferedPetAgeMax', maxLength: '3', placeholder: 100, value: this.state.preferedPetAgeMax, onChange: this.handleInputChange })
+                            )
                         ),
                         _react2.default.createElement(
-                            'div',
-                            { className: 'eight wide field' },
+                            _semanticUiReact.Button,
+                            { type: 'submit', color: 'pink', size: 'huge', animated: 'fade', onClick: this.handleSubmit },
                             _react2.default.createElement(
-                                'label',
-                                null,
-                                'Prefered Age Max'
+                                _semanticUiReact.Button.Content,
+                                { visible: true },
+                                'Submit!'
                             ),
-                            _react2.default.createElement('input', { type: 'number', name: 'preferedPetAgeMax', maxLength: '3', placeholder: 100, value: this.state.preferedPetAgeMax, onChange: this.handleInputChange })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _semanticUiReact.Button,
-                        { type: 'submit', color: 'pink', size: 'huge', animated: 'fade', onClick: this.handleSubmit },
-                        _react2.default.createElement(
-                            _semanticUiReact.Button.Content,
-                            { visible: true },
-                            'Submit!'
-                        ),
-                        _react2.default.createElement(
-                            _semanticUiReact.Button.Content,
-                            { hidden: true },
-                            _react2.default.createElement(_semanticUiReact.Icon, { name: 'thumbs outline up' })
+                            _react2.default.createElement(
+                                _semanticUiReact.Button.Content,
+                                { hidden: true },
+                                _react2.default.createElement(_semanticUiReact.Icon, { name: 'thumbs outline up' })
+                            )
                         )
                     )
                 ),
+                _react2.default.createElement(_Upload2.default, { type: 'Profile' }),
                 _react2.default.createElement(
                     'div',
                     { className: 'ui vertical labeled icon menu', id: 'nav-down' },

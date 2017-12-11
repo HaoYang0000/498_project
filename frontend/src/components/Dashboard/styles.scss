@@ -1,13 +1,44 @@
+.mainPage {
+    position: relative;
+    height:100%; 
+    width:100%; 
+
+    .Home {
+        position: relative;
+        
+        .cardWrapping {
+            position: absolute;
+            left: 0;
+            top: 0;
+        } 
+    }
+    
+}
 .Dashboard{
+    height:100%;
+    width: 100%;
     color: magenta;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: relative;
+    top: 100px;
+    left: 51%;
     transform: translate(-50%, 0%);
 
+    .title {
+    color: magenta;
+    position: absolute;
+    top: 0; 
+    left:600px;
+    }
+
+    .cardWrap {
+        margin-top: 40px;
+        margin-left:40px;
+    }
     p {
         margin-left: 10px;
     }
+
+    
 }
 
 #setting_form {
@@ -22,13 +53,18 @@
 }
 
 h1 {
-    color: #e03997;
+    color: #e03997;   
 }
 
 #nav-down {
     position: fixed;
     bottom: 10px;
     right: 10px;
+    transition: 0.5s;
+}
+
+#nav-down:hover {
+    transform: rotate(8deg);
 }
 
 #post {
@@ -97,7 +133,19 @@ h1 {
     top: 10%;
     left: 50%;
     transform: translate(-50%, 0%);
-        .explore_img {
-            margin: 20px;
-        }
+    .explore_img {
+        margin: 20px;
+    }
+}
+
+#storycard {
+    display: block;
+    margin: auto;
+    margin-bottom: 60px;
+    transition: width 1s;
+
+}
+
+#storycard:hover { 
+    width: 500px;
 }

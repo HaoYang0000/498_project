@@ -75,8 +75,8 @@ class Dashboard extends Component {
                 <div>
                     <Nav/>
                     <div className="Dashboard">
-                            <h1>Welcome to the App!</h1>
-                            <div>
+                            <div className="title"> <h1>Go and explore users here </h1> </div>
+                            <div className='cardd'>
                             <Card.Group>
                                 {user_data.map((idx, number) =>
                                     <div className="cardWrap">
