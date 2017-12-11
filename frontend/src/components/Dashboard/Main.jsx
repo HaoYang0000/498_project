@@ -221,7 +221,6 @@ class Main extends Component {
                 </div>
 
                 <div className="Home">
-                    <h1>PAIR PAIR PAIR</h1>
 
                     <div className='prepffered_user'>
                             <Card.Group>
@@ -244,7 +243,7 @@ class Main extends Component {
                         </div>
 
 
-                    <button class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
+                    <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
                     <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
                 <div class="ui vertical labeled icon menu" id="nav-down">
