@@ -21,7 +21,7 @@ class Main extends Component {
                 age: '',
                 sex: ''
             },
-            filteredUser: [], 
+            filteredUser: [],
             queue: []  //霖霖 added
         }
 
@@ -50,31 +50,31 @@ class Main extends Component {
                 currentUser: {email:res.data.user.email}
             })
         });
+
+        //霖霖 周五 12/10
+        // if queue is empty, we need to add 100 more users
+        if(this.state.queue) {
+            // add users to stack
+            axios.get('/api/populateQueue')
+            .then((res) => {
+                console.log("populating the queue");
+                this.setState({queue: this.state.queue.concat(res.data.data)});   // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+                console.log("queue after populating", this.state.queue);
+            });
+        }
     }
+
 
     //霖霖 added
     like() {
-       // if queue is empty, we need to add 100 more users
-
-       if(1) {
-           // add users to stack
-           axios.get('/api/populateQueue')
-           .then((res) => {
-               this.setState({queue: res.data});
-               // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
-
-               console.log(res.data);
-           });
-       }
-
-       var cur_other_id = this.state.queue.shift();
-       // we need to check if the other user also liked us
-       axios.put('/api/like', {
-           user_id: this.state.user_id,
-           other_user_id: this.state.other_user_id
+        var cur_other_id = this.state.queue.shift();
+        // we need to check if the other user also liked us
+        axios.put('/api/like', {
+           user_id: this.state.currentUser.id,
+           other_user_id: cur_other_id._id
        })
        .then((res) => {
-
+           console.log(res.data);
        });
    }
 
@@ -129,18 +129,18 @@ class Main extends Component {
 
         return(
             <div>
-                <div> 
+                <div>
                 {this.state.filteredUser.map((idx, number) =>
                             	<div>
                             	<div class="content">
 									    <p>ID: {number}</p>
 									    <p>email: {idx.id}</p>
                                         <p>password: {idx.password}</p>
-                                        <p> email: {idx.email} </p> 
-                                        <p> age:{idx.age} </p> 
+                                        <p> email: {idx.email} </p>
+                                        <p> age:{idx.age} </p>
 								</div>
 								</div>
-                )} 
+                )}
                 </div>
                 <Nav/>
                 <div id="filter-div">

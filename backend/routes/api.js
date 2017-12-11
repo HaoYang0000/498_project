@@ -228,38 +228,50 @@ module.exports = function(router, passport) {
                 }
             });
 
-
-
         });
-        console.log("lalalalalalalalaallalalalalaalallaallalalala");
-        //console.log(user_preference);
-        //console.log(users);
-
-        //
-        // User.find({
-        //     $filter: {
-        //         input: "$list",
-        //         as: "item",
-        //         cond: {$gt: ['$$item.age', 3]}
-        //     }
-        // });
-        //console.log(user1);
-
 
     });
 
 
 
 
+// updated by 霖霖 周日 12/10
 //----------------Like User--------------------------------
     router.put('/like', function(req, res){
-        //TODO
-        var userPost = {
-            name: req.body.user_id,
+
+        var liked_users = User.find({"_id": req.user.id},  {email: 1}, function(err, user) {
+            if(err) {
+                res.status(500).send({
+                    message: err,
+                    data: []
+                });
+            } else {
+                if (user) {
+                    res.status(200).send({
+                        message: 'OK',
+                        data: user
+                    });
+                } else {
+                    res.status(404).send({
+                        message: 'User does not exist',
+                        data: []
+                    });
+                }
+
+            }
+        });
+        console.log("llalallalalallllalallalalallllalallalalallllalallalalallllalallalalallllalallalalall");
+        console.log(liked_users);
+        console.log("printing like users!!!!!!!!!" + liked_users);
+
+        // add cur_other_user to liked_users
+        liked_users.push(req.body.other_user_id);
+
+        var new_liked_users = {
+            liked_users: liked_users,
         }
-
-
-        User.findByIdAndUpdate(req.params.id, userPost, {new: true}, function(err, user) {
+        console.log("after adding!!!", liked_users);
+        User.findByIdAndUpdate(req.user.id, liked_users, function(err, user) {
             if(err) {
                 res.status(500).send({
                     message: err,

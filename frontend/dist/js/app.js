@@ -65653,6 +65653,17 @@ var Main = function (_Component) {
                     currentUser: { email: res.data.user.email }
                 });
             });
+
+            //霖霖 周五 12/10
+            // if queue is empty, we need to add 100 more users
+            if (this.state.queue) {
+                // add users to stack
+                _axios2.default.get('/api/populateQueue').then(function (res) {
+                    console.log("populating the queue");
+                    _this2.setState({ queue: _this2.state.queue.concat(res.data.data) }); // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
+                    console.log("queue after populating", _this2.state.queue);
+                });
+            }
         }
 
         //霖霖 added
@@ -65660,26 +65671,14 @@ var Main = function (_Component) {
     }, {
         key: 'like',
         value: function like() {
-            var _this3 = this;
-
-            // if queue is empty, we need to add 100 more users
-
-            if (1) {
-                // add users to stack
-                _axios2.default.get('/api/populateQueue').then(function (res) {
-                    _this3.setState({ queue: res.data });
-                    // res.data is a list of object looking like {"_id": "5a2a0762782654cb6984c4b7"}
-
-                    console.log(res.data);
-                });
-            }
-
             var cur_other_id = this.state.queue.shift();
             // we need to check if the other user also liked us
             _axios2.default.put('/api/like', {
-                user_id: this.state.user_id,
-                other_user_id: this.state.other_user_id
-            }).then(function (res) {});
+                user_id: this.state.currentUser.id,
+                other_user_id: cur_other_id._id
+            }).then(function (res) {
+                console.log(res.data);
+            });
         }
     }, {
         key: 'dislike',
@@ -65714,15 +65713,15 @@ var Main = function (_Component) {
     }, {
         key: 'onSubmit',
         value: function onSubmit(e) {
-            var _this4 = this;
+            var _this3 = this;
 
             e.preventDefault();
             _axios2.default.post('api/main/filter', this.state.filter).then(function (res) {
-                _this4.setState({
+                _this3.setState({
                     filteredUser: res.data.data
                 });
                 console.dir("wocao");
-                console.dir(_this4.state.filteredUser);
+                console.dir(_this3.state.filteredUser);
             }).catch(function (error) {
                 console.log(error);
             });
