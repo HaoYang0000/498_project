@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Label,Input, Button, Card, Icon, Popup} from 'semantic-ui-react'
+import { Label,Input, Button, Card, Icon, Popup, Divider, Transition} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
 
 class Explore extends Component {
-
     //CHANGE-FONT-END
     constructor(props) {
         super(props);
@@ -14,12 +13,18 @@ class Explore extends Component {
         this.state = {
             story: {
                 title: '',
-                text: ''
+                text: '',
+                author: '',
+                _authorid: ''
             },
+            visible: true,
             message: '',
-            stories: []
+            stories: [],
+            currentUser: {
+                id:'',
+                email: ''
+            }
         }
-
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeText = this.onChangeText.bind(this);
@@ -35,7 +40,21 @@ class Explore extends Component {
             this.setState({
                 stories: res.data.data
             })
-        })
+        });
+
+        axios.get('/api/get_current_user').then((res) => {
+            this.setState({
+                currentUser: {
+                id:res.data.user._id,
+                email:res.data.user.email
+            }
+            })
+        }).catch( (err) => {
+            this.setState({
+                id:res.data.user.id,
+                currentUser: {email:res.data.user.email}
+            })
+        });
     }
 
     //CHANGE-FONT-END
@@ -65,20 +84,21 @@ class Explore extends Component {
         const title = encodeURIComponent(this.state.story.title);
         //CHANGE-FONT-END
         const text = encodeURIComponent(this.state.story.text);
-
-
-        //CHANGE-FONT-END
-        const formData = `title=${title}&text=${text}`;
+        const author = encodeURIComponent(this.state.currentUser.email);
+        const authorid = encodeURIComponent(this.state.currentUser.id);
 
         axios.post('/api/create_new_story', {
             title: title,
             text: text,
+            author: author,
+            authorid: authorid
           })
           .then(res => {
+            console.log("nowjaoiejofijaowif");
             this.state.story
             if(res.status == 200){
                 var newArray = this.state.stories;  
-                newArray.push({"title":title,"text":text});   
+                newArray.push({"title":title, "text":text, "author":author, "_authorid":authorid});   
                 this.setState({
                         story: newArray,
                         message: 'Successfully create!'
@@ -92,50 +112,33 @@ class Explore extends Component {
           .catch(function (error) {
             console.log("error" + error);
         });
-
-        // // create an AJAX request (This should probably done with Axios instead) 
-        // const xhr = new XMLHttpRequest();
-        // //CHANGE-BACK-END
-        // xhr.open('post', '/api/create_new_story');
-        // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        // xhr.responseType = 'json';
-        // xhr.addEventListener('load', () => {
-        //     if (xhr.status === 200) {
-        //         this.setState({
-        //             message: 'Successfully create!'
-        //         })
-        //     } else {
-        //         this.setState({
-        //             message: 'Unable to create!'
-        //         })
-        //     }
-        // });
-        // xhr.send(formData);
     }
 
     render() {
+        const { visible } = this.state;
+
         return(
             <div>
                 <Nav/>
                 <div id="storyhome">
-                    <h1>Story Line</h1>                     
-                            {this.state.stories.map((idx, number) =>
-                                <div className="ui raised card" id="storycard">
-                                    <div id="content">
-                                            <br />
-                                            <h1>{idx.title}</h1>
-                                            <br />
-                                            <p>ID: {number}</p>
-                                            <p>{idx.text}</p>
-                                            <br />
-                                    </div>
-                                    <div id="extra content">
-                                        <div class="right floated author explore_img">
-                                                  <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg" />Matt
-                                        </div>
+                        <h1>Story Line</h1>
+                        {this.state.stories.map((idx, number) =>
+                            <div className="ui raised card" id="storycard">
+                                <div id="content">
+                                        <br />
+                                        <h1>{idx.title}</h1>
+                                        <br />
+                                        <p>{idx.text}</p>
+                                        <br />
+                                </div>
+                                <div id="extra content">
+                                    <div class="right floated author explore_img">
+                                              <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg" />
+                                              <p> {idx.author}</p>
                                     </div>
                                 </div>
-                            )}
+                            </div>
+                        )}
                 </div>
 
                 <div class="ui vertical labeled icon menu" id="nav-down">

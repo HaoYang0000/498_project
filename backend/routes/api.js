@@ -105,10 +105,10 @@ module.exports = function(router, passport) {
             var newStory = new Story();
                 newStory.title = req.body.title;
                 newStory.text = req.body.text;
-                newStory.author = "test";
-                newStory._authorid = "test";
+                newStory.author = req.body.author;
+                newStory._authorid = req.body._authorid;
                 newStory.save();
-            res.status(200).json({ title:newStory.title,text:newStory.text, message: "Welcome!"
+            res.status(200).json({ title:newStory.title,text:newStory.text, author: newStory.author, id: newStory._authorid, message: "Welcome!"
         });
     });
 

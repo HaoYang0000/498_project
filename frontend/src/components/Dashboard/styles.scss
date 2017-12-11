@@ -29,6 +29,11 @@ h1 {
     position: fixed;
     bottom: 10px;
     right: 10px;
+    transition: 0.5s;
+}
+
+#nav-down:hover {
+    transform: rotate(8deg);
 }
 
 #post {
@@ -97,17 +102,19 @@ h1 {
     top: 10%;
     left: 50%;
     transform: translate(-50%, 0%);
-        .explore_img {
-            margin: 20px;
-        }
+    .explore_img {
+        margin: 20px;
+    }
 }
 
-
-.profile{
+#storycard {
+    display: block;
+    margin: auto;
+    margin-bottom: 60px;
+    transition: width 1s;
 
 }
 
-.explore{
-
+#storycard:hover { 
+    width: 500px;
 }
-
