@@ -3,7 +3,6 @@ import { Button, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import Nav from '../Nav/Nav.jsx'
-import Upload from '../Upload/Upload.jsx'
 
 import styles from './styles.scss'
 
@@ -29,7 +28,6 @@ class Home extends Component {
                         </span>
                         <br />
                     </Card>
-                    <Upload/>
                 </div>
             </div>
         )
