@@ -57,10 +57,10 @@ class Upload extends Component {
     render() {
       let imageType = null;
     if (this.state.type == "Profile") {
-      imageType = <img className="profile" src="http://localhost:3000/details/img/myImage.png" />;
+      imageType = <img className="profile" />;
     } 
     else {
-      imageType = <img className="explore" src="http://localhost:3000/details/img/myImage.png" />;
+      imageType = <img className="explore" />;
     }
             let {
                 imagePreviewUrl
