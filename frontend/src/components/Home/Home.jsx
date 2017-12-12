@@ -16,7 +16,7 @@ class Home extends Component {
                       preload: true
                     }
                   }}
-            playing width="110%" height="110%"/>
+            playing width="110%" height="102%"/>
                     <div id="Home_text">
                         <p id="title">PET TINDER</p>
                         <span>

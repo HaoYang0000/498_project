@@ -123,7 +123,7 @@ class Dashboard extends Component {
         } else {
             return(
                 <div className="Home" id="Home">
-                        <ReactPlayer id="video_back" url='https://youtu.be/aLQeqyOK4lE?t=2m5s' playing width="108%" height="108%"/>
+                        <ReactPlayer id="video_back" url='https://youtu.be/aLQeqyOK4lE?t=2m5s' playing width="108%" height="102%"/>
                         <h1 id="title">You must log in before you can see this page.</h1>
                         <Link to="/">
                             Back

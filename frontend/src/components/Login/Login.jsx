@@ -74,7 +74,7 @@ class Login extends Component {
                     youtube: {
                       preload: true
                     }
-                  }} width="108%" height="108%"/>
+                  }} width="108%" height="102%"/>
                 <Card className="Login__content">
                     <div>
                         <h1 id="title">Login</h1>

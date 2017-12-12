@@ -80,7 +80,7 @@ class Register extends Component {
                     youtube: {
                       preload: true
                     }
-                  }} playing width="108%" height="108%"/>
+                  }} playing width="108%" height="102%"/>
                 <Card className="Register__content">
                     <div className="register_bar">
                         <h1 id="title">Register</h1>
