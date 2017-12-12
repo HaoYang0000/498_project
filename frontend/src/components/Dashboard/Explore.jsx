@@ -103,8 +103,8 @@ class Explore extends Component {
             console.log("nowjaoiejofijaowif");
             this.state.story
             if(res.status == 200){
-                var newArray = this.state.stories;  
-                newArray.push({"title":title, "text":text, "author":author, "_authorid":authorid});   
+                var newArray = this.state.stories;
+                newArray.push({"title":title, "text":text, "author":author, "_authorid":authorid});
                 this.setState({
                         story: newArray,
                         message: 'Successfully create!'
@@ -164,7 +164,7 @@ class Explore extends Component {
                 </div>
 
                 <Popup
-                    trigger={   
+                    trigger={
                                 <Button id="post"  color="pink" size="massive" animated="fade" onClick={this.createNewStory}>
                                     <Button.Content visible>New Story!</Button.Content>
                                     <Button.Content hidden>
@@ -194,7 +194,8 @@ class Explore extends Component {
                     position='top right'
                  />
             </div>
-
+            </div>
+            </div>
         )
     }
 }
