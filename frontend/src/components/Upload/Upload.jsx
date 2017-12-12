@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, img } from 'semantic-ui-react'
+import { Button, Card, img, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -58,7 +58,7 @@ class Upload extends Component {
       let imageType = null;
     if (this.state.type == "Profile") {
       imageType = <img className="profile" />;
-    } 
+    }
     else {
       imageType = <img className="explore" />;
     }
@@ -67,43 +67,40 @@ class Upload extends Component {
             } = this.state;
             let $imagePreview = null;
             if (imagePreviewUrl) {
-                $imagePreview = ( < img src = {
+                $imagePreview = ( < Image src = {
                         imagePreviewUrl
-                    }
+                    } size="large"
                     />);
                 }
                 else {
                     $imagePreview = ( < div className = "previewText" > Please select an Image
                         for Preview < /div>);
                     }
-                    return ( 
+                    return (
                         <div>
-                        <
-                        form action = "/api/upload"
-                        enctype = "multipart/form-data"
+                        <form action = "/api/upload"
+                        encType = "multipart/form-data"
                         method = "post" >
-                        <
-                        input type = "file"
+
+                        <Card centered>
+                        {
+                            $imagePreview
+                        }
+                        <Card.Content extra>
+
+                        <input type = "file"
                         name = "file"
                         onChange = {
                             (e) => this._handleImageChange(e)
-                        }
-                        /> 
-                        <
-                        input type = "hidden"
+                        }/>
+                        <button type = "submit"> Upload Image</button>
+                        </Card.Content>
+                        </Card>
+                        <input type = "hidden"
                         name = "type"
-                        value={this.state.type}
-                        />
-                        <
-                        button type = "submit" >
-                        Upload Image <
-                        /button> <
-                        /form> <
-                        div className = "imgPreview" > {
-                            $imagePreview
-                        } <
-                        /div> <
-                        /div>
+                        value={this.state.type}/>
+                        </form>
+                        </div>
                     )
                 }
             }

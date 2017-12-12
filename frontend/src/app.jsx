@@ -6,6 +6,7 @@ import Home from './components/Home/Home.jsx';
 import Register from './components/Register/Register.jsx';
 import Login from './components/Login/Login.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
+import Like from './components/Dashboard/Like.jsx';
 
 import Main from './components/Dashboard/Main.jsx';
 import Explore from './components/Dashboard/Explore.jsx';
@@ -23,6 +24,7 @@ ReactDom.render(
             <Route exact path="/main" component={Main}/>
             <Route exact path="/explore" component={Explore}/>
             <Route exact path="/setting" component={Setting}/>
+            <Route exact path="/like" component={Like}/>
         </Switch>
     </Router>,
     document.getElementById('react-app')
