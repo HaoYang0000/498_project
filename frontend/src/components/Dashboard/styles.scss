@@ -31,7 +31,7 @@
     width: 100%;
     color: magenta;
     position: relative;
-    top: 100px;
+    top: 5%;
     left: 51%;
     transform: translate(-50%, 0%);
 
@@ -40,11 +40,31 @@
     position: absolute;
     top: 0;
     left:600px;
+    margin-bottom: 100px;
     }
 
     .cardWrap {
         margin-top: 40px;
         margin-left:40px;
+        height: 200px;
+         width:16%;
+         margin-top: 3%;
+         margin-left: 6%;
+         padding:20px;
+         .ui.card>.content, .ui.cards>.card>.content {
+             height:250px;
+             top:20px;
+             bottom:20px;
+        }
+         .dash_board_font {
+             
+             .dashBoard_paragraph {
+                 margin-top: 2%;
+                 font-family: "Comic Sans MS";
+                 font-size:15px;
+                 color: #FF69B4;
+             }
+         }
     }
     p {
         margin-left: 10px;
@@ -168,3 +188,10 @@ h1 {
 #storycard:hover {
     width: 500px;
 }
+
+#react-app {
+     background-image: url('https://laurenconrad.com/wp-content/uploads/2015/08/JenBPeters_MintFlowers_Phone1.jpg');
+     
+     height: 100%; 
+     width: 100%;
+ }
