@@ -169,8 +169,6 @@ class Main extends Component {
                         this.state.cur_desired_user = this.state.queue.shift();
                     }
                 })
-
-                console.log("mabibibibibibibibb");
             }) .catch(function (error) {
                 console.log(error);
             });

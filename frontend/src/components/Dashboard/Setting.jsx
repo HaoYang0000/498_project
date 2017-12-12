@@ -126,9 +126,8 @@ class Setting extends Component {
         	<div>
                 <Nav/>
                 <div className="ui form" >
-                
 	              <form id="setting_form" onSubmit={this.handleSubmit}>
-				  <h1 className="ui dividing header">Personal Setting</h1> 
+				  <h1 id="head-animation">Personal Setting</h1> 
 				  <div className="field">
 				    <label>Name *</label>
 				    <div className="two fields">
