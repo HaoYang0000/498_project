@@ -121,7 +121,7 @@ class Explore extends Component {
             <div>
                 <Nav/>
                 <div id="storyhome">
-                        <h1>Story Line</h1>
+                        <h1> Story Line </h1>
                         {this.state.stories.map((idx, number) =>
                             <div className="ui raised card" id="storycard">
                                 <div id="content">

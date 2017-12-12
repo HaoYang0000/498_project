@@ -40,6 +40,9 @@ app.route('/explore').get(function(req,res) {
 app.route('/setting').get(function(req,res) {
   return res.sendFile(path.join(__dirname, './backend/static/index.html'));
 });
+app.route('/like').get(function(req,res) {
+  return res.sendFile(path.join(__dirname, './backend/static/index.html'));
+});
 
 /* New things ================================================================ */
 
