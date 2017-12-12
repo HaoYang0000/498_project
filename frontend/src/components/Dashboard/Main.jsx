@@ -211,7 +211,12 @@ class Main extends Component {
                                   Prefered pet species
                                   <input name="user_prefered_species" onChange={this.onChangePetSpecies} />
                               </Menu.Item>
-                              <input id="filter-submit" type="submit" />
+                              <Button type= "submit" color="pink" size="large" animated="fade" onClick={this.handleSubmit}>
+                                  <Button.Content hidden>Submit!</Button.Content>
+                                  <Button.Content visible>
+                                      <Icon name="search"/>
+                                  </Button.Content>
+                              </Button>
                             </form>
                         </Sidebar>
                         <Sidebar.Pusher>
@@ -243,21 +248,25 @@ class Main extends Component {
                         </div>
 
 
-                    <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
-                    <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
+                    <button id="like_Button" className="ui positive button" role="button" id="main-but" onClick={this.like}>
+                        Like
+                    </button>
+                    <button className="ui negative button" role="button" id="main-but" onClick={this.dislike}>
+                     Na..
+                    </button>
                 </div>
-                <div class="ui vertical labeled icon menu" id="nav-down">
+                <div className="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
-                      <a class="item">
-                        <i class="home icon"></i>
+                      <div className="item">
+                        <i className="home icon"></i>
                         Home
-                      </a>
+                      </div>
                       </Link>
                       <Link to="/" onClick={this.logOut}>
-                        <a class="item">
-                            <i class="send outline icon"></i>
+                        <div className="item">
+                            <i className="send outline icon"></i>
                             Log off
-                        </a>
+                        </div>
                       </Link>
                 </div>
             </div>
