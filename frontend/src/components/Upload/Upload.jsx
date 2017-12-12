@@ -33,8 +33,7 @@ class Upload extends Component {
         }
         //For explore picture or blah
         else{
-
-
+            
         }
     }
 

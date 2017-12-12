@@ -358,7 +358,6 @@ module.exports = function(router, passport) {
 
         //get user preference filter
         User.findById(user_id, function(err, user_pref) {
-            console.log("fuckfuckfuckfuckfuckfuck");
 
             var query = User.find({
                 "prefered_user_gender":req.body.user_gender,
@@ -402,7 +401,6 @@ module.exports = function(router, passport) {
                 liked_users: new_liked_users,
             }
 
-
             User.findByIdAndUpdate(req.body.user_id, updates, function(err, users){
                 if(err) {
                     res.status(500).send({
@@ -423,7 +421,6 @@ module.exports = function(router, passport) {
                     }
                 }
             });
-
         });
 
 
