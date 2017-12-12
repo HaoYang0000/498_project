@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Input, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import ReactPlayer from 'react-player'
 
 import styles from './styles.scss'
 
@@ -75,6 +76,11 @@ class Register extends Component {
     render() {
         return(
             <form className="Register" action="/" onSubmit={this.onSubmit}>
+                <ReactPlayer id="video_back" url='https://youtu.be/q2fIWB8o-bs?t=16m6s' config={{
+                    youtube: {
+                      preload: true
+                    }
+                  }} playing width="108%" height="108%"/>
                 <Card className="Register__content">
                     <div className="register_bar">
                         <h1 id="title">Register</h1>

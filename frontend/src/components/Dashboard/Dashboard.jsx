@@ -3,6 +3,7 @@ import { Button, Card, Image, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../Nav/Nav.jsx'
+import ReactPlayer from 'react-player'
 
 import styles from './styles.scss'
 
@@ -122,7 +123,7 @@ class Dashboard extends Component {
         } else {
             return(
                 <div className="Home" id="Home">
-                        <br />
+                        <ReactPlayer id="video_back" url='https://youtu.be/aLQeqyOK4lE?t=2m5s' playing width="108%" height="108%"/>
                         <h1 id="title">You must log in before you can see this page.</h1>
                         <Link to="/">
                             Back

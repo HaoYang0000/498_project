@@ -10,9 +10,14 @@ import styles from './styles.scss'
 class Home extends Component {
     render() {
         return(
-
-            <div>
-                <div className="Home" id="Home">
+            <div className="Home" id="Home">
+                <ReactPlayer id="video_back" url='https://youtu.be/aLQeqyOK4lE?t=2m5s' config={{
+                    youtube: {
+                      preload: true
+                    }
+                  }}
+            playing width="110%" height="110%"/>
+                    <div id="Home_text">
                         <p id="title">PET TINDER</p>
                         <span>
                             <Link to="/login">
@@ -28,7 +33,7 @@ class Home extends Component {
                             </Link>
                         </span>
                         <br />
-                </div>
+                    </div>
             </div>
         )
     }

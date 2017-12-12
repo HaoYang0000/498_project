@@ -1,5 +1,5 @@
 .Register {
-
+    margin: 0 0 0 0;
     position: relative;
     color: limegreen;
     text-align: center;
@@ -7,10 +7,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 100%;
+    width:100%;
 
     .ui.card, .ui.cards>.card {
-        width: 2000px;
-        height: 800px;
+        background-color:rgba(1, 1, 1, 1.0);
+        opacity:0.6;
+        margin: 0 0 0 0;
+        height: 100%;
+        width:100%;
         
         #title {
             margin-top: 150px;
@@ -35,10 +40,6 @@
             text-align: center;
         }
     }
-}
-
-#title {
-	margin-top: 10px;
 }
 
 #profile_id{

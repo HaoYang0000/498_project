@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Input, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import ReactPlayer from 'react-player'
 
 import styles from './styles.scss'
 
@@ -69,23 +70,28 @@ class Login extends Component {
     render() {
         return(
             <form className="Login" action="/" onSubmit={this.onSubmit}>
-            <Card className="Login__content">
-                <div>
-                    <h1 id="title">Login</h1>
-                    <Input label="Email" onChange={this.onChangeEmail} />
-                    <br/><br/>
-                    <Input label="Password" onChange={this.onChangePassword} />
-                    <br/><br/>
+                <ReactPlayer id="video_back" url='https://youtu.be/q2fIWB8o-bs?t=16m6s' playing config={{
+                    youtube: {
+                      preload: true
+                    }
+                  }} width="108%" height="108%"/>
+                <Card className="Login__content">
+                    <div>
+                        <h1 id="title">Login</h1>
+                        <Input label="Email" onChange={this.onChangeEmail} />
+                        <br/><br/>
+                        <Input label="Password" onChange={this.onChangePassword} />
+                        <br/><br/>
 
-                    <p>{this.state.message}</p>
-                    <Input id="register_submit" type="submit" />
-                    <h4>No account yet? Click <Link to="/register">here</Link> to Register!</h4>
+                        <p>{this.state.message}</p>
+                        <Input id="register_submit" type="submit" />
+                        <h4>No account yet? Click <Link to="/register">here</Link> to Register!</h4>
 
-                    <Link to="/dashboard"><p>Go to Dashboard</p></Link>
-                    <br />
-                </div>
-            </Card>
-        </form>
+                        <Link to="/dashboard"><p>Go to Dashboard</p></Link>
+                        <br />
+                    </div>
+                </Card>
+            </form>
     )
 }
 }
