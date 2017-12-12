@@ -67,9 +67,7 @@ class Main extends Component {
             }).then((res) => {
                 this.setState({cur_desired_user: this.state.queue.shift()});
             });
-        }
-        
-        axios.get('/api/get_profile_image').then((res) => {
+             axios.get('/api/get_profile_image').then((res) => {
                  console.log(res.data.image)
                  this.setState({
                      imagePreviewUrl: res.data.image.path
@@ -77,6 +75,9 @@ class Main extends Component {
                  })
              }).catch( (err) => {
          });
+
+
+        }
     }
 
 
@@ -112,7 +113,13 @@ class Main extends Component {
 
 
    dislike() {
-       let new_queue = this.state.queue;
+   console.log(this.state.queue.length)
+        if(this.state.queue.length <= 1){
+
+
+        }else{
+
+          let new_queue = this.state.queue;
        let next = new_queue.shift();
        this.setState({cur_desired_user: next});
        this.setState({queue: new_queue});
@@ -129,6 +136,9 @@ class Main extends Component {
                this.setState({cur_desired_user: this.state.queue.shift()});
            });
        }
+
+        }
+       
    }
 
 
@@ -166,20 +176,29 @@ class Main extends Component {
     onSubmit(e) {
         e.preventDefault();
         axios.get('/api/get_current_user').then(res => {
-            
             var userId = res.data;
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
                 axios.get('api/populateQueue').then(res => {
+                    console.log("aaa");
+                    console.dir(res.data.data)
+                    console.log("aaa");
+
                     this.setState({
                         queue: res.data.data
                     });
 
+                    let new_queue = this.state.queue;
+                    let next = new_queue.shift();
+                    this.setState({cur_desired_user: next});
                }).then ((res) => {
                     if (this.state.filteredUser != null) {
                         this.state.cur_desired_user = this.state.queue.shift();
                     }
+                    
                 })
+
+                
             }) .catch(function (error) {
                 console.log(error);
             });
@@ -191,6 +210,9 @@ class Main extends Component {
         const { visible } = this.state;
 
         return(
+
+
+
             <div className="Mainpage">
                 <Nav/>
                 <div id="filter-div">
@@ -235,13 +257,11 @@ class Main extends Component {
                                         <Card.Content>
                                             <Image className="profile_img" src={this.state.imagePreviewUrl}/>
                                             <Card.Header>
-                                                <br />
                                                 <p>email: {this.state.cur_desired_user.email}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
                                             </Card.Header>
                                             <Card.Meta>
                                                 <p>_id: {this.state.cur_desired_user._id}</p>
-                                                <br />
                                             </Card.Meta>
                                         </Card.Content>
 
@@ -249,7 +269,8 @@ class Main extends Component {
                                 </div>
                             </Card.Group>
                         </div>
-                    <br />
+
+
                     <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
                     <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
