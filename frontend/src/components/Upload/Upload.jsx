@@ -77,17 +77,16 @@ class Upload extends Component {
                         for Preview < /div>);
                     }
                     return (
-                        <div>
+                        <div id="profile_id">
                         <form action = "/api/upload"
                         encType = "multipart/form-data"
                         method = "post" >
 
                         <Card centered>
-                        {
-                            $imagePreview
-                        }
+                          {
+                              $imagePreview
+                          }
                         <Card.Content extra>
-
                         <Button.Group>
                         <label className="ui small pink button">
                         <input id="input_upload" type = "file"
@@ -99,7 +98,6 @@ class Upload extends Component {
                         </label>
                             <Button.Or text='' />
                             <Button color="pink" size = "small" type = "submit" disabled = {!this.state.file}> Upload Image</Button>
-
                           </Button.Group>
                         </Card.Content>
                         </Card>

@@ -5,6 +5,34 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    .ui.card, .ui.cards>.card {
+        width: 2000px;
+        height: 800px;
+        
+        #title {
+            margin-top: 150px;
+        }
+         
+
+        .ui.label {
+            width: 100px;
+        }
+
+        .ui.input {
+            
+            margin-top: 40px;
+            width: 450px;
+            height: 45px;
+
+            
+        }
+
+        .ui.input #register_submit {
+            width: 45px;
+            text-align: center;
+        }
+    }
 }
 
 #title {

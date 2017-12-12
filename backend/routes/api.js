@@ -12,6 +12,7 @@ module.exports = function(router, passport) {
     // router.post('/main/filter/getDisiredUser', function(req, res){
     //     var ret = User.find({"prefered_user_gender":req.body.user_gender,
     //                         "age":req.body.user_age_min,
+    //                         "age":req.body.user_age_min,
     //                         "prefered_user_age_max":req.body.user_age_max,
     //                         "prefered_species":req.body.user_prefered_species});
     //
@@ -35,18 +36,18 @@ module.exports = function(router, passport) {
 
         // updsate data base
         let newSetting = {
-            prefered_user_gender: req.body.user_gender || null,
-            prefered_user_age_min:parseInt(req.body.user_age_min,10) || null,
-            prefered_user_age_max: parseInt(req.body.user_age_max, 10) || null,
-            prefered_species: req.body.user_prefered_species || null
+            prefered_user_gender: req.body.user_gender || "",
+            prefered_user_age_min:parseInt(req.body.user_age_min,10) || 0,
+            prefered_user_age_max: parseInt(req.body.user_age_max, 10) || 100,
+            prefered_species: req.body.user_prefered_species || ""
         }
-        console.log("sbsbsb");
-        console.log(req.body);
+        // console.log("sbsbsb");
+        // console.log(req.body);
 
 
         User.findByIdAndUpdate(req.user.id, newSetting, {new: true}, function(err, target) {
             //console.dir("caooooooo");
-            console.log(newSetting);
+            //console.log(newSetting);
             //console.dir(req.user.id);
             if (err) {
                 //console.dir(err);
@@ -358,14 +359,16 @@ module.exports = function(router, passport) {
 
         //get user preference filter
         User.findById(user_id, function(err, user_pref) {
-            console.log("fuckfuckfuckfuckfuckfuck");
-
+        
+            console.log(user_pref.prefered_user_gender);
+            console.log(user_pref.prefered_user_age_min);
+            console.log(user_pref.prefered_user_age_max);
+            console.log(user_pref.prefered_species);
             var query = User.find({
-                "prefered_user_gender":req.body.user_gender,
-                "age":req.body.user_age_min,
-                "prefered_user_age_max":req.body.user_age_max,
-                "prefered_species":req.body.user_prefered_species,
-
+                "prefered_user_gender": user_pref.prefered_user_gender || "",
+                "prefered_user_age_min": user_pref.prefered_user_age_min || 0,
+                "prefered_user_age_max": user_pref.prefered_user_age_max || 100,
+                "prefered_species": user_pref.prefered_species || ""
             }).limit(10);
 
             query.exec(function(err, users) {
@@ -385,6 +388,7 @@ module.exports = function(router, passport) {
         });
 
     });
+
 
 
 

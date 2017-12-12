@@ -78,7 +78,7 @@ class Login extends Component {
                     <br/><br/>
 
                     <p>{this.state.message}</p>
-                    <Input type="submit" />
+                    <Input id="register_submit" type="submit" />
                     <h4>No account yet? Click <Link to="/register">here</Link> to Register!</h4>
 
                     <Link to="/dashboard"><p>Go to Dashboard</p></Link>

@@ -84,11 +84,12 @@ class Dashboard extends Component {
                                             <Card.Content>
                                                 <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/> 
                                                 <Card.Header> 
-                                                    <p>email: {idx.email}</p>
+                                                    <div className="dash_board_font">
+                                                     <p className="dashBoard_paragraph">first name: {idx.first_name} </p>
+                                                     <p className="dashBoard_paragraph">last name: {idx.last_name} </p>
+                                                 </div>
                                                 </Card.Header>
-                                                <Card.Meta> 
-                                                    <p>_id: {idx._id}</p>
-                                                </Card.Meta>
+                                               
                                             </Card.Content>
                                             
                                         </Card>
@@ -120,15 +121,13 @@ class Dashboard extends Component {
             )
         } else {
             return(
-                <div className="Dashboard">
-                    <Card>
+                <div className="Home" id="Home">
                         <br />
-                        <h1>You must log in before you can see this page.</h1>
+                        <h1 id="title">You must log in before you can see this page.</h1>
                         <Link to="/">
                             Back
                         </Link>
                         <br />
-                    </Card>
                 </div>
             )
         }

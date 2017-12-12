@@ -24,6 +24,7 @@ class Main extends Component {
             },
             cur_desired_user: {},
             filteredUser: [],
+            imagePreviewUrl: '',
             queue: []  //霖霖 added
         }
 
@@ -67,6 +68,15 @@ class Main extends Component {
                 this.setState({cur_desired_user: this.state.queue.shift()});
             });
         }
+        
+        axios.get('/api/get_profile_image').then((res) => {
+                 console.log(res.data.image)
+                 this.setState({
+                     imagePreviewUrl: res.data.image.path
+                 
+                 })
+             }).catch( (err) => {
+         });
     }
 
 
@@ -156,6 +166,7 @@ class Main extends Component {
     onSubmit(e) {
         e.preventDefault();
         axios.get('/api/get_current_user').then(res => {
+            
             var userId = res.data;
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
@@ -180,9 +191,6 @@ class Main extends Component {
         const { visible } = this.state;
 
         return(
-
-
-
             <div className="Mainpage">
                 <Nav/>
                 <div id="filter-div">
@@ -209,12 +217,7 @@ class Main extends Component {
                                   Prefered pet species
                                   <input name="user_prefered_species" onChange={this.onChangePetSpecies} />
                               </Menu.Item>
-                              <Button type= "submit" color="pink" size="large" animated="fade" onClick={this.handleSubmit}>
-                                  <Button.Content hidden>Submit!</Button.Content>
-                                  <Button.Content visible>
-                                      <Icon name="search"/>
-                                  </Button.Content>
-                              </Button>
+                              <input id="filter-submit" type="submit" />
                             </form>
                         </Sidebar>
                         <Sidebar.Pusher>
@@ -230,13 +233,15 @@ class Main extends Component {
                                 <div className="cardWrapping">
                                     <Card>
                                         <Card.Content>
-                                            <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/>
+                                            <Image className="profile_img" src={this.state.imagePreviewUrl}/>
                                             <Card.Header>
+                                                <br />
                                                 <p>email: {this.state.cur_desired_user.email}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
                                             </Card.Header>
                                             <Card.Meta>
                                                 <p>_id: {this.state.cur_desired_user._id}</p>
+                                                <br />
                                             </Card.Meta>
                                         </Card.Content>
 
@@ -244,27 +249,22 @@ class Main extends Component {
                                 </div>
                             </Card.Group>
                         </div>
-
-
-                    <button id="like_Button" className="ui positive button" role="button" id="main-but" onClick={this.like}>
-                        Like
-                    </button>
-                    <button className="ui negative button" role="button" id="main-but" onClick={this.dislike}>
-                     Na..
-                    </button>
+                    <br />
+                    <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
+                    <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
-                <div className="ui vertical labeled icon menu" id="nav-down">
+                <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
-                      <div className="item">
-                        <i className="home icon"></i>
+                      <a class="item">
+                        <i class="home icon"></i>
                         Home
-                      </div>
+                      </a>
                       </Link>
                       <Link to="/" onClick={this.logOut}>
-                        <div className="item">
-                            <i className="send outline icon"></i>
+                        <a class="item">
+                            <i class="send outline icon"></i>
                             Log off
-                        </div>
+                        </a>
                       </Link>
                 </div>
             </div>

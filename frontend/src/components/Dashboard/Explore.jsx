@@ -23,7 +23,9 @@ class Explore extends Component {
             currentUser: {
                 id:'',
                 email: ''
-            }
+            },
+            image:'',
+            backgroundPicture:''
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -31,6 +33,10 @@ class Explore extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+             image: 'https://laurenconrad.com/wp-content/uploads/2015/08/JenBPeters_Flamingos1.jpg',
+             backgroundPicture:'http://www.4usky.com/data/out/35/164293250-flamingo-wallpapers.jpg'
+         })
         axios.get('/api/get_stories').then((res) => {
             console.log(res);
             this.setState({
@@ -118,9 +124,10 @@ class Explore extends Component {
         const { visible } = this.state;
 
         return(
-            <div>
+            <div className="explore_wholeBody">
                 <Nav/>
                 <div id="storyhome">
+                    <div>
                         <h1> Story Line </h1>
                         {this.state.stories.map((idx, number) =>
                             <div className="ui raised card" id="storycard">
@@ -140,7 +147,7 @@ class Explore extends Component {
                             </div>
                         )}
                 </div>
-
+                <div>
                 <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
                       <a class="item">
