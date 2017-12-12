@@ -102,7 +102,13 @@ class Main extends Component {
 
 
    dislike() {
-       let new_queue = this.state.queue;
+   console.log(this.state.queue.length)
+        if(this.state.queue.length <= 1){
+
+
+        }else{
+
+          let new_queue = this.state.queue;
        let next = new_queue.shift();
        this.setState({cur_desired_user: next});
        this.setState({queue: new_queue});
@@ -119,6 +125,9 @@ class Main extends Component {
                this.setState({cur_desired_user: this.state.queue.shift()});
            });
        }
+
+        }
+       
    }
 
 
@@ -160,15 +169,21 @@ class Main extends Component {
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
                 axios.get('api/populateQueue').then(res => {
+                    console.log("aaa");
+                    console.dir(res.data.data)
+                    console.log("aaa");
+
                     this.setState({
                         queue: res.data.data
                     });
 
+                    let new_queue = this.state.queue;
+                    let next = new_queue.shift();
+                    this.setState({cur_desired_user: next});
                }).then ((res) => {
-                    if (this.state.filteredUser != null) {
-                        this.state.cur_desired_user = this.state.queue.shift();
-                    }
+                    
                 })
+
             }) .catch(function (error) {
                 console.log(error);
             });
