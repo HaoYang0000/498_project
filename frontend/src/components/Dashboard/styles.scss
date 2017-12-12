@@ -54,6 +54,10 @@
 
 #setting_form {
     width: 60%;
+    margin-left: 20%;
+}
+#profile_image_upload{
+    width: 60%;
     margin-top: 100px;
     margin-left: 20%;
 }
@@ -167,4 +171,18 @@ h1 {
 
 #storycard:hover {
     width: 500px;
+}
+
+#input_upload {
+    display: none;
+}
+
+#profile_input {
+    border: 1px solid;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: black;
+    background-color: #e0e1e2;
+    font-family: Lato;
 }
