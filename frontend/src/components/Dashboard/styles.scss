@@ -165,12 +165,11 @@ h1 {
 }
 
 #storyhome{
+    top: 10%;
     color: skyblue;
     text-align: center;
     position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    width: 100%;
     .explore_img {
         margin: 20px;
     }
@@ -197,9 +196,7 @@ h1 {
     display: none;
 }
 
-#react-app {
-     background-image: url('https://laurenconrad.com/wp-content/uploads/2015/08/JenBPeters_MintFlowers_Phone1.jpg');
-     
+#react-app {     
      height: 100%; 
      width: 100%;
  }
