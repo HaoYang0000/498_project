@@ -33,25 +33,6 @@ class Register extends Component {
         const password = encodeURIComponent(this.state.user.password);
         const formData = `name=${name}&email=${email}&password=${password}`;
 
-        // create an AJAX POST request (This should probably done with Axios instead) 
-        // const xhr = new XMLHttpRequest();
-        // xhr.open('post', '/api/register');
-        // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        // xhr.responseType = 'json';
-        // xhr.addEventListener('load', () => {
-        //     if (xhr.status === 200) {
-        //         console.log('The form is valid');
-        //         this.setState({
-        //             message: 'Registered!'
-        //         })
-        //     } else {
-        //         this.setState({
-        //             message: 'Unable to register'
-        //         })
-        //     }
-        // });
-        // xhr.send(formData);
-
         //axios new code
         axios.post('/api/register', {
             name: name,
@@ -105,7 +86,9 @@ class Register extends Component {
                         <Input id="register_submit" type="submit" />
                         <h4>Already registered? Click <Link to="/login">here</Link> to Log-in!</h4>
 
-                        <Link to="/dashboard"><p>Go to Dashboard</p></Link>
+                        <Link to="/dashboard">
+                            <p>Go to Dashboard</p>
+                        </Link>
                     </div>
                     <br />
                 </Card>

@@ -120,15 +120,13 @@ class Dashboard extends Component {
             )
         } else {
             return(
-                <div className="Dashboard">
-                    <Card>
+                <div className="Home" id="Home">
                         <br />
-                        <h1>You must log in before you can see this page.</h1>
+                        <h1 id="title">You must log in before you can see this page.</h1>
                         <Link to="/">
                             Back
                         </Link>
                         <br />
-                    </Card>
                 </div>
             )
         }

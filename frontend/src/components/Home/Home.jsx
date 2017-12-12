@@ -10,9 +10,8 @@ class Home extends Component {
     render() {
         return(
             <div>
-                <div className="Home">
-                    <Card>
-                        <h1 id="title">PET TINDER</h1>
+                <div className="Home" id="Home">
+                        <p id="title">PET TINDER</p>
                         <span>
                             <Link to="/login">
                                 <Button>
@@ -27,7 +26,6 @@ class Home extends Component {
                             </Link>
                         </span>
                         <br />
-                    </Card>
                 </div>
             </div>
         )
