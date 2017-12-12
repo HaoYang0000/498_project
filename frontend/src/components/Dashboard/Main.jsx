@@ -24,6 +24,7 @@ class Main extends Component {
             },
             cur_desired_user: {},
             filteredUser: [],
+            imagePreviewUrl: '',
             queue: []  //霖霖 added
         }
 
@@ -67,6 +68,15 @@ class Main extends Component {
                 this.setState({cur_desired_user: this.state.queue.shift()});
             });
         }
+        
+        axios.get('/api/get_profile_image').then((res) => {
+                 console.log(res.data.image)
+                 this.setState({
+                     imagePreviewUrl: res.data.image.path
+                 
+                 })
+             }).catch( (err) => {
+         });
     }
 
 
@@ -165,6 +175,7 @@ class Main extends Component {
     onSubmit(e) {
         e.preventDefault();
         axios.get('/api/get_current_user').then(res => {
+            
             var userId = res.data;
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
@@ -245,7 +256,7 @@ class Main extends Component {
                                 <div className="cardWrapping">
                                     <Card>
                                         <Card.Content>
-                                            <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/>
+                                            <Image className="profile_img" src={this.state.imagePreviewUrl}/>
                                             <Card.Header>
                                                 <p>email: {this.state.cur_desired_user.email}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
