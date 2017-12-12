@@ -102,13 +102,7 @@ class Main extends Component {
 
 
    dislike() {
-   console.log(this.state.queue.length)
-        if(this.state.queue.length <= 1){
-
-
-        }else{
-
-          let new_queue = this.state.queue;
+       let new_queue = this.state.queue;
        let next = new_queue.shift();
        this.setState({cur_desired_user: next});
        this.setState({queue: new_queue});
@@ -125,9 +119,6 @@ class Main extends Component {
                this.setState({cur_desired_user: this.state.queue.shift()});
            });
        }
-
-        }
-       
    }
 
 
@@ -169,21 +160,15 @@ class Main extends Component {
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
                 axios.get('api/populateQueue').then(res => {
-                    console.log("aaa");
-                    console.dir(res.data.data)
-                    console.log("aaa");
-
                     this.setState({
                         queue: res.data.data
                     });
 
-                    let new_queue = this.state.queue;
-                    let next = new_queue.shift();
-                    this.setState({cur_desired_user: next});
                }).then ((res) => {
-                    
+                    if (this.state.filteredUser != null) {
+                        this.state.cur_desired_user = this.state.queue.shift();
+                    }
                 })
-
             }) .catch(function (error) {
                 console.log(error);
             });
@@ -195,9 +180,6 @@ class Main extends Component {
         const { visible } = this.state;
 
         return(
-
-
-
             <div className="Mainpage">
                 <Nav/>
                 <div id="filter-div">
@@ -224,12 +206,7 @@ class Main extends Component {
                                   Prefered pet species
                                   <input name="user_prefered_species" onChange={this.onChangePetSpecies} />
                               </Menu.Item>
-                              <Button type= "submit" color="pink" size="large" animated="fade" onClick={this.handleSubmit}>
-                                  <Button.Content hidden>Submit!</Button.Content>
-                                  <Button.Content visible>
-                                      <Icon name="search"/>
-                                  </Button.Content>
-                              </Button>
+                              <input id="filter-submit" type="submit" />
                             </form>
                         </Sidebar>
                         <Sidebar.Pusher>
@@ -247,11 +224,13 @@ class Main extends Component {
                                         <Card.Content>
                                             <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/>
                                             <Card.Header>
+                                                <br />
                                                 <p>email: {this.state.cur_desired_user.email}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
                                             </Card.Header>
                                             <Card.Meta>
                                                 <p>_id: {this.state.cur_desired_user._id}</p>
+                                                <br />
                                             </Card.Meta>
                                         </Card.Content>
 
@@ -259,27 +238,22 @@ class Main extends Component {
                                 </div>
                             </Card.Group>
                         </div>
-
-
-                    <button id="like_Button" className="ui positive button" role="button" id="main-but" onClick={this.like}>
-                        Like
-                    </button>
-                    <button className="ui negative button" role="button" id="main-but" onClick={this.dislike}>
-                     Na..
-                    </button>
+                    <br />
+                    <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
+                    <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
-                <div className="ui vertical labeled icon menu" id="nav-down">
+                <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
-                      <div className="item">
-                        <i className="home icon"></i>
+                      <a class="item">
+                        <i class="home icon"></i>
                         Home
-                      </div>
+                      </a>
                       </Link>
                       <Link to="/" onClick={this.logOut}>
-                        <div className="item">
-                            <i className="send outline icon"></i>
+                        <a class="item">
+                            <i class="send outline icon"></i>
                             Log off
-                        </div>
+                        </a>
                       </Link>
                 </div>
             </div>
