@@ -24,6 +24,7 @@ class Main extends Component {
             },
             cur_desired_user: {},
             filteredUser: [],
+            imagePreviewUrl: '',
             queue: []  //霖霖 added
         }
 
@@ -66,6 +67,16 @@ class Main extends Component {
             }).then((res) => {
                 this.setState({cur_desired_user: this.state.queue.shift()});
             });
+             axios.get('/api/get_profile_image').then((res) => {
+                 console.log(res.data.image)
+                 this.setState({
+                     imagePreviewUrl: res.data.image.path
+                 
+                 })
+             }).catch( (err) => {
+         });
+
+
         }
     }
 
@@ -102,7 +113,13 @@ class Main extends Component {
 
 
    dislike() {
-       let new_queue = this.state.queue;
+   console.log(this.state.queue.length)
+        if(this.state.queue.length <= 1){
+
+
+        }else{
+
+          let new_queue = this.state.queue;
        let next = new_queue.shift();
        this.setState({cur_desired_user: next});
        this.setState({queue: new_queue});
@@ -119,6 +136,9 @@ class Main extends Component {
                this.setState({cur_desired_user: this.state.queue.shift()});
            });
        }
+
+        }
+       
    }
 
 
@@ -160,17 +180,25 @@ class Main extends Component {
             axios.put('api/main/filter/updateUserPreference', this.state.filter
             ).then((res) => {
                 axios.get('api/populateQueue').then(res => {
+                    console.log("aaa");
+                    console.dir(res.data.data)
+                    console.log("aaa");
+
                     this.setState({
                         queue: res.data.data
                     });
 
+                    let new_queue = this.state.queue;
+                    let next = new_queue.shift();
+                    this.setState({cur_desired_user: next});
                }).then ((res) => {
                     if (this.state.filteredUser != null) {
                         this.state.cur_desired_user = this.state.queue.shift();
                     }
+                    
                 })
 
-                console.log("mabibibibibibibibb");
+                
             }) .catch(function (error) {
                 console.log(error);
             });
@@ -221,14 +249,13 @@ class Main extends Component {
                 </div>
 
                 <div className="Home">
-                    <h1>PAIR PAIR PAIR</h1>
 
                     <div className='prepffered_user'>
                             <Card.Group>
                                 <div className="cardWrapping">
                                     <Card>
                                         <Card.Content>
-                                            <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/>
+                                            <Image className="profile_img" src={this.state.imagePreviewUrl}/>
                                             <Card.Header>
                                                 <p>email: {this.state.cur_desired_user.email}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
@@ -244,7 +271,7 @@ class Main extends Component {
                         </div>
 
 
-                    <button class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
+                    <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
                     <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
                 </div>
                 <div class="ui vertical labeled icon menu" id="nav-down">

@@ -16,20 +16,20 @@ var userSchema = mongoose.Schema({
     country: String,
     address: String,
 
-    user_gender: String,
-    prefered_user_gender: String,
+    user_gender: {type: String, default:""},
+    prefered_user_gender: {type: String, default:""},
 
-    prefered_user_age_min: Number,
-    prefered_user_age_max: Number,
+    prefered_user_age_min: {type: Number, default:0},
+    prefered_user_age_max: {type: Number, default:100},
 
     //pet stuff
     pet_spiecie: String,
     pet_age: Number,
-    prefered_species: String,
-    prefered_pet_gender: String,
+    prefered_species: {type: String, default:""},
+    prefered_pet_gender: {type: String, default:""},
 
-    prefered_pet_age_min: Number,
-    prefered_pet_age_max: Number,
+    prefered_pet_age_min: {type: Number, default:0},
+    prefered_pet_age_max: {type: Number, default:100},
 
     matched_users: Array,       // store list of matches
     liked_users: Array,         // store list of users you liked

@@ -1,12 +1,49 @@
 .Register {
+    margin: 0 0 0 0;
+    position: relative;
     color: limegreen;
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 100%;
+    width:100%;
+
+    .ui.card, .ui.cards>.card {
+        background-color:rgba(1, 1, 1, 1.0);
+        opacity:0.6;
+        margin: 0 0 0 0;
+        height: 100%;
+        width:100%;
+        
+        #title {
+            margin-top: 150px;
+        }
+         
+
+        .ui.label {
+            width: 100px;
+        }
+
+        .ui.input {
+            
+            margin-top: 40px;
+            width: 450px;
+            height: 45px;
+
+            
+        }
+
+        .ui.input #register_submit {
+            width: 45px;
+            text-align: center;
+        }
+    }
 }
 
-#title {
-	margin-top: 10px;
+#profile_id{
+    #profile_input {
+        background-color: red;
+    }
 }

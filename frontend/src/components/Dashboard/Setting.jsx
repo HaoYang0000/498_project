@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Icon } from 'semantic-ui-react'
+import { Button, Card, Icon, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './styles.scss'
@@ -46,9 +46,9 @@ class Setting extends Component {
 
     componentWillMount() {
         axios.get('/api/get_current_user').then((res) => {
-            console.dir(res.data);
+            //console.dir(res.data);
             let id = res.data.user._id;
-            console.log(id);
+            //console.log(id);
             let path = "api/users/" + id.toString();
 
             axios.get(path).then(
@@ -57,23 +57,23 @@ class Setting extends Component {
                     console.dir(currentSetting);
                     this.setState({
                         userId: id,
-                        firstName: currentSetting.first_name,
-                        lastName: currentSetting.last_name,
-                        age: currentSetting.age,
-                        gender: currentSetting.user_gender,
-                        preferedGender: currentSetting.prefered_user_gender,
-                        preferedUserAgeMin:currentSetting.prefered_user_age_min,
-                        preferedUserAgeMax: currentSetting.prefered_user_age_max,
-                        address: currentSetting.address,
-                        city: currentSetting.city,
-                        state: currentSetting.state,
-                        country: currentSetting.country,
-                        species: currentSetting.pet_spiecie,
-                        preferedSpecies: currentSetting.prefered_species,
-                        petAge: currentSetting.pet_age,
-                        petGender: currentSetting.prefered_pet_gender,
-                        preferedPetAgeMin: currentSetting.prefered_pet_age_min,
-                        preferedPetAgeMax: currentSetting.prefered_pet_age_max
+                        firstName: currentSetting.first_name || "",
+                        lastName: currentSetting.last_name || "",
+                        age: currentSetting.age || 0,
+                        gender: currentSetting.user_gender || "",
+                        preferedGender: currentSetting.prefered_user_gender || "",
+                        preferedUserAgeMin:currentSetting.prefered_user_age_min || 0,
+                        preferedUserAgeMax: currentSetting.prefered_user_age_max || 0,
+                        address: currentSetting.address || "",
+                        city: currentSetting.city || "",
+                        state: currentSetting.state || "",
+                        country: currentSetting.country || "",
+                        species: currentSetting.pet_spiecie || "",
+                        preferedSpecies: currentSetting.prefered_species || "",
+                        petAge: currentSetting.pet_age || 0,
+                        petGender: currentSetting.prefered_pet_gender || "",
+                        preferedPetAgeMin: currentSetting.prefered_pet_age_min || 0,
+                        preferedPetAgeMax: currentSetting.prefered_pet_age_max || 0
                     });
                 }
             ).catch(
@@ -108,7 +108,7 @@ class Setting extends Component {
         }
         //console.dir(newSetting);
         let path = "/api/users/" + this.state.userId.toString();
-        console.log(path);
+        //console.log(path);
         //console.dir(newSetting);
         axios.put(path, newSetting).then(
             (res) => {
@@ -125,10 +125,13 @@ class Setting extends Component {
         return(
         	<div>
                 <Nav/>
+                <div id="profile_image_upload">
+                <h1 className="ui dividing header">Personal Setting</h1>
+                <Header as='h4'>Profile Picture</Header>
+                <Upload type={'Profile'}/>
+                </div>
                 <div className="ui form" >
-                
 	              <form id="setting_form" onSubmit={this.handleSubmit}>
-				  <h1 className="ui dividing header">Personal Setting</h1> 
 				  <div className="field">
 				    <label>Name *</label>
 				    <div className="two fields">
@@ -283,7 +286,7 @@ class Setting extends Component {
 				    </div>
 				    <div className="field">
 				          <select className="ui fluid search dropdown" name="preferedSpecies" value={this.state.preferedSpecies} onChange={this.handleInputChange}>
-				            <option value="0">PREFER SPECIES* </option>
+				            <option value="">PREFER SPECIES* </option>
 				            <option value="1">dog</option>
 				            <option value="2">cat</option>
 				            <option value="3">fish</option>
@@ -332,20 +335,19 @@ class Setting extends Component {
                    </Button>
 				</form>
         </div>
-        <Upload type={'Profile'}/>
 
 				<div className="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
-                      <a className="item">
+                      <div className="item">
                         <i className="home icon"></i>
                         Home
-                      </a>
+                      </div>
                       </Link>
                       <Link to="/" onClick={this.logOut}>
-                        <a className="item">
+                        <div className="item">
                             <i className="send outline icon"></i>
                             Log off
-                        </a>
+                        </div>
                       </Link>
                     </div>
 	        </div>

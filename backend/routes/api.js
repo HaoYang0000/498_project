@@ -12,6 +12,7 @@ module.exports = function(router, passport) {
     // router.post('/main/filter/getDisiredUser', function(req, res){
     //     var ret = User.find({"prefered_user_gender":req.body.user_gender,
     //                         "age":req.body.user_age_min,
+    //                         "age":req.body.user_age_min,
     //                         "prefered_user_age_max":req.body.user_age_max,
     //                         "prefered_species":req.body.user_prefered_species});
     //
@@ -35,22 +36,22 @@ module.exports = function(router, passport) {
 
         // updsate data base
         let newSetting = {
-            prefered_user_gender: req.body.user_gender || null,
-            prefered_user_age_min:parseInt(req.body.user_age_min,10) || null,
-            prefered_user_age_max: parseInt(req.body.user_age_max, 10) || null,
-            prefered_species: req.body.user_prefered_species || null
+            prefered_user_gender: req.body.user_gender || "",
+            prefered_user_age_min:parseInt(req.body.user_age_min,10) || 0,
+            prefered_user_age_max: parseInt(req.body.user_age_max, 10) || 100,
+            prefered_species: req.body.user_prefered_species || ""
         }
-        console.log("sbsbsb");
-        console.log(req.body);
+        // console.log("sbsbsb");
+        // console.log(req.body);
 
 
         User.findByIdAndUpdate(req.user.id, newSetting, {new: true}, function(err, target) {
-            console.dir("caooooooo");
-            console.log(newSetting);
-            console.dir(req.user.id);
+            //console.dir("caooooooo");
+            //console.log(newSetting);
+            //console.dir(req.user.id);
             if (err) {
-                console.dir(err);
-                console.dir("kakakaakakak");
+                //console.dir(err);
+                //console.dir("kakakaakakak");
                 res.status(500).send({
                     message: err,
                     data: []
@@ -132,27 +133,7 @@ module.exports = function(router, passport) {
         });
     });
 
-    router.get('/get_profile_image',
-        function(req, res) {
-
-            Image.findOne({user_id:req.user._id, type:"Profile"}, function(err, image) {
-                if (err) {
-                    res.status(500).json({
-                        image:'error'
-                    });
-                } else {
-                    if (image == null){
-                        res.status(404).json({
-                            image:''
-                        });
-                    } else {
-                        res.status(200).json({
-                            image:image
-                        });
-                    }
-                }
-            });
-    });
+    
 
     router.get('/get_current_user',
         function(req, res) {
@@ -182,7 +163,7 @@ module.exports = function(router, passport) {
     router.get('/users/:id', function(req, res){
         console.log(req.params.id);
         let quest = User.findById(req.params.id);
-        console.dir(quest);
+        //console.dir(quest);
         quest.exec(function(err, target){
 			if (err) {
 				res.status(500).send({
@@ -205,33 +186,104 @@ module.exports = function(router, passport) {
         });
     });
 
+    router.get('/get_profile_image',
+        function(req, res) {
+
+            Image.findOne({user_id:req.user._id, type:"Profile"}, function(err, image) {
+                if (err) {
+                    res.status(500).json({
+                        image:'error'
+                    });
+                } else {
+                    if (image == null){
+                        res.status(404).json({
+                            image:''
+                        });
+                    } else {
+                        res.status(200).json({
+                            image:image
+                        });
+                    }
+                }
+            });
+    });
+
     //Upload image
     router.post('/upload', type, function (req,res) {
+      console.log(req.user.id);
 
 
       var tmp_path = req.file.path;
 
       var target_path = 'backend/static/uploads/' + req.file.originalname;
 
-      var image = new Image();
-      image.original_name = req.file.originalname;
-      image.hashed_name = image.generateHash(req.file.originalname);
-      image.user_id = req.user.id;
-      image.path = 'uploads/' + req.file.originalname;
-      image.type = req.body.type;
-      image.save();
+      //For type profile
+      if(req.body.type == "Profile"){
+        //Try to find the profile picture first
+          Image.findOne({user_id:req.user._id, type:"Profile"}, function(err, image) {
+                if (err) {
+                    res.status(500).json({
+                        image:'error'
+                    });
+                } else {
+                    if (image == null){
+                        //Didn't find the picture, create new one
+                        var image = new Image();
+                          image.original_name = req.file.originalname;
+                          image.hashed_name = image.generateHash(req.file.originalname);
+                          image.user_id = req.user._id;
+                          image.path = 'uploads/' + req.file.originalname;
+                          image.type = req.body.type;
+                          image.save();
 
-      var src = fs.createReadStream(tmp_path);
-      var dest = fs.createWriteStream(target_path);
-      src.pipe(dest);
-      src.on('end', function() {
-        console.log('complete');
-        res.redirect('/setting');
-      });
-      src.on('error', function(err) {
-        console.log('complete');
-        res.redirect('/error');
-       });
+
+
+                          var src = fs.createReadStream(tmp_path);
+                          var dest = fs.createWriteStream(target_path);
+                          src.pipe(dest);
+                          src.on('end', function() {
+                            console.log('complete');
+                            res.redirect('/setting');
+                          });
+                          src.on('error', function(err) {
+                            console.log('complete');
+                            res.redirect('/error');
+                           });
+
+                    } 
+                    else {
+                        //Find the picture, update
+                        image.original_name = req.file.originalname;
+                          image.hashed_name = image.generateHash(req.file.originalname);
+                          image.user_id = req.user._id;
+                          image.path = 'uploads/' + req.file.originalname;
+                          image.type = req.body.type;
+                          image.save();
+
+
+
+                          var src = fs.createReadStream(tmp_path);
+                          var dest = fs.createWriteStream(target_path);
+                          src.pipe(dest);
+                          src.on('end', function() {
+                            console.log('complete');
+                            res.redirect('/setting');
+                          });
+                          src.on('error', function(err) {
+                            console.log('complete');
+                            res.redirect('/error');
+                           });
+
+                    }
+                }
+            });
+      }
+      //For type Story
+      else{
+
+      }
+
+      
 
     });
 
@@ -271,8 +323,8 @@ module.exports = function(router, passport) {
             prefered_pet_age_min: req.body.preferedPetAgeMin,
             prefered_pet_age_max: req.body.preferedPetAgeMax
         }
-        console.dir(newSetting);
-        //console.dir(req.body);
+        ////console.dir(newSetting);
+        ////console.dir(req.body);
         User.findByIdAndUpdate(req.params.id, newSetting, {new: true}, function(err, target) {
             if (err) {
                 res.status(500).send({
@@ -293,7 +345,7 @@ module.exports = function(router, passport) {
                 }
             }
         })
-        //console.dir(req.params);
+        ////console.dir(req.params);
     });
 
     router.put('/story', function(req, res){
@@ -307,14 +359,16 @@ module.exports = function(router, passport) {
 
         //get user preference filter
         User.findById(user_id, function(err, user_pref) {
-            console.log("fuckfuckfuckfuckfuckfuck");
-
+        
+            console.log(user_pref.prefered_user_gender);
+            console.log(user_pref.prefered_user_age_min);
+            console.log(user_pref.prefered_user_age_max);
+            console.log(user_pref.prefered_species);
             var query = User.find({
-                "prefered_user_gender":req.body.user_gender,
-                "age":req.body.user_age_min,
-                "prefered_user_age_max":req.body.user_age_max,
-                "prefered_species":req.body.user_prefered_species,
-
+                "prefered_user_gender": user_pref.prefered_user_gender || "",
+                "prefered_user_age_min": user_pref.prefered_user_age_min || 0,
+                "prefered_user_age_max": user_pref.prefered_user_age_max || 100,
+                "prefered_species": user_pref.prefered_species || ""
             }).limit(10);
 
             query.exec(function(err, users) {
@@ -334,6 +388,7 @@ module.exports = function(router, passport) {
         });
 
     });
+
 
 
 
@@ -384,7 +439,7 @@ module.exports = function(router, passport) {
             //get other user's liked_users
             var other_user_liked = other_user.liked_users;
             //console.log("liiiiikkk");
-            //console.dir(other_user.liked_users);
+            ////console.dir(other_user.liked_users);
 
 
             //Now, let's check if we are in other's liked_user list

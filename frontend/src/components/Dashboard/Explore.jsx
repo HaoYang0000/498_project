@@ -23,7 +23,9 @@ class Explore extends Component {
             currentUser: {
                 id:'',
                 email: ''
-            }
+            },
+            image:'',
+            backgroundPicture:''
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -31,6 +33,10 @@ class Explore extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+             image: 'https://laurenconrad.com/wp-content/uploads/2015/08/JenBPeters_Flamingos1.jpg',
+             backgroundPicture:'http://www.4usky.com/data/out/35/164293250-flamingo-wallpapers.jpg'
+         })
         axios.get('/api/get_stories').then((res) => {
             console.log(res);
             this.setState({
@@ -97,8 +103,8 @@ class Explore extends Component {
             console.log("nowjaoiejofijaowif");
             this.state.story
             if(res.status == 200){
-                var newArray = this.state.stories;  
-                newArray.push({"title":title, "text":text, "author":author, "_authorid":authorid});   
+                var newArray = this.state.stories;
+                newArray.push({"title":title, "text":text, "author":author, "_authorid":authorid});
                 this.setState({
                         story: newArray,
                         message: 'Successfully create!'
@@ -118,10 +124,11 @@ class Explore extends Component {
         const { visible } = this.state;
 
         return(
-            <div>
+            <div className="explore_wholeBody">
                 <Nav/>
                 <div id="storyhome">
-                        <h1>Story Line</h1>
+                    <div>
+                        <h1> Story Line </h1>
                         {this.state.stories.map((idx, number) =>
                             <div className="ui raised card" id="storycard">
                                 <div id="content">
@@ -140,7 +147,7 @@ class Explore extends Component {
                             </div>
                         )}
                 </div>
-
+                <div>
                 <div class="ui vertical labeled icon menu" id="nav-down">
                       <Link to="/dashboard">
                       <a class="item">
@@ -157,7 +164,7 @@ class Explore extends Component {
                 </div>
 
                 <Popup
-                    trigger={   
+                    trigger={
                                 <Button id="post"  color="pink" size="massive" animated="fade" onClick={this.createNewStory}>
                                     <Button.Content visible>New Story!</Button.Content>
                                     <Button.Content hidden>
@@ -187,7 +194,8 @@ class Explore extends Component {
                     position='top right'
                  />
             </div>
-
+            </div>
+            </div>
         )
     }
 }
