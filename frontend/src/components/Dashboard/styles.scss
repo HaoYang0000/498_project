@@ -74,6 +74,10 @@
 
 #setting_form {
     width: 60%;
+    margin-left: 20%;
+}
+#profile_image_upload{
+    width: 60%;
     margin-top: 100px;
     margin-left: 20%;
 }
@@ -187,6 +191,10 @@ h1 {
 
 #storycard:hover {
     width: 500px;
+}
+
+#input_upload {
+    display: none;
 }
 
 #react-app {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Icon } from 'semantic-ui-react'
+import { Button, Card, Icon, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './styles.scss'
@@ -54,7 +54,7 @@ class Setting extends Component {
             axios.get(path).then(
                 (res) => {
                     let currentSetting = res.data.data;
-                    //console.dir(currentSetting);
+                    console.dir(currentSetting);
                     this.setState({
                         userId: id,
                         firstName: currentSetting.first_name || "",
@@ -125,13 +125,13 @@ class Setting extends Component {
         return(
         	<div>
                 <Nav/>
+                <div id="profile_image_upload">
+                <h1 className="ui dividing header">Personal Setting</h1>
+                <Header as='h4'>Profile Picture</Header>
+                <Upload type={'Profile'}/>
+                </div>
                 <div className="ui form" >
 	              <form id="setting_form" onSubmit={this.handleSubmit}>
-				  <h1 >Personal Setting</h1>
-                  <div className="field">
-                  <label>Profile Picture</label>
-                  <Upload type={'Profile'}/>
-                  </div>
 				  <div className="field">
 				    <label>Name *</label>
 				    <div className="two fields">

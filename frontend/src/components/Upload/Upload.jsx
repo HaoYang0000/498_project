@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, img, Image } from 'semantic-ui-react'
+import { Button, Card, img, Image, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -87,13 +87,18 @@ class Upload extends Component {
                               $imagePreview
                           }
                         <Card.Content extra>
-
-                        <input id="profile_input" type="file"
-                          name = "file"
-                          onChange = {
+                        <Button.Group>
+                        <label className="ui small pink button">
+                        <input id="input_upload" type = "file"
+                        name = "file"
+                        onChange = {
                             (e) => this._handleImageChange(e)
-                          }/>
-                        <Button type = "submit"> Upload Image</Button>
+                        }/>
+                            Choose Photo
+                        </label>
+                            <Button.Or text='' />
+                            <Button color="pink" size = "small" type = "submit" disabled = {!this.state.file}> Upload Image</Button>
+                          </Button.Group>
                         </Card.Content>
                         </Card>
                         <input type = "hidden"
