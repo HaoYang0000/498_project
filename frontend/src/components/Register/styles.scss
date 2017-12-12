@@ -32,10 +32,17 @@
 
         .ui.input #register_submit {
             width: 45px;
+            text-align: center;
         }
     }
 }
 
 #title {
 	margin-top: 10px;
+}
+
+#profile_id{
+    #profile_input {
+        background-color: red;
+    }
 }

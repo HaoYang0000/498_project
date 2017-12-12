@@ -77,23 +77,23 @@ class Upload extends Component {
                         for Preview < /div>);
                     }
                     return (
-                        <div>
+                        <div id="profile_id">
                         <form action = "/api/upload"
                         encType = "multipart/form-data"
                         method = "post" >
 
                         <Card centered>
-                        {
-                            $imagePreview
-                        }
+                          {
+                              $imagePreview
+                          }
                         <Card.Content extra>
 
-                        <input type = "file"
-                        name = "file"
-                        onChange = {
+                        <input id="profile_input" type="file"
+                          name = "file"
+                          onChange = {
                             (e) => this._handleImageChange(e)
-                        }/>
-                        <button type = "submit"> Upload Image</button>
+                          }/>
+                        <Button type = "submit"> Upload Image</Button>
                         </Card.Content>
                         </Card>
                         <input type = "hidden"

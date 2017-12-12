@@ -1,5 +1,8 @@
 #title {
 	margin-top: 10px;
+	font-size: 50px;
+	color: #e03997;
+	transition: all 1.0s;
 }
 
 .Home {
@@ -8,6 +11,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);  
+}
+
+#Home{
+	transition: all 0.5s;
+}
+
+#title:hover {
+    font-size: 100px;
 }
 
