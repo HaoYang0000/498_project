@@ -107,8 +107,7 @@ class Like extends Component {
                                                 <Card.Meta> 
                                                     <p>_id: {idx._id}</p>
                                                 </Card.Meta>
-                                            </Card.Content>
-                                            
+                                            </Card.Content>   
                                         </Card>
                                     </div>
                                 )}

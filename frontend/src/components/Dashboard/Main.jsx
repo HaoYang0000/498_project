@@ -397,8 +397,8 @@ class Main extends Component {
                             <Card.Group>
                                 <div className="cardWrapping">
                                     <Card>
-                                        <Card.Content>
                                             <Image className="profile_img" src={this.state.imagePreviewUrl}/>
+                                            <Card.Content>
                                             <Card.Header>
                                                 <p>email: {this.state.cur_desired_user.email}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
@@ -412,7 +412,8 @@ class Main extends Component {
                                 </div>
                             </Card.Group>
                         </div>
-
+                    <br />
+                    <br />
 
                     <button id="like_Button" class="ui positive button" role="button" id="main-but" onClick={this.like}> Like </button>
                     <button class="ui negative button" role="button" id="main-but" onClick={this.dislike}> Na.. </button>
