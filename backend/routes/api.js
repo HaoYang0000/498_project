@@ -644,6 +644,7 @@ module.exports = function(router, passport) {
                     });
 
 
+
                     //把user_id加入other user’s match_list
                     User.findOne({"_id": req.body.other_user_id/*req.user.id*/}, function(err, users) {
                         let new_matched_users = users.matched_users;

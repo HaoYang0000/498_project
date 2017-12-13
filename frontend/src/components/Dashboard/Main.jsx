@@ -83,7 +83,12 @@ class Main extends Component {
                         this.state.queue.shift();
                         i = i-1;
                         //In the array!
-                    } else {
+                    } 
+                    else if(this.state.queue[i]._id == this.state.currentUser.id){
+                        this.state.queue.shift();
+                        i = i-1;
+                    }
+                    else {
                         //Not in the array
                     }
                  }
@@ -256,7 +261,11 @@ class Main extends Component {
                     new_queue.shift();
                     i = i-1;
                     //In the array!
-                } else {
+                } else if(this.state.queue[i]._id == this.state.currentUser.id){
+                        this.state.queue.shift();
+                        i = i-1;
+                    }
+                    else {
                     //Not in the array
                 }
              }
