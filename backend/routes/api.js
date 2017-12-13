@@ -304,9 +304,7 @@ module.exports = function(router, passport) {
         //Try to find the profile picture first
           Image.findOne({user_id:req.user._id, type:"Profile"}, function(err, image) {
                 if (err) {
-                    res.status(500).json({
-                        image:'error'
-                    });
+                    
                 } else {
                     if (image == null){
                         //Didn't find the picture, create new one
@@ -375,9 +373,7 @@ module.exports = function(router, passport) {
         //Try to find the profile picture first
           Image.findOne({user_id:req.user._id, type:"Story", story_id:req.body.story_id}, function(err, image) {
                 if (err) {
-                    res.status(500).json({
-                        image:'error'
-                    });
+                    
                 } else {
                     if (image == null){
                         //Didn't find the picture, create new one
@@ -390,7 +386,7 @@ module.exports = function(router, passport) {
                           image.story_id = req.body.story_id;
                           image.save();
 
-                          Story.findOne({_id:req.body.story_id}, function(err, story) {
+                          Story.findOne({"_id":req.body.story_id}, function(err, story) {
                                 story.image_path = image.path;
                                 story.save();
                           });
@@ -420,7 +416,7 @@ module.exports = function(router, passport) {
                           image.story_id = req.body.story_id;
                           image.save();
 
-                          Story.findOne({_id:req.body.story_id}, function(err, story) {
+                          Story.findOne({"_id":req.body.story_id}, function(err, story) {
                                 story.image_path = 'uploads/' + req.file.originalname;
                                 story.save();
                           });
