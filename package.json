@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --use_strict index.js",
     "dev": "webpack",
-    "yes": "concurrently --kill-others  \"npm start\" \"npm run dev\" "
+    "yes": "concurrently  \"npm start\" \"npm run dev\" "
   },
   "author": "Simon Lu <shlu2@illinois.edu>",
   "license": "ISC",
