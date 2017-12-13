@@ -141,7 +141,7 @@ class Explore extends Component {
                                         <br />
                                 </div>
                                 {idx.image_path == null ? (
-                                    {idx.id == this.state.currentUser.id ? (
+                                    {idx._id == this.state.currentUser.id ? (
                                         <div id="profile_image_upload">
                                             <Header as='h4'>Adda Picture</Header>
                                             <Upload type={'Story'} story_id={idx._id}/>

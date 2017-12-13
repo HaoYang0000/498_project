@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --use_strict index.js",
-    "dev": "webpack",
-    "yes": "concurrently  \"npm start\" \"npm run dev\" "
+    "start":"concurrently  \"npm run abc\" \"npm run dev\" ",
+    "abc": "nodemon --use_strict index.js",
+    "dev": "webpack"
   },
   "author": "Simon Lu <shlu2@illinois.edu>",
   "license": "ISC",
