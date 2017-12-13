@@ -31,7 +31,7 @@ class Nav extends Component {
                 }
                 
             });
-        }, 1000);
+        }, 5000);
     }
 
     componentDidMount() {
