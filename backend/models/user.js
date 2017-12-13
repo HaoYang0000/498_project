@@ -15,6 +15,8 @@ var userSchema = mongoose.Schema({
     state: String,
     country: String,
     address: String,
+    profile_image: {type: String, default:null},
+
 
     user_gender: {type: String, default:""},
     prefered_user_gender: {type: String, default:""},
@@ -32,6 +34,7 @@ var userSchema = mongoose.Schema({
     prefered_pet_age_max: {type: Number, default:100},
 
     matched_users: Array,       // store list of matches
+    disliked_users: Array,      // store list of users you don't like
     liked_users: Array,         // store list of users you liked
     user_stories_id: Array,     // store list of story's ids
     met_users: Array            // other users I have selected

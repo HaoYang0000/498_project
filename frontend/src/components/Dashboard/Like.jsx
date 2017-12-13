@@ -25,17 +25,15 @@ class Like extends Component {
             console.dir(res.data);
             let id = res.data.user._id;
             console.log(id);
-            let path = "api/users/" + id.toString();
+            let path = "api/liked_users";
 
             axios.get(path).then(
                 (res) => {
                     let data = res.data.data;
-                    console.dir(data);
                     this.setState({
-                        liked_users: data.liked_users
+                        liked_users: data
                     });
-                    console.log("hehe1");
-                    console.dir(this.state.liked_users);
+ 
                 }).catch(
                 (err) => {
                     console.log("hehe1");
@@ -56,6 +54,7 @@ class Like extends Component {
         console.log("Current User is :" + this.state.currentUser.email);
         console.log("Current User id is :" + this.state.currentUser.id);
         var user_data = this.state.liked_users;
+        console.log(user_data)
         if(user_data.length == 0) {
             return(
                 <div>
@@ -94,7 +93,12 @@ class Like extends Component {
                                     <div className="cardWrap">
                                         <Card>
                                             <Card.Content>
-                                                <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/> 
+                                                {idx.profile_image == null ? (
+                                                    <Image className="profile_img" src='https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png'/> 
+                                                ) : (
+                                                    <Image className="profile_img" src={idx.profile_image}/> 
+                                                )}
+                                                
                                                 <br />
                                                 <Card.Header> 
                                                 <br />

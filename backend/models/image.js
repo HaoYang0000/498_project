@@ -7,7 +7,8 @@ var imageSchema = mongoose.Schema({
   hashed_name: {type:String, unique: false},
   user_id: {type: String, required: true, unique: false},
   path: {type: String, required: true, unique: false},
-  type:{type: String, required: true, unique: false}
+  type:{type: String, required: true, unique: false},
+  story_id:{type: String, required: false, unique: false}
 });
 
 imageSchema.methods.generateHash = function(password) {
