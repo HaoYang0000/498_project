@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Label,Input, Button, Card, Icon, Popup, Divider, Transition} from 'semantic-ui-react'
+import { Label,Input, Button, Card, Icon, Popup, Divider, Transition, Header, Image} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './styles.scss'
 import Nav from '../Nav/Nav.jsx'
+import Upload from '../Upload/Upload.jsx'
 
 class Explore extends Component {
     //CHANGE-FONT-END
@@ -123,6 +124,7 @@ class Explore extends Component {
     render() {
         const { visible } = this.state;
 
+        
         return(
             <div className="explore_wholeBody">
                 <Nav/>
@@ -138,6 +140,17 @@ class Explore extends Component {
                                         <p>{idx.text}</p>
                                         <br />
                                 </div>
+                                {idx.image_path == null ? (
+                                    <div id="profile_image_upload">
+                                    <Header as='h4'>Adda Picture</Header>
+                                    <Upload type={'Story'} story_id={idx._id}/>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <Image className="profile_img" src={idx.image_path}/> 
+                                    </div>
+                                )}
+                              
                                 <div id="extra content">
                                     <div class="right floated author explore_img">
                                               <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg" />

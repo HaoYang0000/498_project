@@ -12,8 +12,26 @@ class Nav extends Component {
         this.state = {
             currentUser: {
                 email: ''
-            }
+            },
+            current_match:[],
+            message:""
         }
+
+        var _this = this;
+        setInterval(function(){ 
+            axios.get('/api/get_current_user').then((res) => {
+                if(_this.state.current_match.length < res.data.user.matched_users.length){
+                    alert("You got a new match!");
+                    _this.setState({
+                        current_match: res.data.user.matched_users
+                    })
+                }
+                else{
+                    console.log("Nothing happened");
+                }
+                
+            });
+        }, 1000);
     }
 
     componentDidMount() {
@@ -28,9 +46,24 @@ class Nav extends Component {
                 currentUser: {email:res.data.user.email}
             })
         });
+
+        axios.get('/api/get_current_match').then((res) => {
+            console.log("aa");
+            console.log(res.data.data);
+            this.setState({
+                    current_match:res.data.data
+            })
+        }).catch( (err) => {
+            this.setState({
+                current_match: []
+            })
+        });
     }
 
+
+
     render() {
+
         return(
             <div className="Nav">
                 <nav>
@@ -41,6 +74,7 @@ class Nav extends Component {
                     <div id="nav-icon">
                         <i className="github alternate icon big"></i>
                     </div>
+                    <div>{}</div>
                 </nav>
             </div>
         )

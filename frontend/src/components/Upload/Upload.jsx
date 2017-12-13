@@ -13,7 +13,8 @@ class Upload extends Component {
             },
             file: '',
             imagePreviewUrl: '',
-            type:this.props.type
+            type:this.props.type,
+            story_id: this.props.story_id
         };
     }
 
@@ -22,20 +23,20 @@ class Upload extends Component {
         if(this.state.type == "Profile"){
 
           axios.get('/api/get_profile_image').then((res) => {
-                console.log(res.data.image)
-                this.setState({
-                    imagePreviewUrl: res.data.image.path
-                })
+                 if(res.status == 200){
+                    this.setState({
+                        imagePreviewUrl: res.data.image.path
+                    })
+                }
             }).catch( (err) => {
-
+                this.setState({
+                     imagePreviewUrl: "uploads/random_"+(Math.floor(Math.random() * 6) + 1)+".png"
+                 });
             });
 
         }
         //For explore picture or blah
-        else{
-
-
-        }
+        else {}
     }
 
     _handleImageChange(e) {
@@ -104,6 +105,9 @@ class Upload extends Component {
                         <input type = "hidden"
                         name = "type"
                         value={this.state.type}/>
+                        <input type = "hidden"
+                        name = "story_id"
+                        value={this.state.story_id}/>
                         </form>
                         </div>
                     )
