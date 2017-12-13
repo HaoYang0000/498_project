@@ -64,7 +64,8 @@ app.use('/api', require('./backend/routes/api')(router, passport));
 
 /* =========================================================================== */
 
+var port = process.env.PORT || 5000;
 // start the server
-app.listen(80, () => {
-  console.log('Server is running on http://localhost:80 or http://127.0.0.1:80');
+app.listen(port, () => {
+  console.log('Server is running on http://localhost:'+port+' or http://127.0.0.1:'+port);
 });
