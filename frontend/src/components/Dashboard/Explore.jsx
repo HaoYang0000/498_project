@@ -147,6 +147,10 @@ class Explore extends Component {
                                             <Upload type={'Story'} story_id={idx._id}/>
                                         </div>
                                     ) : (
+                                        <div id="profile_image_upload">
+                                            {idx._id}
+                                            {this.state.currentUser.id}
+                                        </div>
                                     )}
                                 ) : (
                                     <div>
