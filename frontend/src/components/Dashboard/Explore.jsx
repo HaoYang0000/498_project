@@ -31,6 +31,8 @@ class Explore extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeText = this.onChangeText.bind(this);
+        this.logOut = this.logOut.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     componentDidMount() {
@@ -64,6 +66,12 @@ class Explore extends Component {
         });
     }
 
+    logOut() {
+        axios.get('/api/logout').then( (res) => {
+            console.log("Logged out");
+        })
+    }
+
     //CHANGE-FONT-END
     onChangeTitle(e) {
         const story = this.state.story;
@@ -82,6 +90,23 @@ class Explore extends Component {
             story
         })
         console.log(story);
+    }
+
+    delete(e){
+        console.log(e.target.id)
+        axios.post('/api/delete_story', {
+            id: e.target.id
+        })
+        .then(res => {
+           if(res.status == 200){
+               window.location.reload();
+            } else {
+               window.location.reload();
+            }
+          })
+          .catch(function (error) {
+            console.log("error" + error);
+        });
     }
 
 
@@ -124,6 +149,8 @@ class Explore extends Component {
     render() {
         const { visible } = this.state;
 
+        var currentUser_id = this.state.currentUser.id;
+
         
         return(
             <div className="explore_wholeBody">
@@ -140,20 +167,26 @@ class Explore extends Component {
                                         <p>{idx.text}</p>
                                         <br />
                                 </div>
-                                {idx.image_path == null ? (
-                                    <div id="profile_image_upload">
-                                    <Header as='h4'>Adda Picture</Header>
-                                    <Upload type={'Story'} story_id={idx._id}/>
+                                {idx.image_path == null && idx._authorid == this.state.currentUser.id ? (
+                                    <div id="story_image_upload">
+                                        <Header as='h4'>Adda Picture</Header>
+                                        <Upload type={'Story'} story_id={idx._id}/>
                                     </div>
                                 ) : (
                                     <div>
                                         <Image className="profile_img" src={idx.image_path}/> 
                                     </div>
                                 )}
+
+                                {idx._authorid == this.state.currentUser.id ? (
+                                    <Button onClick={this.delete} id={idx._id}>Delete</Button>
+                                ) : (
+                                   <div></div>
+                                )}
                               
                                 <div id="extra content">
                                     <div class="right floated author explore_img">
-                                              <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg" />
+                                              <h3>Author</h3>
                                               <p> {idx.author}</p>
                                     </div>
                                 </div>
@@ -178,7 +211,7 @@ class Explore extends Component {
 
                 <Popup
                     trigger={
-                                <Button id="post"  color="pink" size="massive" animated="fade" onClick={this.createNewStory}>
+                                <Button id="post"  color="pink" size="massive" onClick={this.createNewStory}>
                                     <Button.Content visible>New Story!</Button.Content>
                                     <Button.Content hidden>
                                         <Icon name="paw"/>
@@ -204,7 +237,7 @@ class Explore extends Component {
                                 </form>
                             }
                     on='click'
-                    position='top right'
+                    position='top'
                  />
             </div>
             </div>

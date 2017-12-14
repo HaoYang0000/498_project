@@ -14,27 +14,22 @@ class Nav extends Component {
                 email: ''
             },
             current_match:[],
-            message:""
+            message:"",
+            intervalId:""
         }
 
-        var _this = this;
-        setInterval(function(){ 
-            axios.get('/api/get_current_user').then((res) => {
-                if(_this.state.current_match.length < res.data.user.matched_users.length){
-                    alert("You got a new match!");
-                    _this.setState({
-                        current_match: res.data.user.matched_users
-                    })
-                }
-                else{
-                    console.log("Nothing happened");
-                }
-                
-            });
-        }, 1000);
+        // var _this = this;
+        // setInterval(function(){ 
+        //     
+        // }, 5000);
+        this.timer = this.timer.bind(this);
     }
 
     componentDidMount() {
+        var intervalId = setInterval(this.timer, 1000);
+   // store intervalId in the state so it can be accessed later:
+   this.setState({intervalId: intervalId});
+
         axios.get('/api/get_current_user').then((res) => {
             this.setState({
                 currentUser: {
@@ -58,6 +53,34 @@ class Nav extends Component {
                 current_match: []
             })
         });
+    }
+
+    componentWillUnmount() {
+   // use intervalId from the state to clear the interval
+   clearInterval(this.state.intervalId);
+} 
+
+    timer() {
+
+       // setState method is used to update the state
+       axios.get('/api/get_current_match').then((res) => {
+            if(res.status == 200){
+                if(this.state.current_match.length < res.data.data.length){
+                        console.log(res.data.data[this.state.current_match.length].email);
+                        console.log(res.data.data);
+            
+                        alert("You got a new match! "+"User with email: "+res.data.data[this.state.current_match.length].email+" likes you too :)");
+                        this.setState({
+                            current_match: res.data.data
+                        })
+                }
+                else{
+                    console.log("Nothing happened");
+                }
+                    
+            }
+        });
+            
     }
 
 

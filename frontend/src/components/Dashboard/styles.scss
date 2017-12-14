@@ -77,9 +77,15 @@
     margin-left: 20%;
 }
 #profile_image_upload{
-    width: 60%;
+    width: 80%;
     margin-top: 100px;
-    margin-left: 20%;
+    margin-left: 10%;
+}
+
+#story_image_upload{
+    width: 80%;
+    margin-top: 100px;
+    margin-left: 10%;
 }
 
 #main-but{
@@ -184,12 +190,12 @@ h1 {
     display: block;
     margin: auto;
     margin-bottom: 60px;
-    transition: width 1s;
-
+    width: 30%;
+    transition: all 1s;
 }
 
 #storycard:hover {
-    width: 500px;
+    transform: scale(1.05);
 }
 
 #input_upload {

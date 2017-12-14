@@ -18,7 +18,10 @@ class Like extends Component {
             users: [],
             liked_users: []
         }
+        this.logOut = this.logOut.bind(this);
     }
+
+
 
     componentDidMount() {
         axios.get('/api/get_current_user').then((res) => {
@@ -47,6 +50,12 @@ class Like extends Component {
         });
 
 
+    }
+
+    logOut() {
+        axios.get('/api/logout').then( (res) => {
+            console.log("Logged out");
+        })
     }
 
 
@@ -102,10 +111,11 @@ class Like extends Component {
                                                 <br />
                                                 <Card.Header> 
                                                 <br />
-                                                    <p>email: {idx.email}</p>
+                                                    <p>Name: {idx.first_name} {idx.last_name}</p>
+                                                    <p> age:{idx.age} </p>
                                                 </Card.Header>
                                                 <Card.Meta> 
-                                                    <p>_id: {idx._id}</p>
+                                                      <p>email: {idx.email}</p>
                                                 </Card.Meta>
                                             </Card.Content>
                                             

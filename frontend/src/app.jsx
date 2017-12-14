@@ -20,7 +20,7 @@ ReactDom.render(
             <Route exact path="/" component={Home}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/register" component={Register}/>
-            <Route exact path="/dashboard" component={Dashboard}/>
+            <Route exact path="/dashboard" component={Main}/>
             <Route exact path="/main" component={Main}/>
             <Route exact path="/explore" component={Explore}/>
             <Route exact path="/setting" component={Setting}/>

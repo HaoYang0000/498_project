@@ -98,9 +98,7 @@ class Dashboard extends Component {
                                 )}
                             </Card.Group>
                             </div>
-                            <Link to="/" onClick={this.logOut}>
-                                Log out
-                            </Link>
+    
                             <br />
                         
                     </div>

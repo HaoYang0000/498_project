@@ -107,14 +107,25 @@ module.exports = function(router, passport) {
                 newStory.title = req.body.title;
                 newStory.text = req.body.text;
                 newStory.author = req.body.author;
-                newStory._authorid = req.body._authorid;
+                newStory._authorid = req.user.id;
                 newStory.save();
             res.status(200).json({ title:newStory.title,text:newStory.text, author: newStory.author, id: newStory._authorid, message: "Welcome!"
         });
     });
 
-    router.get('/delete_story',function(req, res){
-        Story.remove();
+    router.post('/delete_story',function(req, res){
+        Story.findOne({"_id":req.body.id}, function(err, storys) {
+            if(err) {
+                res.status(500).send({
+                message: err,
+                data: []
+            });
+            } else {
+                storys.remove();
+                 res.status(200).json({  message: "Welcome!"
+                });
+            }
+        });
     });
 
     router.get('/get_stories', function(req, res){
@@ -141,10 +152,22 @@ module.exports = function(router, passport) {
                 data: []
             });
             } else {
-                res.status(200).send({
-                    message: 'OK',
-                    data: user.matched_users
+
+              User.find({"_id":user.matched_users}, function(err, users) {
+                    if(err) {
+                        res.status(500).send({
+                        message: err,
+                        data: []
+                    });
+                    } else {
+
+                        res.status(200).send({
+                            message: 'OK',
+                            data: users
+                        });
+                    }
                 });
+                
             }
         });
     });
@@ -220,36 +243,36 @@ module.exports = function(router, passport) {
         });
     });
 
-   //  router.get('/users/:id', function(req, res){
-   //      console.log(req.params.id);
-   //      let quest = User.findById(req.params.id);
-   //      //console.dir(quest);
-   //      quest.exec(function(err, target){
-			// if (err) {
-			// 	res.status(500).send({
-			// 		message: err,
-			// 		data: []
-			// 	});
-			// } else {
-   //              if (target == null){
-   //                  res.status(404).send({
-   //  					message: 'Not Found',
-   //  					data: []
-   //  				});
-   //              } else {
-			// 	    res.status(200).send({
-			// 		    message: 'OK',
-			// 		    data: target
-			// 	    });
-   //              }
-			// }
-   //      });
-   //  });
+    router.get('/users/:id', function(req, res){
+        console.log(req.params.id);
+        let quest = User.findById(req.params.id);
+        //console.dir(quest);
+        quest.exec(function(err, target){
+			if (err) {
+				res.status(500).send({
+					message: err,
+					data: []
+				});
+			} else {
+                if (target == null){
+                    res.status(404).send({
+    					message: 'Not Found',
+    					data: []
+    				});
+                } else {
+				    res.status(200).send({
+					    message: 'OK',
+					    data: target
+				    });
+                }
+			}
+        });
+    });
 
     router.get('/get_profile_image',
         function(req, res) {
 
-            Image.findOne({user_id:req.user._id, type:"Profile"}, function(err, image) {
+            Image.findOne({user_id:req.user.id, type:"Profile"}, function(err, image) {
                 if (err) {
                     res.status(500).json({
                         image:'error'
@@ -271,7 +294,7 @@ module.exports = function(router, passport) {
     router.post('/get_profile_image',
         function(req, res) {
 
-            Image.findOne({user_id:req.body._id, type:"Profile"}, function(err, image) {
+            Image.findOne({user_id:req.body.id, type:"Profile"}, function(err, image) {
                 if (err) {
                     res.status(500).json({
                         image:'error'
@@ -390,7 +413,7 @@ module.exports = function(router, passport) {
                           image.story_id = req.body.story_id;
                           image.save();
 
-                          Story.findOne({_id:req.body.story_id}, function(err, story) {
+                          Story.findOne({"_id":req.body.story_id}, function(err, story) {
                                 story.image_path = image.path;
                                 story.save();
                           });
@@ -420,7 +443,7 @@ module.exports = function(router, passport) {
                           image.story_id = req.body.story_id;
                           image.save();
 
-                          Story.findOne({_id:req.body.story_id}, function(err, story) {
+                          Story.findOne({"_id":req.body.story_id}, function(err, story) {
                                 story.image_path = 'uploads/' + req.file.originalname;
                                 story.save();
                           });

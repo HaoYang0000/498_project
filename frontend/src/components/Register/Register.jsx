@@ -92,7 +92,7 @@ class Register extends Component {
                         <Input id="register_submit" type="submit" />
                         <h4>Already registered? Click <Link to="/login">here</Link> to Log-in!</h4>
 
-                        <Link to="/dashboard">
+                        <Link to="/main">
                             <p>Go to Dashboard</p>
                         </Link>
                     </div>

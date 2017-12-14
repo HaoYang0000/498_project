@@ -39,6 +39,7 @@ class Main extends Component {
         this.onChangeMinAge = this.onChangeMinAge.bind(this);
         this.onChangeMaxAge = this.onChangeMaxAge.bind(this);
         this.onChangePetSpecies = this.onChangePetSpecies.bind(this);
+         this.logOut = this.logOut.bind(this);
     }
 
     componentDidMount() {
@@ -83,7 +84,11 @@ class Main extends Component {
                         this.state.queue.shift();
                         i = i-1;
                         //In the array!
-                    } else {
+                    } else if(this.state.queue[i]._id == this.state.currentUser.id ){
+                      this.state.queue.shift();
+                        i = i-1;
+                    }
+                    else {
                         //Not in the array
                     }
                  }
@@ -123,6 +128,11 @@ class Main extends Component {
         }
     }
 
+    logOut() {
+        axios.get('/api/logout').then( (res) => {
+            console.log("Logged out");
+        })
+    }
 
     //霖霖 added
     like() {
@@ -179,6 +189,8 @@ class Main extends Component {
            let next = new_queue.shift();
            this.setState({cur_desired_user: next});
            this.setState({queue: new_queue});
+
+           console.log(this.state.cur_desired_user)
            axios.post('/api/get_profile_image',{id: this.state.cur_desired_user._id}).then((res) => {
                  this.setState({
                      imagePreviewUrl: res.data.image.path
@@ -256,7 +268,11 @@ class Main extends Component {
                     new_queue.shift();
                     i = i-1;
                     //In the array!
-                } else {
+                }  else if(this.state.queue[i]._id == this.state.currentUser.id ){
+                      this.state.queue.shift();
+                        i = i-1;
+                    }
+                  else {
                     //Not in the array
                 }
              }
@@ -400,11 +416,11 @@ class Main extends Component {
                                         <Card.Content>
                                             <Image className="profile_img" src={this.state.imagePreviewUrl}/>
                                             <Card.Header>
-                                                <p>email: {this.state.cur_desired_user.email}</p>
+                                                <p>Name: {this.state.cur_desired_user.first_name} {this.state.cur_desired_user.last_name}</p>
                                                 <p> age:{this.state.cur_desired_user.age} </p>
                                             </Card.Header>
                                             <Card.Meta>
-                                                <p>_id: {this.state.cur_desired_user._id}</p>
+                                                <p>email: {this.state.cur_desired_user.email}</p>
                                             </Card.Meta>
                                         </Card.Content>
 

@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     state: String,
     country: String,
     address: String,
-    profile_image: {type: String, default:null},
+    profile_image: {type: String},
 
 
     user_gender: {type: String, default:""},

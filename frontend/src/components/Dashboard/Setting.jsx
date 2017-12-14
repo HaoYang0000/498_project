@@ -32,6 +32,7 @@ class Setting extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+         this.logOut = this.logOut.bind(this);
     }
 
     handleInputChange(event) {
@@ -84,6 +85,12 @@ class Setting extends Component {
         }).catch((err) => {
             console.log("hehe2");
         });
+    }
+
+    logOut() {
+        axios.get('/api/logout').then( (res) => {
+            console.log("Logged out");
+        })
     }
 
     handleSubmit(event) {
