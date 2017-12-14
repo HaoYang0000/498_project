@@ -120,10 +120,10 @@ class Explore extends Component {
         const authorid = this.state.currentUser.id;
 
         axios.post('/api/create_new_story', {
-            title: title,
-            text: text,
-            author: author,
-            authorid: authorid
+            title: this.state.story.title,
+            text: this.state.story.text,
+            author: this.state.currentUser.email,
+            authorid: this.state.currentUser.id
           })
           .then(res => {
             console.log("nowjaoiejofijaowif");

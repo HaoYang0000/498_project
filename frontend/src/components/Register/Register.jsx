@@ -29,16 +29,16 @@ class Register extends Component {
         e.preventDefault();
 
         // create a string for an HTTP body message
-        const name = this.state.user.username;
-        const email = this.state.user.email;
-        const password = this.state.user.password;
-        const formData = `name=${name}&email=${email}&password=${password}`;
+        // const name = encodeURIComponent(this.state.user.username);
+        // const email = encodeURIComponent(this.state.user.email);
+        // const password = encodeURIComponent(this.state.user.password);
+        // const formData = `name=${name}&email=${email}&password=${password}`;
 
         //axios new code
         axios.post('/api/register', {
-            name: name,
-            email: email,
-            password: password,
+            name: this.state.user.username,
+            email: this.state.user.email,
+            password: this.state.user.password
           })
           .then(res => {
             console.log(res);

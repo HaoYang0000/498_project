@@ -67887,16 +67887,16 @@ var Register = function (_Component) {
             e.preventDefault();
 
             // create a string for an HTTP body message
-            var name = this.state.user.username;
-            var email = this.state.user.email;
-            var password = this.state.user.password;
-            var formData = 'name=' + name + '&email=' + email + '&password=' + password;
+            // const name = encodeURIComponent(this.state.user.username);
+            // const email = encodeURIComponent(this.state.user.email);
+            // const password = encodeURIComponent(this.state.user.password);
+            // const formData = `name=${name}&email=${email}&password=${password}`;
 
             //axios new code
             _axios2.default.post('/api/register', {
-                name: name,
-                email: email,
-                password: password
+                name: this.state.user.username,
+                email: this.state.user.email,
+                password: this.state.user.password
             }).then(function (res) {
                 console.log(res);
                 if (res.status == 200) {
@@ -69537,10 +69537,10 @@ var Explore = function (_Component) {
             var authorid = this.state.currentUser.id;
 
             _axios2.default.post('/api/create_new_story', {
-                title: title,
-                text: text,
-                author: author,
-                authorid: authorid
+                title: this.state.story.title,
+                text: this.state.story.text,
+                author: this.state.currentUser.email,
+                authorid: this.state.currentUser.id
             }).then(function (res) {
                 console.log("nowjaoiejofijaowif");
                 _this3.state.story;
