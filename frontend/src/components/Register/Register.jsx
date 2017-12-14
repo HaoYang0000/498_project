@@ -29,9 +29,9 @@ class Register extends Component {
         e.preventDefault();
 
         // create a string for an HTTP body message
-        const name = encodeURIComponent(this.state.user.username);
-        const email = encodeURIComponent(this.state.user.email);
-        const password = encodeURIComponent(this.state.user.password);
+        const name = this.state.user.username;
+        const email = this.state.user.email;
+        const password = this.state.user.password;
         const formData = `name=${name}&email=${email}&password=${password}`;
 
         //axios new code

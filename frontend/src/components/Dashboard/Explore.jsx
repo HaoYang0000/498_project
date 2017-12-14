@@ -113,11 +113,11 @@ class Explore extends Component {
     onSubmit(e) {
         e.preventDefault();
         //CHANGE-FONT-END
-        const title = encodeURIComponent(this.state.story.title);
+        const title = this.state.story.title;
         //CHANGE-FONT-END
-        const text = encodeURIComponent(this.state.story.text);
-        const author = encodeURIComponent(this.state.currentUser.email);
-        const authorid = encodeURIComponent(this.state.currentUser.id);
+        const text = this.state.story.text;
+        const author = this.state.currentUser.email;
+        const authorid = this.state.currentUser.id;
 
         axios.post('/api/create_new_story', {
             title: title,
