@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --use_strict index.js",
+    "start":"concurrently --kill-others \"npm run abc\" \"npm run dev\" ",
+    "abc": "nodemon --use_strict index.js",
     "dev": "webpack"
   },
   "author": "Simon Lu <shlu2@illinois.edu>",
@@ -34,7 +35,17 @@
     "react-router-dom": "^4.2.2",
     "react-tap-event-plugin": "^3.0.2",
     "semantic-ui-react": "^0.76.0",
-    "validator": "^9.1.1"
+    "validator": "^9.1.1",
+    "nodemon": "^1.12.1",
+    "concurrently": "^3.5.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "copy-webpack-plugin": "^4.2.0",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.6.1",
+    "postcss-loader": "^2.0.8",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
